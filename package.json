@@ -1,0 +1,50 @@
+{
+  "name": "hackovid-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.19.0",
+    "deck.gl": "^7.3.5",
+    "mapbox-gl": "^1.4.1",
+    "moment": "^2.24.0",
+    "react": "^16.10.2",
+    "react-date-picker": "^7.8.2",
+    "react-dom": "^16.10.2",
+    "react-map-gl": "^5.0.12",
+    "react-map-gl-geocoder": "^2.0.11",
+    "react-mapbox-gl": "^4.7.3",
+    "react-moment": "^0.9.6",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "react-toastify": "^5.4.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-react": "^7.16.0",
+    "prettier": "^1.18.2"
+  }
+}

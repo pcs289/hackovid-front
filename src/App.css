@@ -1,0 +1,1202 @@
+/*** --- GENERAL SETTINGS--- ***/
+/*** --- PAGE COMPONENTS --- ***/
+/* --- View Headers --- */
+/* --- Loading Ball --- */
+/* --- Forms / Inputs --- */
+/* --- Navbar --- */
+/* --- Buttons --- */
+/*** --- VIEWS --- ***/
+/* --- Homepage --- */
+/* --- Login / Signup --- */
+/* --- Profile --- */
+/* --- Bookings --- */
+/* --- Search --- */
+/* --- Club Detail --- */
+/* --- Edit Profile --- */
+/* --- Map --- */
+/* --- Reservation --- */
+/* --- Profile Stats --- */
+/* --- Friends --- */
+/* --- Player Stats --- */
+
+* {
+  font-family: 'Work Sans', sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  margin: 5%;
+}
+
+:root {
+  --blue: #23346d;
+  --bluelight: #73c6cf;
+  --red: rgb(237, 92, 115);
+  --grey: #010101;
+  --font: #2f3333;
+  --green: #a4d96c;
+  --bg: #f0f0f0;
+  --strongGreen: #017069;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  display: block;
+  color: #000000;
+}
+
+h2 {
+  font-size: 1.6em;
+}
+
+#viewport-with-navbar {
+  margin: 0 0 12vh 0;
+}
+
+#padel-icon {
+  width: 8vw;
+  margin: 0 3vw;
+}
+
+/*** --- PAGE COMPONENTS --- ***/
+
+/* --- View Headers --- */
+
+#page-name {
+  width: 100vw;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -6%;
+  margin-left: -6%;
+  box-shadow: 0 0 10px 4px rgba(47, 51, 51, 0.15);
+  max-height: 50px;
+}
+#page-name h1 {
+  margin: 0;
+  padding: 10px;
+  font-size: 1.2em;
+  color: var(--font);
+}
+
+#page-name-profile {
+  width: 100vw;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: -6%;
+  box-shadow: 0 0 10px 4px rgba(47, 51, 51, 0.15);
+}
+
+#page-name-profile h1 {
+  margin: 0;
+  padding: 10px;
+  font-size: 1.2em;
+  color: var(--font);
+}
+
+#sorry-div {
+  text-align: center;
+}
+
+#missing-favorite-div {
+  text-align: center;
+  margin-top: 15vh;
+}
+
+#sorry-img {
+  width: 35vw;
+}
+
+/* --- Loading Ball --- */
+
+#loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-505, -50%);
+}
+
+#loading-ball {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: #c9f364;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  animation: animate 1.5s linear infinite;
+}
+
+#loading-ball-mini {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #c9f364;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  animation: animate 1.5s linear infinite;
+}
+
+#loading-ball::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background: transparent;
+  border: 5px solid #fff;
+  left: -65%;
+  filter: blur(1px);
+}
+
+#loading-ball-mini::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background: transparent;
+  border: 5px solid #fff;
+  left: -65%;
+  filter: blur(1px);
+}
+
+#loading-ball::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background: transparent;
+  border: 5px solid #fff;
+  right: -65%;
+  filter: blur(1px);
+}
+@keyframes animate {
+  0% {
+    transform: translate(-50%, -50%) translateY(-200px) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(0px) rotate(180deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(-200px) rotate(360deg);
+  }
+}
+
+#loading-ball-mini::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background: transparent;
+  border: 5px solid #fff;
+  right: -65%;
+  filter: blur(1px);
+}
+@keyframes animate {
+  0% {
+    transform: translate(-50%, -50%) translateY(-50px) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(0px) rotate(180deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(-50px) rotate(360deg);
+  }
+}
+
+#loading-ball-shadow {
+  position: absolute;
+  width: 150px;
+  height: 50px;
+  transform: translate(-50%, 100%);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(2px);
+  animation: shadow 1.5s linear infinite;
+}
+
+@keyframes shadow {
+  0% {
+    transform: translate(-50%, 100%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, 100%) scale(0.5);
+  }
+  100% {
+    transform: translate(-50%, 100%) scale(1);
+  }
+}
+
+/* --- Forms / Inputs --- */
+
+input:disabled {
+  color: #000000;
+  background-color: #ffffff;
+  border-color: #dcdcdc;
+}
+
+input,
+select {
+  box-shadow: 0 4px 8px 0 rgba(47, 51, 51, 0.03);
+  border: 2px solid rgba(47, 51, 51, 0.08);
+  font-size: 1em;
+  border-radius: 8px;
+  padding: 10px;
+  background: transparent;
+  color: var(--font);
+}
+
+input::placeholder,
+select::placeholder {
+  color: #a9a9a9;
+  font-size: 1em;
+}
+
+/* --- Navbar --- */
+
+.nav-container {
+  position: fixed;
+  bottom: -10vh;
+  -webkit-animation: slide-top 0.5s ease-in forwards;
+  animation: slide-top 0.5s ease-in forwards;
+  z-index: 2;
+}
+
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-10vh);
+    transform: translateY(-10vh);
+  }
+}
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-10vh);
+    transform: translateY(-10vh);
+  }
+}
+
+nav {
+  margin-left: -5%;
+  width: 100vw;
+  background: white;
+  position: relative;
+  box-shadow: 0 30px 40px 30px rgba(164, 217, 108, 0.15);
+  border-radius: 30px 30px 0 0;
+}
+
+nav ul {
+  flex-direction: row;
+  padding-inline-start: 0;
+  list-style: none;
+  justify-content: space-around;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-size: 12px;
+  padding-top: 5px;
+}
+
+nav ul li {
+  margin: 0;
+  text-align: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--font);
+}
+
+nav ul li a img {
+  width: 4.5vh;
+  margin: 0 auto 5px auto;
+  display: block;
+}
+
+.go-back {
+  width: 4vw;
+  height: auto;
+}
+
+/* --- Buttons --- */
+
+.btn {
+  width: 80vw;
+  min-height: 55px;
+  border-radius: 8px;
+  font-size: 1.5em;
+  margin: 10px auto;
+  display: block;
+  text-decoration: none;
+  background-color: var(--green);
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(47, 51, 51, 0.03);
+  border: 1px solid rgba(47, 51, 51, 0.08);
+}
+
+#logout-btn-div {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  margin: 20px 0;
+}
+#logout-btn {
+  border-radius: 0.5em;
+  background-color: #b23b3b;
+  color: #ffffff;
+  text-align: center;
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  position: absolute;
+  bottom: 11vh;
+}
+
+/*** --- VIEWS --- ***/
+
+/* --- Homepage --- */
+
+#logo-div {
+  top: 0;
+  margin-top: -5%;
+  margin-left: -5%;
+  margin-right: -5%;
+  height: 90vh;
+  background-image: linear-gradient(199deg, #a4d96c, #017069);
+}
+
+#swipe-down-div {
+  color: var(--font);
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  max-height: 20px;
+}
+
+#swipe-down-div img {
+  width: 15px;
+}
+
+#loading-div {
+  width: 100%;
+  height: 20vh;
+}
+
+#homepage-header {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+  color: #fff;
+}
+
+#homepage-header h2 {
+  text-align: center;
+}
+
+#header-book-btn-div {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+#login-signup-cta {
+  margin: 5vh 0;
+}
+
+#loading-header {
+  max-height: 5vh;
+}
+
+#header-book-btn {
+  border-radius: 0.2em;
+  background-color: var(--green);
+  color: #ffffff;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(47, 51, 51, 0.03);
+}
+#logo-large {
+  width: 150px;
+  height: auto;
+  margin: 0;
+}
+
+#home-banner-title h1 {
+  margin: 0 0 0.5rem 0;
+  color: #ffffff;
+}
+
+#home-banner-text {
+  font-size: 0.9em;
+  color: #ffffff;
+}
+
+#highlight-clubs-header {
+  text-align: center;
+  margin: 5px;
+}
+#div-search-input {
+  display: flex;
+  flex-direction: row;
+}
+
+#div-search-input img {
+  width: 5vw;
+  max-height: 75px;
+}
+
+#club-search-input {
+  border: none;
+  border-radius: 0;
+  border-bottom: 3px solid var(--green);
+  width: 100vw;
+  margin: 15px 0;
+  height: 5vh;
+  max-height: 42px;
+}
+
+#highlight-clubs-card {
+  border: 1px;
+  margin: 10px 0;
+  background-color: white;
+  box-shadow: 0 30px 40px 30px rgba(152, 152, 152, 0.15);
+  text-align: center;
+  border-radius: 5px;
+}
+
+#highlight-clubs-card h2 {
+  display: block;
+  position: relative;
+  bottom: 6vh;
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 1.5em;
+  text-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+}
+
+#highlight-clubs-card-img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#club-name-card {
+  font-size: 1.2em;
+  z-index: 1;
+}
+#home-book-btn-div {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  margin: 20px 0;
+}
+
+#home-book-btn {
+  border-radius: 0.2em;
+  background-color: var(--green);
+  color: #ffffff;
+  font-weight: 700;
+  color: var(--font);
+  text-align: center;
+  width: 80%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(47, 51, 51, 0.03);
+  border: 1px solid rgba(47, 51, 51, 0.08);
+}
+
+#home-book-btn h3 {
+  color: #ffffff;
+}
+
+#home-club-text {
+  font-size: 0.8em;
+  color: var(--font);
+  text-align: center;
+}
+
+/* --- Login / Signup --- */
+
+.log-sign-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.log-sign-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.log-sign-container input {
+  margin: 10px 0;
+}
+
+#signup-input input {
+  margin: 0;
+}
+
+.log-sign-container label {
+  display: none;
+}
+
+.log-sign-container .alternative {
+  font-size: 0.8em;
+  margin-top: 10vh;
+}
+
+.log-sign-container span {
+  text-decoration: none !important;
+  font-weight: 700;
+  color: var(--green);
+}
+
+#logo-login {
+  width: 80vw;
+}
+
+/* --- Profile --- */
+
+#user-profile {
+  margin: 5% 0;
+  width: 20vw;
+  height: 20vw;
+  background: white;
+  border-radius: 50%;
+  margin-right: 5%;
+  border: 2px solid var(--font);
+}
+
+#other-features {
+  margin-top: 4vh;
+}
+
+#profile-categories p {
+  text-decoration: none;
+  color: var(--blue);
+  font-weight: bold;
+  text-transform: none;
+  transform: translateY(25%);
+}
+#category-img {
+  width: 4vh;
+}
+
+#profile-bg {
+  width: 100vw;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -6%;
+  margin-left: -6%;
+  box-shadow: 0 0 10px 4px rgba(47, 51, 51, 0.15);
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  text-transform: capitalize;
+}
+
+#profile-bg h1 {
+  margin: 0;
+  padding: 10px;
+  font-size: 1.6em;
+  color: var(--font);
+}
+
+#profile-btn-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-decoration: none;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(47, 51, 51, 0.03);
+  border-bottom: 2px solid rgba(47, 51, 51, 0.08);
+  align-items: center;
+  margin: 4vh 0;
+}
+
+#profile-btn {
+  color: var(--font);
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#profile-btn h2 {
+  font-weight: normal;
+  font-size: 1em;
+}
+
+/* --- Bookings --- */
+
+#booking-card {
+  margin-top: 8%;
+  border-bottom: 2px solid rgba(47, 51, 51, 0.08);
+  padding: 2%;
+}
+
+#booking-card #home-book-btn-div {
+  margin: 0;
+}
+
+.with-bottom-border {
+  margin-bottom: 5%;
+}
+
+#moment-booking :first-child {
+  color: var(--font);
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+#booking-card-details p {
+  color: #000000;
+  font-size: 1em;
+  padding-top: 3px;
+}
+
+/* --- Search --- */
+
+#datePicker input {
+  width: 100%;
+  height: 40px;
+}
+#select-date {
+  padding-left: 5%;
+  transform: translateY(-50%);
+  position: relative;
+  top: 30px;
+  z-index: 1;
+}
+.react-date-picker__wrapper {
+  width: 90vw;
+  background-color: #e8e8e8;
+  box-shadow: 0 4px 8px 0 rgba(47, 51, 51, 0.03);
+  border: none !important;
+  border-radius: 5px;
+}
+
+.react-date-picker__inputGroup {
+  justify-content: flex-end;
+}
+
+#hour-select {
+  width: 50vw;
+  background-color: var(--grey);
+  border: none !important;
+  border-radius: 5px;
+}
+
+#display-block {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  float: left;
+  margin-bottom: 3vh;
+}
+
+#hour-select-div {
+  width: 70vw;
+  box-sizing: border-box;
+}
+#hour-select-div select {
+  width: 95%;
+}
+#submit-datapicker {
+  width: 40vw;
+  background-color: var(--green);
+  border-radius: 0.2em;
+  font-weight: 700;
+  color: #ffffff;
+  border: none;
+}
+
+#selector {
+  background-color: #e8e8e8;
+  box-shadow: 0 4px 8px 0 rgba(47, 51, 51, 0.03);
+  border: none;
+  height: 100%;
+}
+
+#highlight-clubs-card-search {
+  border: 1px;
+  margin: 10px 0;
+  background-color: white;
+  box-shadow: 0 30px 40px 30px rgba(152, 152, 152, 0.15);
+  border-radius: 5px;
+  margin-right: -5%;
+  margin-left: -5%;
+}
+
+#highlight-clubs-card-search h2 {
+  margin-left: 5%;
+  margin-right: 5%;
+  position: relative;
+  bottom: 6vh;
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 1.2em;
+  text-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+}
+
+#highlight-clubs-card-img-search {
+  width: 100%;
+  object-fit: cover;
+}
+
+#highlight-clubs-card-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#search-book-btn-div {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  margin: 0;
+}
+
+#search-book-btn {
+  border-radius: 0.2em;
+  background-color: var(--green);
+  color: #ffffff;
+  font-weight: 700;
+  color: var(--font);
+  text-align: center;
+  width: 90%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 1rem;
+  margin-top: -1rem;
+
+  box-shadow: 0 4px 8px 0 rgba(47, 51, 51, 0.03);
+  border: 1px solid rgba(47, 51, 51, 0.08);
+}
+
+/* --- Club Detail --- */
+
+.heart {
+  width: 60px;
+  height: 62px;
+  position: absolute;
+  margin-top: 3%;
+  right: 5.5vw;
+  filter: none;
+}
+
+#club-header-image {
+  margin-left: -6%;
+  margin-right: -6%;
+}
+
+#club-detail-heart .heart {
+  right: 5vw;
+  top: 30vh;
+}
+
+#club-detail-location {
+  color: var(--font);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 5%;
+  border-bottom: 2px solid rgba(47, 51, 51, 0.08);
+  max-height: 58px;
+}
+
+#club-detail-location p {
+  width: 75vw;
+  max-height: 45px;
+}
+
+#club-detail-location img {
+  width: 10vw;
+}
+
+#club-header-image img {
+  width: 100%;
+  max-height: 30vh;
+  object-fit: cover;
+}
+
+#club-detail-header {
+  font-size: 1.5em;
+  margin-bottom: 2%;
+}
+
+#reservation-club {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+#reservation-club p {
+  color: var(--strongGreen);
+  font-weight: bold;
+}
+#padelnow-pin {
+  width: 15vw;
+}
+
+#submit-datapicker-club {
+  width: 100%;
+  background-color: var(--green);
+  border-radius: 0.2em;
+  font-weight: 700;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+}
+
+/* --- Edit Profile --- */
+
+.edit-profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-profile-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-profile-container input {
+  margin: 10px 0;
+}
+
+#user-profile-edit {
+  width: 35vw;
+  height: 35vw;
+  background: white;
+  border-radius: 50%;
+  border: 2px solid rgba(47, 51, 51, 0.08);
+  margin-top: 3vh;
+}
+
+#upload-avatar {
+  margin: 10px 0 30px 0;
+  border: 1.5px solid rgba(47, 51, 51, 0.08);
+  border-radius: 5px;
+}
+
+/* --- Map --- */
+
+#mapbox {
+  margin: -5%;
+}
+
+.club-marker img {
+  max-width: 50px;
+}
+
+.close-layer {
+  width: 100%;
+  height: 92vh;
+}
+
+.club-popup-container {
+  width: 60vw;
+  max-width: 250px;
+}
+
+.club-popup-title p {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  color: #ffffff;
+  margin: 0;
+  padding: 10px;
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.club-popup-container .mapboxgl-popup-content {
+  padding: 0;
+  border-radius: 10px;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-content {
+  border-radius: 10px 10px 10px 0px;
+}
+
+.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-content {
+  border-radius: 10px 10px 0px 10px;
+}
+
+.mapboxgl-ctrl-bottom-left {
+  display: none;
+}
+
+.club-popup-image img {
+  width: 60vw;
+  height: 25vh;
+  max-width: 250px;
+  padding: 5px;
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+  filter: brightness(65%);
+}
+
+.mapboxgl-popup {
+  z-index: 1;
+}
+
+/* --- Reservation --- */
+#reservation-card {
+  margin-top: 8%;
+  border: 1.5px solid rgba(47, 51, 51, 0.08);
+  padding: 5%;
+  border-radius: 5px;
+  box-shadow: 0 30px 40px 30px rgba(152, 152, 152, 0.15);
+}
+
+#reservation-card h1 {
+  margin-top: 0;
+}
+
+#reservation-card h2 {
+  color: var(--strongGreen);
+}
+
+#reservation-card #moment-booking {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.2em;
+  font-weight: 700;
+  padding: 5vw 0;
+  border-bottom: 2px solid rgba(47, 51, 51, 0.08);
+}
+
+#reservation-hours {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  margin: 3vw 0;
+}
+
+#reservation-card span {
+  font-weight: lighter;
+  color: #808080;
+}
+
+#reservation-card p {
+  font-weight: bold;
+}
+
+#reservation-location {
+  margin: 5vw 0;
+  font-weight: lighter;
+}
+
+#submit-reservation {
+  width: 100%;
+  background-color: var(--green);
+  border-radius: 0.2em;
+  font-weight: 700;
+  color: #ffffff;
+  border: none;
+  text-align: center;
+}
+
+/* --- Profile Stats --- */
+
+#user-profile-stats {
+  position: fixed;
+  top: 10%;
+  right: 40%;
+  width: 20vw;
+  height: 20vw;
+  background: white;
+  border-radius: 50%;
+  border: 2px solid var(--font);
+}
+
+#profile-stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  margin-top: 15%;
+}
+
+#profile-stats span {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+#profile-stats-card {
+  height: 60vh;
+  margin-top: 20%;
+  margin-bottom: 20px;
+  border: 1.5px solid rgba(47, 51, 51, 0.08);
+  padding: 5%;
+  border-radius: 5px;
+  box-shadow: 0 30px 40px 30px rgba(152, 152, 152, 0.15);
+}
+
+#profile-stats-card h2 {
+  margin: 20px 0 10px 20px;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#profile-stats-card #selector {
+  width: 100%;
+  margin: 10px 0;
+}
+
+#inserted-stat {
+  color: #808080;
+  margin: 0 20px;
+  font-size: 1.2em;
+}
+
+#badges {
+  position: relative;
+  border-radius: 30px 30px 0 0;
+}
+
+#badge-img {
+  width: 10vw;
+}
+
+#badges ul {
+  flex-direction: row;
+  padding-inline-start: 0;
+  list-style: none;
+  justify-content: space-around;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-size: 12px;
+  padding-top: 5px;
+}
+
+#badges ul li {
+  margin: 0;
+  text-align: center;
+}
+
+#badges ul li a {
+  text-decoration: none;
+  color: var(--font);
+}
+
+#badges ul li a img {
+  width: 4.5vh;
+  margin: 0 auto 5px auto;
+  display: block;
+}
+
+/* --- Friends --- */
+
+#myfriends-card {
+  display: flex;
+  border-bottom: 2px solid rgba(47, 51, 51, 0.08);
+  margin-top: 5%;
+}
+
+#friend-name-card {
+  width: 300px;
+  max-height: 80px;
+  object-fit: cover;
+  display: flex;
+  text-transform: capitalize;
+  font-weight: lighter;
+  color: #808080;
+  margin-top: 5px;
+}
+
+#friend-btn-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none;
+  margin: 20px 0;
+}
+
+#user-profile-friends {
+  width: 20vw;
+  height: 20vw;
+  border-radius: 50%;
+  border: 1px solid rgba(152, 152, 152, 0.15);
+  margin: 10px 25px 10px 10px;
+  object-fit: cover;
+}
+
+#petition-span {
+  width: 130px;
+  max-height: 80px;
+  object-fit: cover;
+  display: flex;
+  text-transform: capitalize;
+  font-weight: lighter;
+  color: #ffffff;
+  margin-top: 5px;
+  padding: 5px;
+  background-color: var(--green);
+  border-radius: 5px;
+  font-weight: bold;
+}
+#petitions-btn {
+  display: flex;
+}
+#petition-span-btn {
+  width: 80px;
+  margin: 0 5px;
+  max-height: 80px;
+  object-fit: cover;
+  display: flex;
+  text-transform: capitalize;
+  font-weight: lighter;
+  color: #ffffff;
+  margin-top: 5px;
+  padding: 5px;
+  background-color: var(--green);
+  border-radius: 5px;
+  font-weight: bold;
+}
