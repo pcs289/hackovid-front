@@ -23,7 +23,7 @@ class Login extends Component {
         username,
         password,
       });
-      toast.success('Benvingut');
+      toast.success(`Benvingut, ${username}!`);
     } catch (error) {
       console.error('Error while logging in');
     }

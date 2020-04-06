@@ -27,7 +27,7 @@ class Signup extends Component {
         username,
         password,
       });
-      toast.success('Welcome to Padelnow');
+      toast.success(`Benvingut, ${username}!`);
     } catch (error) {
       console.error('Error while signing in');
     }

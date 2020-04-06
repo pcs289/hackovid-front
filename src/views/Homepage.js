@@ -36,7 +36,7 @@ class Homepage extends Component {
                     <h3>Entra</h3>
                   </div>
                 </Link>
-                <Link id="header-book-btn-div" to="/registra">
+                <Link id="header-book-btn-div" to="/registre">
                   <div id="header-book-btn">
                     <h3>Registra't</h3>
                   </div>

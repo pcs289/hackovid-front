@@ -22,7 +22,6 @@ import { withAuth } from "./Context/AuthContext";
 import PrivateRoute from "./components/Routes/PrivateRoute";
 import AnonRoute from "./components/Routes/AnonRoute";
 import Navbar from "./components/Navigation/Navbar";
-import authService from "./services/authService";
 
 class App extends Component {
   // eslint-disable-next-line class-methods-use-this
@@ -41,14 +40,6 @@ class App extends Component {
                 <AnonRoute exact path="/" component={Homepage} />
                 <AnonRoute exact path="/entra" component={Login} />
                 <AnonRoute exact path="/registre" component={Signup} />
-                {/* <AnonRoute
-                  exact
-                  path="/logout"
-                  render={() => {
-                    authService.logout();
-                    return <Redirect to="/" />;
-                  }}
-                /> */}
 
                 <Route component={ErrorPage} path="*" />
               </Switch>
