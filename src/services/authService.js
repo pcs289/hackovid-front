@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 class AuthService {
   constructor() {
@@ -10,33 +10,41 @@ class AuthService {
 
   signup(user) {
     const { username, password, name, surname } = user;
-    return this.auth.post('/signup', { username, password, name, surname }).then(({ data }) => {
-      return data;
-    });
+    return this.auth
+      .post("/signup", { username, password, name, surname })
+      .then(({ data }) => {
+        return data;
+      });
   }
 
   login(user) {
     const { username, password } = user;
-    return this.auth.post('/login', { username, password }).then(({ data }) => data);
+    return this.auth
+      .post("/login", { username, password })
+      .then(({ data }) => data);
   }
 
   logout() {
-    return this.auth.get('/logout', {}).then(response => response.data);
+    return this.auth.get("/logout", {}).then((response) => response.data);
   }
 
   userDelete() {
-    return this.auth.post('/profile/edit-profile/delete', {}).then(response => response.data);
+    return this.auth
+      .post("/deleteAccount", {})
+      .then((response) => response.data);
   }
 
   me(user) {
-    return this.auth.get('/me').then(response => response.data);
+    return this.auth.get("/me").then((response) => response.data);
   }
 
   profileUpdate(user) {
     const { username, name, surname } = user;
-    return this.auth.put('/profile/edit-profile', { username, name, surname }).then(({ data }) => {
-      return data;
-    });
+    return this.auth
+      .put("/profile/edit-profile", { username, name, surname })
+      .then(({ data }) => {
+        return data;
+      });
   }
 }
 

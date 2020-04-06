@@ -15,29 +15,29 @@ class Navbar extends Component {
                 <li>
                   <Link to="/bookings">
                     <img src={'/images/booking.svg'} alt="Booking" />
-                    Bookings
+                    Calendari
                   </Link>
                 </li>
                 {pathname === '/map' ? (
                   <li>
                     <Link to="/search">
                       <img src={'/images/search.svg'} alt="Search" />
-                      Search
+                      Cercador
                     </Link>
                   </li>
                 ) : (
                   <li>
                     <Link to="/map">
                       <img src={'/images/map-navbar.svg'} alt="Map" />
-                      Map
+                      Mapa
                     </Link>
                   </li>
                 )}
 
                 <li>
-                  <Link to="/profile">
+                  <Link to="/perfil">
                     <img src={'/images/profile.svg'} alt="Profile" />
-                    Profile
+                    Perfil
                   </Link>
                 </li>
               </>
