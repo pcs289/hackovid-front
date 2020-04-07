@@ -34,17 +34,18 @@ class App extends Component {
         <Router>
           <div className="container">
             <Route component={Topbar} />
-            <div className="data-container">
+            <div className="data-container1">
               <Switch>
-                <PrivateRoute exact path="/map" component={Map} />
-                <PrivateRoute exact path="/perfil" component={Profile} />
                 <AnonRoute exact path="/" component={Homepage} />
-                <AnonRoute exact path="/entra" component={Login} />
-                <AnonRoute exact path="/registre" component={Signup} />
-
-                <Route component={ErrorPage} path="*" />
+                <div className="data-container">
+                  <PrivateRoute exact path="/map" component={Map} />
+                  <PrivateRoute exact path="/perfil" component={Profile} />
+                  <AnonRoute exact path="/entra" component={Login} />
+                  <AnonRoute exact path="/registre" component={Signup} />
+                  <Route component={ErrorPage} path="*" />
+                  <PrivateRoute component={Navbar} />
+                </div>
               </Switch>
-              <PrivateRoute component={Navbar} />
             </div>
           </div>
         </Router>
