@@ -44,8 +44,8 @@ class App extends Component {
 
                 <Route component={ErrorPage} path="*" />
               </Switch>
+              <PrivateRoute component={Navbar} />
             </div>
-            <PrivateRoute component={Navbar} />
           </div>
         </Router>
       </>

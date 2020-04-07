@@ -5,7 +5,7 @@ import { withAuth } from "../../Context/AuthContext";
 class Topbar extends Component {
   render() {
     return (
-      <div className="banner_header">
+      <div id="banner_header" className="banner_header">
         <img
           src={"/images/padelnow-logo.png"}
           className="logo logo-large"

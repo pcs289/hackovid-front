@@ -2,6 +2,22 @@
   margin: 0 0 12vh 0;
 }
 
+@media (min-width: 1200px) {
+  .data-container {
+    max-width: 25vw;
+    max-height: 75vh;
+    width: auto;
+    height: auto;
+    margin: 1% auto;
+    overflow: scroll;
+    -webkit-box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 1;
+    border-radius: 4px;
+  }
+}
+
 /* --- Profile View --- */
 
 .user-profile {
