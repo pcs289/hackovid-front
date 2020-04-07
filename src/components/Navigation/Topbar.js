@@ -4,6 +4,7 @@ import { withAuth } from "../../Context/AuthContext";
 
 class Topbar extends Component {
   render() {
+      console.log(this.props);
     return (
       <div id="banner_header" className="banner_header">
         <img
@@ -11,7 +12,7 @@ class Topbar extends Component {
           className="logo logo-large"
           alt="Booking"
         />
-        <div id="sign-buttons">
+        { this.props.isLoggedin ? null : <div id="sign-buttons">
           <div className="sign-buttons">
             <ul>
               <li>
@@ -32,7 +33,7 @@ class Topbar extends Component {
               </li>
             </ul>
           </div>
-        </div>
+        </div> }
       </div>
     );
   }

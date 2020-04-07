@@ -3,11 +3,9 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-// import "./App.css";
 import "./styles/main.scss";
 
 import Homepage from "./views/Homepage";
@@ -43,9 +41,9 @@ class App extends Component {
                   <AnonRoute exact path="/entra" component={Login} />
                   <AnonRoute exact path="/registre" component={Signup} />
                   <Route component={ErrorPage} path="*" />
-                  <PrivateRoute component={Navbar} />
                 </div>
               </Switch>
+              <PrivateRoute component={Navbar} />
             </div>
           </div>
         </Router>
