@@ -7,7 +7,8 @@ import {
 } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-import "./App.css";
+// import "./App.css";
+import "./styles/main.scss";
 
 import Homepage from "./views/Homepage";
 import Login from "./views/auth/Login";
@@ -22,6 +23,7 @@ import { withAuth } from "./Context/AuthContext";
 import PrivateRoute from "./components/Routes/PrivateRoute";
 import AnonRoute from "./components/Routes/AnonRoute";
 import Navbar from "./components/Navigation/Navbar";
+import Topbar from "./components/Navigation/Topbar";
 
 class App extends Component {
   // eslint-disable-next-line class-methods-use-this
@@ -31,12 +33,11 @@ class App extends Component {
         <ToastContainer autoClose={2000} />
         <Router>
           <div className="container">
+            <AnonRoute component={Topbar} />
             <div className="data-container">
               <Switch>
                 <PrivateRoute exact path="/map" component={Map} />
                 <PrivateRoute exact path="/perfil" component={Profile} />
-
-                {/* <AnonRoute exact path="/map" component={Map} /> */}
                 <AnonRoute exact path="/" component={Homepage} />
                 <AnonRoute exact path="/entra" component={Login} />
                 <AnonRoute exact path="/registre" component={Signup} />
@@ -45,7 +46,6 @@ class App extends Component {
               </Switch>
             </div>
             <PrivateRoute component={Navbar} />
-            {/* <AnonRoute component={Navbar} /> */}
           </div>
         </Router>
       </>

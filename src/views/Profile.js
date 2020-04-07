@@ -28,32 +28,32 @@ class Profile extends Component {
   };
 
   render() {
-    const { name, surname, avatarImg, _id } = this.props.user;
+    const { name, surname, avatarImg } = this.props.user;
 
     return (
-      <div id="viewport-with-navbar">
-        <div id="profile-bg">
+      <div className="viewport-with-navbar">
+        <div className="profile-bg">
           <h1>
             {name} {surname}
           </h1>
-          <img id="user-profile" src={avatarImg} alt="profile" />
+          <img className="user-profile" src={avatarImg} alt="profile" />
         </div>
-        <div id="other-features">
-          <Link id="profile-btn-div" to={"/profile/edit-profile"}>
+        <div>
+          <Link className="profile-div" to={"/profile/edit-profile"}>
             <div id="profile-btn">
-              <p>Edit Profile</p>
+              <p>Editar Perfil</p>
             </div>
             <div>
               <img
                 id="category-img"
                 src="../../images/edit-profile.svg"
-                alt="edit-profile"
+                alt="editar-perfil"
               ></img>
             </div>
           </Link>
-          <div id="profile-btn-div">
+          <div className="profile-div">
             <div id="profile-btn" onClick={this.onClickLogout}>
-              <p>Logout</p>
+              <p>Tancar sessió</p>
             </div>
             <div>
               <img
@@ -63,9 +63,9 @@ class Profile extends Component {
               ></img>
             </div>
           </div>
-          <div id="profile-btn-div" style={{ borderBottom: "none" }}>
+          <div className="profile-div" style={{ borderBottom: "none" }}>
             <div id="profile-btn" onClick={this.onClickDelete}>
-              <p style={{ color: "#ff0000" }}>Delete Account</p>
+              <p style={{ color: "#ff0000" }}>Eliminar el compte</p>
             </div>
             <div>
               <img

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { withAuth } from '../Context/AuthContext';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { withAuth } from "../Context/AuthContext";
 
 class Homepage extends Component {
   state = {
@@ -17,31 +17,22 @@ class Homepage extends Component {
     }
   }
 
-
   render() {
     const { isLoading } = this.state;
 
     return (
       <>
-        <div id="homepage-hero">
-          <div id="logo-div">
-            <div id="homepage-header">
-              <div id="home-banner-title">
-                <h1 id="headline">Col·labora amb els teus veïns!</h1>
-              </div>
+        <div class="home_banner">
+          <div className="hp-section-1">
+            <div className="hp-section-1-right">
+              <h1>Col·labora amb els teus veïns!</h1>
               <h2 id="headline">A què estas esperant?</h2>
-              <div id="login-signup-cta">
-                <Link id="header-book-btn-div" to="/entra">
-                  <div id="header-book-btn">
-                    <h3>Entra</h3>
-                  </div>
-                </Link>
-                <Link id="header-book-btn-div" to="/registre">
-                  <div id="header-book-btn">
-                    <h3>Registra't</h3>
-                  </div>
-                </Link>
-              </div>
+            </div>
+            <div className="hp-section-1-left">
+              <img
+                src={"/images/wearing_a_mask_verdfluix.svg"}
+                alt="Home amb la mascara"
+              />
             </div>
           </div>
         </div>
