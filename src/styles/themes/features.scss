@@ -8,13 +8,19 @@
     max-height: 75vh;
     width: auto;
     height: auto;
-    margin: 1% auto;
+    margin: 2% auto;
     overflow: scroll;
     -webkit-box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.08);
     box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.08);
     position: relative;
     z-index: 1;
     border-radius: 4px;
+  }
+  .nav-container {
+    width: 25vw;
+    margin-bottom: 5%;
+    position: fixed;
+    bottom: -15vh;
   }
 }
 
