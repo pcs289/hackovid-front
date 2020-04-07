@@ -33,7 +33,7 @@ class App extends Component {
         <ToastContainer autoClose={2000} />
         <Router>
           <div className="container">
-            <AnonRoute component={Topbar} />
+            <Route component={Topbar} />
             <div className="data-container">
               <Switch>
                 <PrivateRoute exact path="/map" component={Map} />

@@ -4,7 +4,6 @@
 // Display for all input fields (except buttons and checkbox)
 %forms {
   display: block;
-  border: $form-border;
   border-radius: $border-radius;
   padding: 0.75rem;
   outline: none;
@@ -19,27 +18,6 @@
 // Input fields on hover
 %forms-hover {
   background: #f7f7f7;
-  border: $form-border-hover;
-}
-
-// Input fields on focus
-%forms-focus {
-  background: $primary-hover;
-  border: $form-border-focus; //box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1), 0 0 6px lighten($link-color, 30%);
-}
-
-// Variable containing all input fields
-#{$forms} {
-  @extend %forms;
-
-  &:hover {
-    @extend %forms-hover;
-  }
-
-  &:focus,
-  &:active {
-    @extend %forms-focus;
-  }
 }
 
 textarea {
@@ -104,5 +82,5 @@ label {
 ::-moz-placeholder,
 :-moz-placeholder,
 :-ms-input-placeholder {
-  color: $placeholder;
+  color: $font;
 }

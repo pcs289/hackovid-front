@@ -21,23 +21,8 @@ $width: 800px;
 /* Colors */
 
 $background: #f0f0f0;
-$primary-color: #5183f5;
-$secondary-color: rgb(255, 90, 95);
-$yellow: #fed356;
-$accent-color: #cdcdcd;
-$light: #f2f2f2;
-$alternate-background: #f0f0f0;
-$alternate-color: #404040;
-$link-color: $primary-color;
-$link-hover-color: darken($link-color, 10%);
-$highlight: #ffeea8;
-$error: #d33c40;
-$bq-border: 16px solid #f0f0f0;
-$code: Menlo;
 $font: #2f3333;
-$grey: #010101;
 $green: #a4d96c;
-$bg: #f0f0f0;
 $strongGreen: #017069;
 
 /* Typography */
@@ -91,38 +76,12 @@ $border-radius: 4px;
 $borders: $border-width $border-style $border-color;
 $box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.16);
 
-/* Buttons */
+/* Forms */
 
-$primary-hover: lighten($primary-color, 33%);
-$button-background: $primary-color;
-$button-background-hover: darken($primary-color, 15%);
-$button-color: white;
-$button-font-weight: 600;
-$button-font-family: -apple-system, BlinkMacSystemFont, "Roboto", Helvetica Neue,
-  Helvetica, Arial, sans-serif;
-$button-font-size: 1.1rem;
-$button-border-width: 2px;
-$button-border-style: solid;
-$button-border-color: $primary-color;
-$button-border-radius: $border-radius;
-$button-text-transform: none;
-
-// Accent buttons
-$accent-button-background: $secondary-color;
-$accent-button-color: #ffffff;
-$accent-button-color-hover: #ffffff;
 
 /* Forms */
 
-$forms: (
-  "[type=color], [type=date], [type=email], [type=number], [type=search], [type=text], [type=url], select, textarea"
-);
-$buttons: (".button, a.button, button, [type=submit], [type=button]");
-$input-background: #ffffff;
-$placeholder: darken($accent-color, 20%);
-$form-border: 2px solid $border-color;
-$form-border-hover: 2px solid darken($border-color, 10%);
-$form-border-focus: 2px solid $link-color;
+
 
 /* Tables */
 
