@@ -10,6 +10,14 @@
   z-index: 2;
 }
 
+
+@media (min-width: 750px) {
+  .nav-container {
+    width: 55vw;
+    align-self: center;
+  }
+}
+
 @-webkit-keyframes slide-top {
   0% {
     -webkit-transform: translateY(0);

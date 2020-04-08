@@ -8,59 +8,13 @@ class ProfileService {
     });
   }
 
-  getAllFavoriteClubs() {
-    return this.profile.get('/profile/favorites').then(({ data: clubs }) => clubs);
-  }
-
-  getAllUserBookings() {
-    return this.profile.get('/profile/results').then(({ data: bookings }) => bookings);
-  }
-
-  getAllUserFriends() {
-    return this.profile.get('/profile/friends').then(({ data: friends }) => friends);
-  }
-
-  getAllUsers() {
-    return this.profile.get('/profile/friends/users').then(({ data: allUsers }) => allUsers);
-  }
-
   uploadAvatarImg(user) {
     return this.profile.post('/profile/friends/users').then(response => response.data);
   }
 
-  getUserById(id) {
-    return this.profile.get(`/player/${id}`).then(({ data }) => {
-      return data;
-    });
-  }
-
-  savePetition(id) {
-    return this.profile.put(`/player/${id}/petition`).then(response => response.data);
-  }
-
-  getPetitions() {
-    return this.profile.get('/profile/friends/petitions').then(response => response.data);
-  }
-
-  acceptPetition(id) {
-    return this.profile.put(`/profile/friends/petitions/${id}/accept`).then(response => response.data);
-  }
-
-  denyPetition(id) {
-    return this.profile.put(`/profile/friends/petitions/${id}/deny`).then(response => response.data);
-  }
-
-  uploadImage(avatarImgUpload) {
-    return this.profile.put('/profile/edit-profile/upload', avatarImgUpload).then(({ data }) => {
-      return data;
-    });
-  }
-
-  profileStats(stats) {
-    const { level, userId } = stats;
-    return this.profile.put(`/player/${userId}`, { level }).then(({ data }) => {
-      return data;
-    });
+  updateLocation(coordinates) {
+    const { latitude, longitude } = coordinates;
+    return this.profile.put('/map/location', { latitude, longitude}).then( response => response.data);
   }
 }
 

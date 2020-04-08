@@ -22,32 +22,30 @@ import PrivateRoute from "./components/Routes/PrivateRoute";
 import AnonRoute from "./components/Routes/AnonRoute";
 import Navbar from "./components/Navigation/Navbar";
 import Topbar from "./components/Navigation/Topbar";
+import Activities from "./views/Activities";
 
 class App extends Component {
   // eslint-disable-next-line class-methods-use-this
   render() {
     return (
-      <>
-        <ToastContainer autoClose={2000} />
-        <Router>
-          <div className="container">
-            <Route component={Topbar} />
-            <div className="data-container1">
-              <Switch>
-                <AnonRoute exact path="/" component={Homepage} />
-                <div className="data-container">
-                  <PrivateRoute exact path="/map" component={Map} />
-                  <PrivateRoute exact path="/perfil" component={Profile} />
-                  <AnonRoute exact path="/entra" component={Login} />
-                  <AnonRoute exact path="/registre" component={Signup} />
-                  <Route component={ErrorPage} path="*" />
+        <>
+            <ToastContainer autoClose={2000} />
+            <Router>
+                <div className="container">
+                <Topbar />
+                <Switch>
+                    <AnonRoute exact path="/" component={Homepage} />
+                    <PrivateRoute exact path="/mapa" component={Map} />
+                    <PrivateRoute exact path="/activitats" component={Activities} />
+                    <PrivateRoute exact path="/perfil" component={Profile} />
+                    <AnonRoute exact path="/entra" component={Login} />
+                    <AnonRoute exact path="/registre" component={Signup} />
+                    <Route component={ErrorPage} path="*" />
+                </Switch>
+                <Navbar />
                 </div>
-              </Switch>
-              <PrivateRoute component={Navbar} />
-            </div>
-          </div>
-        </Router>
-      </>
+            </Router>
+        </>
     );
   }
 }
