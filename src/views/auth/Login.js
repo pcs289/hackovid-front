@@ -33,8 +33,12 @@ class Login extends Component {
     const { username, password } = this.state;
     return (
       <div className="log-sign-container">
-        <Link to={'/'} style={{ textDecoration: 'none' }}>
-          <h1> Hackovid </h1>
+        <Link to={'/'} style={{ textDecoration: 'none' }} className="logo-mobile">
+          <img
+              src={"/images/logo.png"}
+              className="logo logo-large"
+              alt="Booking"
+          />
         </Link>
         <form onSubmit={this.handleFormSubmit}>
           <input type="text" name="username" value={username} onChange={this.handleChange} placeholder="Nom d'usuari" />

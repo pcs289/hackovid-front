@@ -1,10 +1,11 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import React, { Component } from 'react';
-import ReactMapGL, { GeolocateControl } from 'react-map-gl';
+import ReactMapGL, { GeolocateControl, Popup } from 'react-map-gl';
 import Geocoder from 'react-map-gl-geocoder';
 import { withAuth } from '../../Context/AuthContext';
 import profileService from '../../services/profileService';
+import mapService from '../../services/mapService';
 
 const geolocateStyle = {
   float: 'right',
@@ -21,6 +22,7 @@ class Map extends Component {
       zoom: 11,
     },
     userLocation: {},
+    neighbors: [],
     popupsStatus: false,
   };
 
@@ -54,6 +56,12 @@ class Map extends Component {
 
   mapRef = React.createRef();
 
+  getNeighbors() {
+    const neighbors = mapService.getNeighbours();
+    this.setState({ neighbors });
+    console.log(neighbors);
+  }
+
   // Rerenders viewport to avoid a static map
   handleViewportChange = viewport => {
     this.setState({
@@ -73,8 +81,7 @@ class Map extends Component {
     this.setState({ userLocation: { latitude: location.coords.latitude,longitude: location.coords.longitude }});
     profileService.updateLocation(this.state.userLocation).then((response) => {
       if(response.code === "success") {
-        console.log("Successfully updated your location");
-        // TODO: Manage successful updated location UI Alert
+        this.getNeighbors();
       } else {
         // TODO: Manage failed updated location UI Alert
         console.log("onGeolocate Error: " + response.code);
@@ -94,6 +101,19 @@ class Map extends Component {
             mapStyle="mapbox://styles/mapbox/streets-v11"
             width="100%"
             height="100%">
+
+          { this.state.userLocation.longitude ?
+              <Popup
+              latitude={this.state.userLocation.latitude}
+              longitude={this.state.userLocation.longitude}
+              closeButton={true}
+              closeOnClick={false}
+              onClose={() => console.log("Popup closed")}
+              anchor="top" >
+                <div>You are here</div>
+              </Popup>
+              : null}
+
           <Geocoder
               mapRef={this.mapRef}
               onViewportChange={this.handleGeocoderViewportChange}

@@ -8,6 +8,10 @@ class MapService {
             withCredentials: true,
         });
     }
+
+    getNeighbours() {
+        return this.http.get('/map/neighbors').then((response) => response.data);
+    }
 }
 
 const mapService = new MapService();

@@ -6,11 +6,13 @@ class Topbar extends Component {
   render() {
     return (
       <div className="banner_header">
-        <img
-          src={"/images/logo.png"}
-          className="logo logo-large"
-          alt="Booking"
-        />
+          <Link to="/">
+              <img
+                  src={"/images/logo.png"}
+                  className="logo logo-large"
+                  alt="Booking"
+              />
+          </Link>
         { this.props.isLoggedin ? null : <div id="sign-buttons">
           <div className="sign-buttons">
             <ul>

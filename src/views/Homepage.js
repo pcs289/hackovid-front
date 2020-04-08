@@ -28,6 +28,10 @@ class Homepage extends Component {
               <h1>Col·labora amb els teus veïns!</h1>
               <h2 id="headline">A què estas esperant?</h2>
             </div>
+            <div className="signup-mobile">
+              <Link className="btn-topbar" to="/entra"> Iniciar Sessió </Link>
+              <Link className="btn-topbar" to="/registre"> Registre </Link>
+            </div>
             <div className="hp-section-1-left">
               <img
                 src={"/images/wearing_a_mask_verdfluix.svg"}
