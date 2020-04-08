@@ -1,0 +1,14 @@
+.activities-container {
+  max-width: 100%;
+  height:96vh;
+  padding: 10px auto;
+  text-align: center;
+}
+
+@media (min-width: 750px) {
+  .activities-container {
+    width: 500px;
+    height: 80vh;
+    align-self: center;
+  }
+}

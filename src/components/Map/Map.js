@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import ReactMapGL, { GeolocateControl } from 'react-map-gl';
 import Geocoder from 'react-map-gl-geocoder';
 import { withAuth } from '../../Context/AuthContext';
+import profileService from '../../services/profileService';
 
 const geolocateStyle = {
   float: 'right',
@@ -19,6 +20,7 @@ class Map extends Component {
       longitude: 0,
       zoom: 11,
     },
+    userLocation: {},
     popupsStatus: false,
   };
 
@@ -31,6 +33,7 @@ class Map extends Component {
         zoom: 11,
       }
     });
+
   }
 
   popupsToggle = () => {
@@ -66,21 +69,32 @@ class Map extends Component {
     });
   };
 
+  onGeolocate = async location => {
+    this.setState({ userLocation: { latitude: location.coords.latitude,longitude: location.coords.longitude }});
+    profileService.updateLocation(this.state.userLocation).then((response) => {
+      if(response.code === "success") {
+        console.log("Successfully updated your location");
+        // TODO: Manage successful updated location UI Alert
+      } else {
+        // TODO: Manage failed updated location UI Alert
+        console.log("onGeolocate Error: " + response.code);
+      }
+    });
+  };
+
   render() {
     const { viewport } = this.state;
     return (
       <>
-        <div id="mapbox">
-          <ReactMapGL
+        <ReactMapGL
             ref={this.mapRef}
             {...viewport}
             mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
             onViewportChange={this.handleViewportChange}
             mapStyle="mapbox://styles/mapbox/streets-v11"
             width="100%"
-            height="100vh"
-          >
-            <Geocoder
+            height="100%">
+          <Geocoder
               mapRef={this.mapRef}
               onViewportChange={this.handleGeocoderViewportChange}
               mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
@@ -88,15 +102,15 @@ class Map extends Component {
               proximity={{ longitude: viewport.longitude, latitude: viewport.latitude }}
               trackProximity={true}
               collapsed={true}
-            />
-
-            <GeolocateControl
+          />
+          <GeolocateControl
               style={geolocateStyle}
               positionOptions={{ enableHighAccuracy: true }}
               trackUserLocation={true}
-            />
-          </ReactMapGL>
-        </div>
+              onGeolocate={this.onGeolocate}
+
+          />
+        </ReactMapGL>
       </>
     );
   }

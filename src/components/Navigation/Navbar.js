@@ -8,30 +8,30 @@ class Navbar extends Component {
       <div className="nav-container">
         <nav>
           <ul>
-            {this.props.isLoggedIn ? null : (
+            {this.props.isLoggedin ? (
               <>
                 <li>
-                  <Link to="/activities">
+                  <Link to="/activitats">
                     <img src={"/images/booking.svg"} alt="Activitats" />
                     Activitats
                   </Link>
                 </li>
 
                 <li>
-                  <Link to="/map">
-                    <img src={"/images/map.svg"} alt="Map" />
+                  <Link to="/mapa">
+                    <img src={"/images/map.svg"} alt="Mapa" />
                     Cercador
                   </Link>
                 </li>
 
                 <li>
                   <Link to="/perfil">
-                    <img src={"/images/profile.svg"} alt="Profile" />
+                    <img src={"/images/profile.svg"} alt="Perfil" />
                     Perfil
                   </Link>
                 </li>
               </>
-            )}
+            ) : null }
           </ul>
         </nav>
       </div>

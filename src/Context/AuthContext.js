@@ -173,7 +173,7 @@ export default class AuthProvider extends Component {
     const { isLoading, isLoggedin, user } = this.state;
     const { children } = this.props;
     if (isLoading) {
-      return "Loading...";
+      return <img src="https://lh3.googleusercontent.com/proxy/r-i6sKzp0_llVgYoLpvf25ExB5VcT0fZdaF9KOM-0kBjRtyXYt0zlAdaCSa-PxvdsLUsdy9Geb6veRp76pgWd4_QGvhK" alt="Carregant" />;
     }
     return (
       <Provider

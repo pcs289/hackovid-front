@@ -6,7 +6,9 @@ class MapView extends Component {
   render() {
     return (
       <>
-        <Map prop={this.props} />
+        <div className="map-container">
+          <Map prop={this.props} />
+        </div>
       </>
     );
   }
