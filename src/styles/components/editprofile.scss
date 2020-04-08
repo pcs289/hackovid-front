@@ -30,6 +30,11 @@
 	display:flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;
+	padding: 5px;
+}
+
+.editprofile-labels .row input{
+	border-radius: 5px;
 }
 
 .edit-profile-picture{
@@ -73,7 +78,7 @@
   display: none;
 }
 
-label{
+.overlay label{
 	margin:0 auto;
 	cursor:pointer;
 }
