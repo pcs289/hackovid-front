@@ -9,8 +9,8 @@ class MapService {
         });
     }
 
-    getNeighbours() {
-        return this.http.get('/map/neighbors').then((response) => response.data);
+    getNeighbours(radius) {
+        return this.http.post('/map/neighbors', { radius }).then((response) => response.data);
     }
 }
 

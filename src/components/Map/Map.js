@@ -1,7 +1,7 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import React, { Component } from 'react';
-import ReactMapGL, { GeolocateControl, Popup } from 'react-map-gl';
+import ReactMapGL, { GeolocateControl, Marker } from 'react-map-gl';
 import Geocoder from 'react-map-gl-geocoder';
 import { withAuth } from '../../Context/AuthContext';
 import profileService from '../../services/profileService';
@@ -33,9 +33,15 @@ class Map extends Component {
         latitude: 41.3828939,
         longitude: 2.1774322,
         zoom: 11,
+      },
+      userLocation: {
+        latitude: this.props.user.location.coordinates[1],
+        longitude: this.props.user.location.coordinates[0]
       }
     });
-
+    if (this.props.user.location.coordinates) {
+      this.getNeighbors();
+    }
   }
 
   popupsToggle = () => {
@@ -56,8 +62,8 @@ class Map extends Component {
 
   mapRef = React.createRef();
 
-  getNeighbors() {
-    const neighbors = mapService.getNeighbours();
+  async getNeighbors() {
+    const { neighbors } = await mapService.getNeighbours(5000);
     this.setState({ neighbors });
     console.log(neighbors);
   }
@@ -102,18 +108,6 @@ class Map extends Component {
             width="100%"
             height="100%">
 
-          { this.state.userLocation.longitude ?
-              <Popup
-              latitude={this.state.userLocation.latitude}
-              longitude={this.state.userLocation.longitude}
-              closeButton={true}
-              closeOnClick={false}
-              onClose={() => console.log("Popup closed")}
-              anchor="top" >
-                <div>You are here</div>
-              </Popup>
-              : null}
-
           <Geocoder
               mapRef={this.mapRef}
               onViewportChange={this.handleGeocoderViewportChange}
@@ -130,6 +124,18 @@ class Map extends Component {
               onGeolocate={this.onGeolocate}
 
           />
+
+
+          { this.state.neighbors.map((neighbor, i) => {
+              return <Marker
+                  key={i}
+                  latitude={neighbor.location.coordinates[1]}
+                  longitude={neighbor.location.coordinates[0]}>
+                <div>{neighbor.username}</div>
+              </Marker>
+            })
+          }
+
         </ReactMapGL>
       </>
     );

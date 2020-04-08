@@ -61,7 +61,6 @@ export default class AuthProvider extends Component {
           user,
           isLoading: false,
         });
-        console.log('me', user);
       })
       .catch(() => {
         this.setState({
@@ -174,9 +173,9 @@ export default class AuthProvider extends Component {
     const { children } = this.props;
     if (isLoading) {
       return (
-          <div class="loading-container">
+          <div className="loading-container">
             <h2>Carregant el contigut</h2>
-            <img src="/images/loading.svg" />
+            <img src="/images/loading.svg" alt="Carregant el contingut"/>
           </div>
       );
     }
