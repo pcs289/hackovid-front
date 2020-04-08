@@ -13,6 +13,7 @@ import Login from "./views/auth/Login";
 import Signup from "./views/auth/Signup";
 import Map from "./views/MapView";
 import Profile from "./views/Profile";
+import EditProfile from "./views/EditProfile";
 
 import ErrorPage from "./views/auth/ErrorPage";
 
@@ -38,6 +39,7 @@ class App extends Component {
                     <PrivateRoute exact path="/mapa" component={Map} />
                     <PrivateRoute exact path="/activitats" component={Activities} />
                     <PrivateRoute exact path="/perfil" component={Profile} />
+                    <PrivateRoute exact path="/perfil/editar" component={EditProfile} />
                     <AnonRoute exact path="/entra" component={Login} />
                     <AnonRoute exact path="/registre" component={Signup} />
                     <Route component={ErrorPage} path="*" />

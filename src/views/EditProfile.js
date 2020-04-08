@@ -32,16 +32,31 @@ class Profile extends Component {
 
     return (
       <div className="viewport-with-navbar">
-        <div className="profile-bg">
-          <h1>
-            {name} {surname}
-          </h1>
-          <img className="user-profile" src={avatarImg} alt="profile" />
+        <div className="editprofile-bg">
+          <div className="editprofile-labels">
+            <div className="row">
+              <label>Nom:</label>
+              <input type="text" name="name" value={name}/>
+            </div>
+            <div className="row">
+              <label>Cognom:</label>
+              <input type="text" name="name" value={surname}/>
+            </div>
+          </div>      
+          <div className="edit-profile-picture">
+            <img src={avatarImg} alt="profile" className="user-profile"/>
+            <div className="user-profile overlay">
+              <label for="avatar" className="icon" title="User Profile">
+                <i className="fa fa-camera"></i>
+              </label>
+              <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"/>
+            </div>
+          </div>
         </div>
         <div>
-          <Link className="profile-div" to={"/perfil/editar"}>
+          <Link className="profile-div" onclick="" to={"/perfil"}>
             <div id="profile-btn">
-              <p>Editar Perfil</p>
+              <p>Desa els canvis</p>
             </div>
             <div>
               <img
@@ -50,31 +65,7 @@ class Profile extends Component {
                 alt="editar-perfil"
               ></img>
             </div>
-          </Link>
-          <div className="profile-div">
-            <div id="profile-btn" onClick={this.onClickLogout}>
-              <p>Tancar sessió</p>
-            </div>
-            <div>
-              <img
-                id="category-img"
-                src="../../images/logout.svg"
-                alt="logout"
-              ></img>
-            </div>
-          </div>
-          <div className="profile-div" style={{ borderBottom: "none" }}>
-            <div id="profile-btn" onClick={this.onClickDelete}>
-              <p style={{ color: "#ff0000" }}>Eliminar el compte</p>
-            </div>
-            <div>
-              <img
-                id="category-img"
-                src="../../images/cancel-button.svg"
-                alt="delete"
-              ></img>
-            </div>
-          </div>
+          </Link>          
         </div>
       </div>
     );
