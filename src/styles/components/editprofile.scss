@@ -28,15 +28,16 @@
 
 .editprofile-labels .row{
 	display:flex;
-	flex-flow: row nowrap;
+	flex-flow: row wrap;
 	justify-content: space-between;
 	padding: 5px;
 }
 
 .editprofile-labels .row input{
 	border-radius: 5px;
-	border: 1px solid gray;
+	border: 0.5px solid gray;
 	padding: 5px;
+  max-width: 100%;
 }
 
 .edit-profile-picture{

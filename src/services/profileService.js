@@ -16,6 +16,7 @@ class ProfileService {
     const { latitude, longitude } = coordinates;
     return this.profile.put('/map/location', { latitude, longitude}).then( response => response.data);
   }
+
 }
 
 const profileService = new ProfileService();

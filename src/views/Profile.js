@@ -37,9 +37,21 @@ class Profile extends Component {
           <h1>
             {name} {surname}
           </h1>
-          <AvatarImage />
+          <AvatarImage avatarImg={avatarImg} />
         </div>
         <div>
+          <Link className="profile-div" to={"/perfil/preferencies"}>
+            <div id="profile-btn">
+              <p>Editar Preferencies</p>
+            </div>
+            <div>
+              <img
+                id="category-img"
+                src="../../images/edit-profile.svg"
+                alt="editar-perfil"
+              ></img>
+            </div>
+          </Link>
           <Link className="profile-div" to={"/perfil/editar"}>
             <div id="profile-btn">
               <p>Editar Perfil</p>

@@ -17,8 +17,9 @@ class AvatarImage extends Component {
     };
 
     componentDidMount = async () => {
-            var base64Flag = 'data:image/png;base64,';
-            console.log(ImagesService.getAvatarImage());
+        var base64Flag = 'data:image/png;base64,';
+        if(!this.props.avatarImg){            
+            
             var image = await ImagesService.getAvatarImage().then((resp) => {
                 return resp.data.data.data
             });
@@ -26,6 +27,10 @@ class AvatarImage extends Component {
             this.setState({
                 img: base64Flag + imageStr
             })
+        }else{
+            var imageStr = this.arrayBufferToBase64(this.props.avatarImg.data.data);
+            this.setState({img: base64Flag + imageStr});
+        }
     };
 
     render() {
@@ -33,7 +38,7 @@ class AvatarImage extends Component {
         return (
             <img
                 src={img}
-                alt='Avatar image'
+                alt='Avatar'
                 className="user-profile"/>
         )
     }
