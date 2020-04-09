@@ -1,14 +1,5 @@
 /* Homepage
   =============== */
-.home_banner {
-  display: flex;
-  margin: 0 5%;
-}
-
-.hp-section-1 {
-  flex-direction: row;
-}
-
 .signup-mobile {
   display: flex;
   flex-flow: row nowrap;
@@ -16,15 +7,153 @@
   align-content: stretch;
   min-width: 150px;
   padding: 5px;
-
   a {
     padding: 10px 8px;
   }
-
 }
 
 @media (min-width: 750px) {
   .signup-mobile {
     display: none;
+  }
+}
+
+.some-page-wrapper {
+  margin: 15px;
+}
+
+.mobile-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  clear: both;
+}
+
+.mobile-wrap h2 {
+  font-size: 30px;
+  margin: 0 auto 30px;
+  line-height: 1.35;
+  letter-spacing: 0.05em;
+  width: 80%;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  align-items: stretch;
+  float: none;
+  width: 100%;
+  // padding: 0 50px;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.row .descripcio-hp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 65%;
+  padding: 0 70px;
+  text-shadow: 0 1px 0 hsla(0, 0%, 100%, 0.3);
+  text-align: left;
+}
+
+.row p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.row h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 15px 0 0;
+}
+
+.row.r2 {
+  flex-direction: row-reverse;
+  margin-top: -70px;
+}
+
+@media (min-width: 750px) {
+  .row .descripcio-hp {
+    width: 55%;
+    padding: 0 20px;
+  }
+  #home-banner-title {
+    text-align: center;
+  }
+}
+@media (max-width: 750px) {
+  .row {
+    display: block;
+    margin: 0 5%;
+  }
+  .row .descripcio-hp {
+    width: 100%;
+  }
+}
+
+#hp-img {
+  height: 500px;
+}
+
+#logo-div {
+  top: 0;
+  height: 60vh;
+  background-image: linear-gradient(199deg, #a4d96c, #017069);
+}
+
+#homepage-header {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+  color: #fff;
+}
+
+#homepage-header h2 {
+  text-align: center;
+}
+
+#header-book-btn-div {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+#loading-header {
+  max-height: 5vh;
+}
+
+#header-book-btn {
+  border-radius: 0.2em;
+  background-color: $green;
+  color: #ffffff;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(47, 51, 51, 0.03);
+}
+#logo-large {
+  width: 150px;
+  height: auto;
+  margin: 0;
+}
+.banner_header_hp {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px 25px;
+  z-index: 100;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 20px -10px;
+}
+@media (min-width: 750px) {
+  .banner_header_hp {
+    display: none; /* This is how it looks on desktop */
   }
 }

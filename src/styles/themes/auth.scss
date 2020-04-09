@@ -1,0 +1,35 @@
+/* --- Login / Signup --- */
+
+.log-sign-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.log-sign-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.log-sign-container input {
+  margin: 10px 0;
+}
+
+#signup-input input {
+  margin: 0;
+}
+
+.log-sign-container label {
+  display: none;
+}
+
+.log-sign-container .alternative {
+  font-size: 0.8em;
+  margin-top: 10vh;
+}
+
+.log-sign-container span {
+  font-weight: 700;
+  color: $green;
+}
