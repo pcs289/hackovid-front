@@ -1,7 +1,7 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import React, { Component } from 'react';
-import ReactMapGL, { GeolocateControl, Marker } from 'react-map-gl';
+import ReactMapGL, {GeolocateControl, Layer, Popup} from 'react-map-gl';
 import Geocoder from 'react-map-gl-geocoder';
 import { withAuth } from '../../Context/AuthContext';
 import profileService from '../../services/profileService';
@@ -19,7 +19,7 @@ class Map extends Component {
     viewport: {
       latitude: 0,
       longitude: 0,
-      zoom: 11,
+      zoom: 13,
     },
     userLocation: {},
     neighbors: [],
@@ -27,19 +27,25 @@ class Map extends Component {
   };
 
   // Mount map with the current user location
-  componentDidMount() {
-    this.setState({
+  async componentDidMount() {
+    await this.setState({
       viewport: {
-        latitude: 41.3828939,
-        longitude: 2.1774322,
-        zoom: 11,
+        latitude: this.props.user.location.coordinates[1] || 41.3828939,
+        longitude: this.props.user.location.coordinates[0] || 2.1774322,
+        zoom: 13,
       },
       userLocation: {
-        latitude: this.props.user.location.coordinates[1],
-        longitude: this.props.user.location.coordinates[0]
+        longitude: this.props.user.location.coordinates[0],
+        latitude: this.props.user.location.coordinates[1]
       }
     });
     if (this.props.user.location.coordinates) {
+      this.getNeighbors();
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if(prevProps.filters !== this.props.filters) {
       this.getNeighbors();
     }
   }
@@ -63,9 +69,10 @@ class Map extends Component {
   mapRef = React.createRef();
 
   async getNeighbors() {
-    const { neighbors } = await mapService.getNeighbours(5000);
+    const filteredRadius = this.props.filters ? this.props.filters.radius : 1000;
+    const filteredDayOfWeek = this.props.filters ? this.props.filters.dayOfWeek : 1;
+    const { neighbors } = await mapService.getNeighbours(filteredRadius, filteredDayOfWeek);
     this.setState({ neighbors });
-    console.log(neighbors);
   }
 
   // Rerenders viewport to avoid a static map
@@ -127,12 +134,12 @@ class Map extends Component {
 
 
           { this.state.neighbors.map((neighbor, i) => {
-              return <Marker
+              return <Popup
                   key={i}
                   latitude={neighbor.location.coordinates[1]}
                   longitude={neighbor.location.coordinates[0]}>
                 <div>{neighbor.username}</div>
-              </Marker>
+              </Popup>
             })
           }
 
