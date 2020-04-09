@@ -33,9 +33,12 @@
 
     li {
       list-style: none;
-      border-radius: 1em;
-      border: 1px solid gray;
       padding: 5px;
+      border-radius: 15px;
+
+      img {
+        width: 40px;
+      }
     }
   }
 
@@ -46,11 +49,22 @@
   .map-filter-radius {
     text-align: center;
 
+    datalist {
+      width: 100%;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      justify-content: space-between;
+      padding: 4px;
+    }
+
     input {
-      margin-bottom: 1em;
+      margin-top: 1em;
       -webkit-appearance: none;
       -moz-appearance: none;
       width: 100%;
+      height: 4px;
       background: #d3d3d3;
       -webkit-border-radius: 20px;
       -moz-border-radius: 20px;
@@ -67,33 +81,21 @@
       &::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        width: 25px;
-        height: 25px;
+        width: 40px;
+        height: 40px;
         border-radius: 20px;
         background: #a4d96c;
         cursor: pointer;
       }
 
       &::-moz-range-thumb {
-        width: 25px;
-        height: 25px;
+        width: 40px;
+        height: 40px;
         -moz-appearance: none;
         border-radius: 20px;
         background: #a4d96c;
         cursor: pointer;
       }
     }
-  }
-}
-
-@media (max-width: 750px) {
-  .long-week-names{
-    display: none !important;
-  }
-}
-
-@media (min-width: 750px) {
-  .short-week-names{
-    display: none !important;
   }
 }

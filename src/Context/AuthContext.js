@@ -2,6 +2,7 @@
 import React, { Component, createContext } from 'react';
 import authService from '../services/authService';
 import profileService from '../services/profileService';
+import LoadingView from "../views/LoadingView";
 
 const AuthContext = createContext();
 
@@ -173,10 +174,7 @@ export default class AuthProvider extends Component {
     const { children } = this.props;
     if (isLoading) {
       return (
-          <div className="loading-container">
-            <h2>Carregant el contigut</h2>
-            <img src="/images/loading.svg" alt="Carregant el contingut"/>
-          </div>
+          <LoadingView />
       );
     }
     return (
