@@ -18,7 +18,7 @@ class MapView extends Component {
           <>
             <div className="map-container">
                 <MapFilters onFiltersChange={this.onFiltersChange.bind(this)} />
-                <Map prop={this.props} filters={this.state.filters}/>
+                <Map { ...this.props } filters={this.state.filters}/>
             </div>
           </>
         );

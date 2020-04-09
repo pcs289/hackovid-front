@@ -1,7 +1,7 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import React, { Component } from 'react';
-import ReactMapGL, {GeolocateControl, Layer, Popup} from 'react-map-gl';
+import ReactMapGL, {GeolocateControl, Popup} from 'react-map-gl';
 import Geocoder from 'react-map-gl-geocoder';
 import { withAuth } from '../../Context/AuthContext';
 import profileService from '../../services/profileService';

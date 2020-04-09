@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../Context/AuthContext";
-import Topbar from "../components/Navigation/Topbar";
 
 class Homepage extends Component {
   state = {
@@ -19,7 +18,6 @@ class Homepage extends Component {
   }
 
   render() {
-    const { isLoading } = this.state;
 
     return (
       <>
@@ -58,7 +56,7 @@ class Homepage extends Component {
               <img
                 src={"/images/test 1.jpg"}
                 alt="Home amb la mascara"
-                id="hp-img"
+                className="hp-img"
               />
             </div>
             <div class="descripcio-hp">
@@ -76,7 +74,7 @@ class Homepage extends Component {
               <img
                 src={"/images/test 1.jpg"}
                 alt="Home amb la mascara"
-                id="hp-img"
+                className="hp-img"
               />
             </div>
             <div class="descripcio-hp">
@@ -94,7 +92,7 @@ class Homepage extends Component {
               <img
                 src={"/images/test 1.jpg"}
                 alt="Home amb la mascara"
-                id="hp-img"
+                className="hp-img"
               />
             </div>
             <div class="descripcio-hp">
@@ -112,7 +110,7 @@ class Homepage extends Component {
               <img
                 src={"/images/test 1.jpg"}
                 alt="Home amb la mascara"
-                id="hp-img"
+                className="hp-img"
               />
             </div>
             <div class="descripcio-hp">
