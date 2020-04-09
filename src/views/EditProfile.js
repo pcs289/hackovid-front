@@ -39,15 +39,15 @@ class Profile extends Component {
 
   onChange = async (e) => {
     const formData = new FormData();
-        formData.append('file' , e.target.files[0]);
-        const config = {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        };
-        await ImageService.uploadAvatarImg(formData, config);
-        this.avatarImageElement.current.componentDidMount();
-}
+    formData.append('file' , e.target.files[0]);
+    const config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    };
+    await ImageService.uploadAvatarImg(formData, config);
+    this.avatarImageElement.current.componentDidMount();
+  };
 
   render() {
     const { name, surname, avatarImg } = this.props.user;
@@ -71,7 +71,7 @@ class Profile extends Component {
               <label className="icon" title="User Profile">
                 <i className="fa fa-camera"></i>
               </label>
-              <input type="file" id="avatar" name="file" accept="image/png" onChange= {this.onChange}/>
+              <input type="file" id="avatar" name="file" accept="image/png" onChange={this.onChange}/>
             </div>
           </div>
         </div>
