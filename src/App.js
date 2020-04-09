@@ -41,7 +41,7 @@ class App extends Component {
                     <PrivateRoute exact path="/activitats" component={Activities} />
                     <PrivateRoute exact path="/perfil" component={Profile} />
                     <PrivateRoute exact path="/perfil/editar" component={EditProfile} />
-                    
+                    <PrivateRoute exact path="/perfil/preferencies" component={Preferences} />
                     <AnonRoute exact path="/entra" component={Login} />
                     <AnonRoute exact path="/registre" component={Signup} />
                     <Route component={ErrorPage} path="*" />
