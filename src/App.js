@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import "./styles/main.scss";
@@ -23,29 +19,31 @@ import AnonRoute from "./components/Routes/AnonRoute";
 import Navbar from "./components/Navigation/Navbar";
 import Topbar from "./components/Navigation/Topbar";
 import Activities from "./views/Activities";
+import Managed from "./views/Managed";
 
 class App extends Component {
   // eslint-disable-next-line class-methods-use-this
   render() {
     return (
-        <>
-            <ToastContainer autoClose={2000} />
-            <Router>
-                <div className="container">
-                <Topbar />
-                <Switch>
-                    <AnonRoute exact path="/" component={Homepage} />
-                    <PrivateRoute exact path="/mapa" component={Map} />
-                    <PrivateRoute exact path="/activitats" component={Activities} />
-                    <PrivateRoute exact path="/perfil" component={Profile} />
-                    <AnonRoute exact path="/entra" component={Login} />
-                    <AnonRoute exact path="/registre" component={Signup} />
-                    <Route component={ErrorPage} path="*" />
-                </Switch>
-                <Navbar />
-                </div>
-            </Router>
-        </>
+      <>
+        <ToastContainer autoClose={2000} />
+        <Router>
+          <div className="container">
+            <Topbar />
+            <Switch>
+              <AnonRoute exact path="/" component={Homepage} />
+              <PrivateRoute exact path="/mapa" component={Map} />
+              <PrivateRoute exact path="/activitats" component={Activities} />
+              <PrivateRoute exact path="/gestionades" component={Managed} />
+              <PrivateRoute exact path="/perfil" component={Profile} />
+              <AnonRoute exact path="/entra" component={Login} />
+              <AnonRoute exact path="/registre" component={Signup} />
+              <Route component={ErrorPage} path="*" />
+            </Switch>
+            <Navbar />
+          </div>
+        </Router>
+      </>
     );
   }
 }

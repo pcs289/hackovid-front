@@ -1,8 +1,9 @@
 .activities-container {
   max-width: 100%;
-  height:96vh;
+  height: 96vh;
   padding: 10px auto;
   text-align: center;
+  margin: 0 0 12vh 0;
 }
 
 @media (min-width: 750px) {
@@ -11,4 +12,76 @@
     height: 80vh;
     align-self: center;
   }
+}
+
+.bottom-break-nav {
+  margin: 0 0 12vh 0;
+}
+
+.myrequests-card {
+  border-bottom: 2px solid rgba(47, 51, 51, 0.08);
+}
+
+.requester-name-card {
+  max-height: auto;
+  object-fit: cover;
+  display: flex;
+  text-transform: capitalize;
+  font-weight: lighter;
+  color: #808080;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.requester-btn-div {
+  margin: 0 5%;
+}
+
+.requester-btn-div p {
+  text-align: start;
+  margin: 1% 0;
+}
+
+.requester-profile-pic {
+  width: 75px;
+  height: 75px;
+  border: 1px solid rgba(152, 152, 152, 0.15);
+  margin: 10px;
+  object-fit: cover;
+}
+
+.petition-span {
+  width: 130px;
+  max-height: 80px;
+  object-fit: cover;
+  display: flex;
+  text-transform: capitalize;
+  font-weight: lighter;
+  color: #ffffff;
+  margin-top: 5px;
+  padding: 5px;
+  background-color: $green;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.petitions-btn {
+  display: flex;
+  margin: 10px auto;
+  width: 50%;
+}
+.petition-span-btn {
+  width: 80px;
+  margin: 0 5px;
+  max-height: 80px;
+  object-fit: cover;
+  display: flex;
+  text-transform: capitalize;
+  font-weight: lighter;
+  color: #fff;
+  margin-top: 5px;
+  padding: 5px;
+  background-color: $green;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
 }
