@@ -9,8 +9,8 @@ class MapService {
         });
     }
 
-    getNeighbours(radius) {
-        return this.http.post('/map/neighbors', { radius }).then((response) => response.data);
+    getNeighbours(radius, dayOfWeek) {
+        return this.http.post('/map/neighbors', { radius, dayOfWeek }).then((response) => response.data);
     }
 }
 
