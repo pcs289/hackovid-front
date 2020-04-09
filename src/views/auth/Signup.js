@@ -37,8 +37,12 @@ class Signup extends Component {
     const { name, surname, username, password } = this.state;
     return (
       <div className="log-sign-container">
-        <Link to={'/'} style={{ textDecoration: 'none' }}>
-          <h1> Hackovid </h1>
+        <Link to={'/'} style={{ textDecoration: 'none' }} className="logo-mobile">
+          <img
+              src={"/images/logo.png"}
+              className="logo logo-large"
+              alt="Booking"
+          />
         </Link>
         <form onSubmit={this.handleFormSubmit} id="signup-input">
           <input type="text" name="name" value={name} onChange={this.handleChange} placeholder="Nom" />

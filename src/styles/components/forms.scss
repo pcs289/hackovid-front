@@ -84,3 +84,12 @@ label {
 :-ms-input-placeholder {
   color: $font;
 }
+input {
+  box-shadow: 0 4px 8px 0 rgba(47, 51, 51, 0.03);
+  border: 2px solid rgba(47, 51, 51, 0.08);
+  font-size: 1em;
+  border-radius: 8px;
+  padding: 10px;
+  background: transparent;
+  color: #2f3333;
+}

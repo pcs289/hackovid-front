@@ -1,10 +1,13 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import React, { Component } from 'react';
-import ReactMapGL, { GeolocateControl } from 'react-map-gl';
+import ReactMapGL, {GeolocateControl} from 'react-map-gl';
 import Geocoder from 'react-map-gl-geocoder';
 import { withAuth } from '../../Context/AuthContext';
 import profileService from '../../services/profileService';
+import mapService from '../../services/mapService';
+import PreferenceMarker from "./PreferenceMarker";
+import LoadingView from "../../views/LoadingView";
 
 const geolocateStyle = {
   float: 'right',
@@ -18,22 +21,36 @@ class Map extends Component {
     viewport: {
       latitude: 0,
       longitude: 0,
-      zoom: 11,
+      zoom: 13,
     },
     userLocation: {},
+    neighbors: [],
+    isLoading: true,
     popupsStatus: false,
   };
 
   // Mount map with the current user location
-  componentDidMount() {
-    this.setState({
+  async componentDidMount() {
+    await this.setState({
       viewport: {
-        latitude: 41.3828939,
-        longitude: 2.1774322,
-        zoom: 11,
+        latitude: this.props.user.location.coordinates[1] || 41.3828939,
+        longitude: this.props.user.location.coordinates[0] || 2.1774322,
+        zoom: 13,
+      },
+      userLocation: {
+        longitude: this.props.user.location.coordinates[0],
+        latitude: this.props.user.location.coordinates[1]
       }
     });
+    if (this.props.user.location.coordinates) {
+      this.getNeighbors();
+    }
+  }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if(prevProps.filters !== this.props.filters) {
+      this.getNeighbors();
+    }
   }
 
   popupsToggle = () => {
@@ -54,6 +71,15 @@ class Map extends Component {
 
   mapRef = React.createRef();
 
+  async getNeighbors() {
+    await this.setState({ isLoading: true });
+    const filteredRadius = this.props.filters ? this.props.filters.radius : 1000;
+    const filteredDayOfWeek = this.props.filters ? this.props.filters.dayOfWeek : 1;
+    const { neighbors } = await mapService.getNeighbours(filteredRadius, filteredDayOfWeek);
+    await this.setState({ neighbors });
+    await this.setState({ isLoading: false });
+  }
+
   // Rerenders viewport to avoid a static map
   handleViewportChange = viewport => {
     this.setState({
@@ -73,44 +99,60 @@ class Map extends Component {
     this.setState({ userLocation: { latitude: location.coords.latitude,longitude: location.coords.longitude }});
     profileService.updateLocation(this.state.userLocation).then((response) => {
       if(response.code === "success") {
-        console.log("Successfully updated your location");
-        // TODO: Manage successful updated location UI Alert
+        this.getNeighbors();
       } else {
         // TODO: Manage failed updated location UI Alert
         console.log("onGeolocate Error: " + response.code);
       }
     });
   };
-
   render() {
     const { viewport } = this.state;
     return (
       <>
-        <ReactMapGL
-            ref={this.mapRef}
-            {...viewport}
-            mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-            onViewportChange={this.handleViewportChange}
-            mapStyle="mapbox://styles/mapbox/streets-v11"
-            width="100%"
-            height="100%">
-          <Geocoder
-              mapRef={this.mapRef}
-              onViewportChange={this.handleGeocoderViewportChange}
-              mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-              position="top-left"
-              proximity={{ longitude: viewport.longitude, latitude: viewport.latitude }}
-              trackProximity={true}
-              collapsed={true}
-          />
-          <GeolocateControl
-              style={geolocateStyle}
-              positionOptions={{ enableHighAccuracy: true }}
-              trackUserLocation={true}
-              onGeolocate={this.onGeolocate}
+        {this.state.isLoading ?
+            <LoadingView /> :
+            <ReactMapGL
+                ref={this.mapRef}
+                {...viewport}
+                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+                onViewportChange={this.handleViewportChange}
+                mapStyle="mapbox://styles/mapbox/streets-v11"
+                width="100%"
+                height="100%">
 
-          />
-        </ReactMapGL>
+              <Geocoder
+                  mapRef={this.mapRef}
+                  onViewportChange={this.handleGeocoderViewportChange}
+                  mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+                  position="top-left"
+                  proximity={{longitude: viewport.longitude, latitude: viewport.latitude}}
+                  trackProximity={true}
+                  collapsed={true}
+              />
+              <GeolocateControl
+                  style={geolocateStyle}
+                  positionOptions={{enableHighAccuracy: true}}
+                  trackUserLocation={true}
+                  onGeolocate={this.onGeolocate}
+
+              />
+
+
+              {this.state.neighbors.map((neighbor, i) => {
+                return <PreferenceMarker
+                    key={i}
+                    neighbor={neighbor}
+                    popupsToggle={this.popupsToggle}
+                    zoom={viewport.zoom}
+                    {...this.props}
+                    latitude={neighbor.location.coordinates[1]}
+                    longitude={neighbor.location.coordinates[0]} />
+              })
+              }
+
+            </ReactMapGL>
+        }
       </>
     );
   }

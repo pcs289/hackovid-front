@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { withAuth } from "../Context/AuthContext";
 import AvatarImage from "../components/AvatarImage";
 import ImageService from '../services/ImagesService';
@@ -19,10 +17,9 @@ class Preferences extends Component {
   };
 
   render() {
-    const { name, surname, avatarImg } = this.props.user;
-
     return (
       <div className="viewport-with-navbar">
+
         <button id="newpreference-btn" onClick={this.onClickSave} >
           <div id="">
             <p>Nova preferència</p>
@@ -104,4 +101,8 @@ class Preferences extends Component {
   }
 }
 
+<<<<<<< HEAD
 export default withAuth(Preferences);
+=======
+export default withAuth(Preferences);
+>>>>>>> master

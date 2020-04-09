@@ -8,6 +8,10 @@ class MapService {
             withCredentials: true,
         });
     }
+
+    getNeighbours(radius, dayOfWeek) {
+        return this.http.post('/map/neighbors', { radius, dayOfWeek }).then((response) => response.data);
+    }
 }
 
 const mapService = new MapService();

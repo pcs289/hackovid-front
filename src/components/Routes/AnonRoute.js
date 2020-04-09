@@ -13,7 +13,7 @@ function AnonRoute({ component: Comp, isLoggedin, ...rest }) {
           <>
             <Redirect
               to={{
-                pathname: '/map',
+                pathname: '/mapa',
               }}
             />
           </>
