@@ -24,7 +24,6 @@ class DayFilter extends Component {
             dayOfWeek = 0;
         }
         await this.setState({ dayOfWeek: dayOfWeek + 1 });
-        this.props.onFiltersChange(this.state);
     }
 
     render() {

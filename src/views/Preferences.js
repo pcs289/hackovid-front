@@ -25,7 +25,7 @@ class Preferences extends Component {
             <p>Nova preferència</p>
           </div>
         </button> 
-        <form className="list">
+        <form id="newpreference">
           Tipus:
           <div id="type">
             <label for="male">
@@ -42,12 +42,12 @@ class Preferences extends Component {
             Other</label>
           </div>
           Dia de la setmana:
-
+          <Day/>
           Hora d'Inici:
           <Clock/>
-
           Hora Fi:
           <Clock/>
+          <input type="submit" value="Accepta"/>
         </form>
         <div className="list">
           <div className="preference">
@@ -101,8 +101,4 @@ class Preferences extends Component {
   }
 }
 
-<<<<<<< HEAD
 export default withAuth(Preferences);
-=======
-export default withAuth(Preferences);
->>>>>>> master
