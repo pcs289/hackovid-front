@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { withAuth } from "../Context/AuthContext";
+import AvatarImage from "../components/AvatarImage"
 
 class Profile extends Component {
   state = {
@@ -36,7 +37,7 @@ class Profile extends Component {
           <h1>
             {name} {surname}
           </h1>
-          <img className="user-profile" src={avatarImg} alt="profile" />
+          <AvatarImage />
         </div>
         <div>
           <Link className="profile-div" to={"/perfil/editar"}>

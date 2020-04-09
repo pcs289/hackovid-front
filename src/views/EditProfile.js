@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { withAuth } from "../Context/AuthContext";
+import AvatarImage from "../components/AvatarImage"
+import ImageService from '../services/ImagesService'
 
 class Profile extends Component {
-  state = {
-    img: "",
-  };
+  constructor(props) {
+    super(props);
+    this.onChange = this.onChange.bind(this);
+    this.avatarImageElement = React.createRef()
+}
 
   onClickLogout = async () => {
     try {
@@ -27,8 +31,20 @@ class Profile extends Component {
     }
   };
 
+  onChange = async (e) => {
+    const formData = new FormData();
+        formData.append('file' , e.target.files[0]);
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        };
+        await ImageService.uploadAvatarImg(formData, config);
+        this.avatarImageElement.current.componentDidMount();
+}
+
   render() {
-    const { name, surname, avatarImg } = this.props.user;
+    const { name, surname } = this.props.user;
 
     return (
       <div className="viewport-with-navbar">
@@ -44,12 +60,12 @@ class Profile extends Component {
             </div>
           </div>      
           <div className="edit-profile-picture">
-            <img src={avatarImg} alt="profile" className="user-profile"/>
+          <AvatarImage ref={this.avatarImageElement}/>
             <div className="user-profile overlay">
               <label for="avatar" className="icon" title="User Profile">
                 <i className="fa fa-camera"></i>
               </label>
-              <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"/>
+              <input type="file" id="avatar" name="file" accept="image/png" onChange= {this.onChange}/>
             </div>
           </div>
         </div>
