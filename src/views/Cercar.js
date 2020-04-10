@@ -94,7 +94,7 @@ class Cercar extends Component {
                       color: "#989898",
                     }}
                   >
-                    0.3 km | 17:30h | 22/04 | Educació 
+                    0.3 km | 17:30h | 22/04 | Educació
                   </p>
 
                   <p
@@ -107,64 +107,21 @@ class Cercar extends Component {
                     Search for the keywords to learn more about each warning. To
                     ignore, add // eslint-disable-next-line to the line before.
                   </p>
-                </div>
-                <div
-                  class="anunci-panell"
-                  style={{
-                    backgroundColor: "#EAEAEA",
-                    margin: "3%",
-                    padding: "5%",
-                    borderRadius: "7px",
-                  }}
-                >
-                  <h3
+                  <Link
+                    to="/contactar"
                     style={{
-                      textAlign: "start",
-                      margin: "0 0 10px 0",
-                      fontSize: "12px",
+                      textDecoration: "none",
                     }}
                   >
-                    Classes de Català amb la Rusalia
-                  </h3>
-                  <p
-                    style={{
-                      textAlign: "start",
-                      margin: "0 0 10px 0",
-                      fontSize: "10px",
-                    }}
-                  >
-                    Search for the keywords to learn more about each warning. To
-                    ignore, add // eslint-disable-next-line to the line before.
-                  </p>
-                </div>
-                <div
-                  class="anunci-panell"
-                  style={{
-                    backgroundColor: "#EAEAEA",
-                    margin: "3%",
-                    padding: "5%",
-                    borderRadius: "7px",
-                  }}
-                >
-                  <h3
-                    style={{
-                      textAlign: "start",
-                      margin: "0 0 10px 0",
-                      fontSize: "12px",
-                    }}
-                  >
-                    Classes de Català amb la Yenifer
-                  </h3>
-                  <p
-                    style={{
-                      textAlign: "start",
-                      margin: "0 0 10px 0",
-                      fontSize: "10px",
-                    }}
-                  >
-                    Search for the keywords to learn more about each warning. To
-                    ignore, add // eslint-disable-next-line to the line before.
-                  </p>
+                    <span
+                      class="btn"
+                      style={{
+                        padding: "10px",
+                      }}
+                    >
+                      Contactar
+                    </span>
+                  </Link>
                 </div>
               </div>
             </div>

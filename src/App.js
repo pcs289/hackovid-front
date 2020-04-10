@@ -22,6 +22,7 @@ import Navbar from "./components/Navigation/Navbar";
 import Topbar from "./components/Navigation/Topbar";
 import Activities from "./views/Activities";
 import Managed from "./views/Managed";
+import Contactar from "./views/Contactar";
 
 class App extends Component {
   // eslint-disable-next-line class-methods-use-this
@@ -40,6 +41,7 @@ class App extends Component {
               <PrivateRoute exact path="/perfil" component={Profile} />
               <PrivateRoute exact path="/bio" component={Bio} />
               <PrivateRoute exact path="/cercar" component={Cercar} />
+              <PrivateRoute exact path="/contactar" component={Contactar} />
 
               <AnonRoute exact path="/entra" component={Login} />
               <AnonRoute exact path="/registre" component={Signup} />
