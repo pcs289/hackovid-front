@@ -35,3 +35,41 @@
   width: 50%;
   padding: 10px;
 }
+
+#page-name {
+  top: 0;
+  position: sticky;
+  z-index: 100;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1px 3px -2px rgba(47, 51, 51, 0.85);
+}
+#page-name h1 {
+  margin: 0;
+  padding: 10px;
+  font-size: 1.2em;
+  color: $font;
+}
+
+.nav-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.nav-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.nav-column p {
+  color: $font;
+}
+
+.post-title:hover {
+  color: #606060;
+}
