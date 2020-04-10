@@ -1,37 +1,50 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../Context/AuthContext";
-import Search from "../components/Navigation/Search";
+import MapFilters from "../components/Map/MapFilters";
+import offerService from "../services/offerService";
 
 class Cercar extends Component {
   state = {
-    img: "",
+    offers: []
   };
 
+  async componentDidMount() {
+    try {
+      const offers = await offerService.getAllOffers();
+      this.setState({
+        offers
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   render() {
+    const { offers } = this.state;
+
     return (
       <>
         <div className="activities-container">
           <div id="page-name">
-            <h1 style={{ textTransform: "capitalize" }}>Panell D'anuncis</h1>
+            <h1>Panell D'anuncis</h1>
           </div>
           <>
             <div class="bottom-break-nav">
-              <div id="home-search">
-                <Search />
-              </div>
               <div class="profile-stats-card">
                 <div>
                   <h2 style={{ textAlign: "start", margin: "0 0 10px 0" }}>
                     Filtres
                   </h2>
+                  <MapFilters />
+
                   <div class="badges">
                     <ul>
                       <li>
                         <img
                           class="badge-img"
                           src="../../images/food-delivery.svg"
-                          alt="badge"
+                          alt="compres"
                         />
                         <p>Compres</p>
                       </li>
@@ -39,7 +52,7 @@ class Cercar extends Component {
                         <img
                           class="badge-img"
                           src="../../images/cross.svg"
-                          alt="reward"
+                          alt="salut"
                         />
                         <p>Salut</p>
                       </li>
@@ -47,7 +60,7 @@ class Cercar extends Component {
                         <img
                           class="badge-img"
                           src="../../images/elearning.svg"
-                          alt="discount"
+                          alt="educacio"
                         />
                         <p>Educació</p>
                       </li>
@@ -55,7 +68,7 @@ class Cercar extends Component {
                         <img
                           class="badge-img"
                           src="../../images/toilet-paper.svg"
-                          alt="discount"
+                          alt="altres"
                         />
                         <p>Altres</p>
                       </li>
@@ -63,35 +76,16 @@ class Cercar extends Component {
                   </div>
                 </div>
               </div>
+
               <div class="profile-stats-card">
                 <h2 style={{ textAlign: "start", margin: "0 0 10px 0" }}>
                   Ofertes de Voluntariat
                 </h2>
-                <div
-                  class="anunci-panell"
-                  style={{
-                    backgroundColor: "#EAEAEA",
-                    margin: "3%",
-                    padding: "5%",
-                    borderRadius: "7px",
-                  }}
-                >
-                  <h3
-                    class="post-title"
-                    style={{
-                      textAlign: "start",
-                      margin: "0",
-                      fontSize: "16px",
-                    }}
-                  >
-                    Classes de Català amb la Mañá
-                  </h3>
+                <div class="anunci-panell">
+                  <h3 class="post-title">Classes de Català amb la Mañá</h3>
                   <p
                     style={{
-                      textAlign: "start",
-                      fontSize: "12px",
-                      margin: "0",
-                      color: "#989898",
+                      color: "#989898"
                     }}
                   >
                     0.3 km | 17:30h | 22/04 | Educació
@@ -99,9 +93,7 @@ class Cercar extends Component {
 
                   <p
                     style={{
-                      textAlign: "start",
-                      margin: "10px 0 10px 0",
-                      fontSize: "12px",
+                      margin: "10px 0 10px 0"
                     }}
                   >
                     Search for the keywords to learn more about each warning. To
@@ -110,13 +102,13 @@ class Cercar extends Component {
                   <Link
                     to="/contactar"
                     style={{
-                      textDecoration: "none",
+                      textDecoration: "none"
                     }}
                   >
                     <span
                       class="btn"
                       style={{
-                        padding: "10px",
+                        padding: "10px"
                       }}
                     >
                       Contactar
