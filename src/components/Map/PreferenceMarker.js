@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Marker, Popup } from 'react-map-gl';
 import LocationIcon from './LocationIcon';
+import { Link } from "react-router-dom";
 
 class PreferenceMarker extends Component {
     state = {
@@ -14,28 +15,21 @@ class PreferenceMarker extends Component {
     };
 
     render() {
-        const { latitude, longitude, neighbor } = this.props;
+        const { latitude, longitude, offer } = this.props;
         const { showPopup } = this.state;
         return (
             <>
                 <div onClick={this.togglePopup}>
-                    <Marker key={`marker-${neighbor._id}`} latitude={latitude} longitude={longitude}>
+                    <Marker key={`marker-${offer._id}`} latitude={latitude} longitude={longitude}>
                         <LocationIcon />
                     </Marker>
                 </div>
                 {showPopup ? (
-                    <Popup key={`popup-${neighbor._id}`} latitude={latitude} longitude={longitude} closeButton={false}>
-                        <div style={{display: 'flex', flexFlow: 'row nowrap', justifyContent: 'space-around', alignItems: 'center'}}>
-                            <img width="35px" height="35px" src={neighbor.avatarImg} alt={neighbor.username + ' avatar image'} />
-                            <span>{neighbor.username}</span>
-                        </div>
-                        <ul>
-                            {neighbor.preferences.map((pref, i) => {
-                                return <li key={i}>
-                                    {pref.type}
-                                </li>
-                            })}
-                        </ul>
+                    <Popup key={`popup-${offer._id}`} className="marker" latitude={latitude} longitude={longitude} closeButton={true} onClose={() => this.togglePopup()}>
+                        <Link to={`/contactar/${offer._id}`}>
+                            <span>{offer.title}</span>
+                            <span>{offer.description}</span>
+                        </Link>
                     </Popup>
                 ) : null}
             </>

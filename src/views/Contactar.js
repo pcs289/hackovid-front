@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { withAuth } from "../Context/AuthContext";
 import Backbar from "../components/Navigation/Backbar";
 
@@ -7,6 +6,11 @@ class Profile extends Component {
   state = {
     img: "",
   };
+
+  componentDidMount() {
+    const { match : { params: { offerId }}} = this.props;
+    console.log('Fetching offer #' + offerId);
+  }
 
   render() {
     return (
@@ -17,16 +21,16 @@ class Profile extends Component {
             <h1 style={{ textTransform: "capitalize" }}>Clase de Català...</h1>
           </div>
           <>
-            <div class="bottom-break-nav">
-              <div class="profile-stats-card">
+            <div className="bottom-break-nav">
+              <div className="profile-stats-card">
                 <h2 style={{ textAlign: "start" }}>Sobre Joe Doe</h2>
 
                 <img
-                  class="user-profile-stats"
+                    className="user-profile-stats"
                   src="../../images/add-contact.svg"
                   alt="profile"
                 />
-                <div class="profile-stats">
+                <div className="profile-stats">
                   <p>
                     <span>Participat</span>
                     <br />1
@@ -38,16 +42,16 @@ class Profile extends Component {
                 </div>
                 <>
                   <h2 style={{ textAlign: "start" }}>Descripció</h2>
-                  <p class="inserted-stat">Me gusta el pollo frito</p>
+                  <p className="inserted-stat">Me gusta el pollo frito</p>
                 </>
 
                 <h2 style={{ textAlign: "start" }}>Demana</h2>
                 <div>
-                  <div class="badges">
+                  <div className="badges">
                     <ul>
                       <li>
                         <img
-                          class="badge-img"
+                            className="badge-img"
                           src="../../images/food-delivery.svg"
                           alt="badge"
                         />
@@ -55,7 +59,7 @@ class Profile extends Component {
                       </li>
                       <li>
                         <img
-                          class="badge-img"
+                            className="badge-img"
                           src="../../images/cross.svg"
                           alt="reward"
                         />
@@ -63,7 +67,7 @@ class Profile extends Component {
                       </li>
                       <li>
                         <img
-                          class="badge-img"
+                            className="badge-img"
                           src="../../images/elearning.svg"
                           alt="discount"
                         />
@@ -75,11 +79,11 @@ class Profile extends Component {
 
                 <h2 style={{ textAlign: "start" }}>Participa</h2>
                 <div>
-                  <div class="badges">
+                  <div className="badges">
                     <ul>
                       <li>
                         <img
-                          class="badge-img"
+                            className="badge-img"
                           src="../../images/elearning.svg"
                           alt="discount"
                         />
@@ -87,7 +91,7 @@ class Profile extends Component {
                       </li>
                       <li>
                         <img
-                          class="badge-img"
+                            className="badge-img"
                           src="../../images/toilet-paper.svg"
                           alt="discount"
                         />
@@ -96,7 +100,7 @@ class Profile extends Component {
 
                       <li>
                         <img
-                          class="badge-img"
+                            className="badge-img"
                           src="../../images/approved.svg"
                           alt="okey"
                         />
@@ -105,7 +109,7 @@ class Profile extends Component {
                     </ul>
                   </div>
                   <h2 style={{ textAlign: "start" }}>Contacte</h2>
-                  <p class="inserted-stat">
+                  <p className="inserted-stat">
                     Aqui habilitar quines opcions permet el usuari
                   </p>
                 </div>

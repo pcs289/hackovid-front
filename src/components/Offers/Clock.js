@@ -6,17 +6,13 @@ import { format } from 'date-fns';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
-  KeyboardDatePicker,
 } from '@material-ui/pickers';
 
 class Clock extends Component{
-  constructor(props) {
-      super(props);
-      this.state = {
-        'selectedHour':''
-      }
-      this.handleHourChange = this.handleHourChange.bind(this);
-  }
+  
+    state = {
+      'selectedHour':new Date().toISOString()
+    }
 
   async componentDidMount() {
   // The first commit of Material-UI

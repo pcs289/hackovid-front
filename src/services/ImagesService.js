@@ -10,7 +10,7 @@ class ImagesService {
       }
 
     getAvatarImage() {
-        return this.http.get('/image/upload')
+        return this.http.get('/image/upload').then( response => response.data);
     };
 
     uploadAvatarImg( formData, config ) {

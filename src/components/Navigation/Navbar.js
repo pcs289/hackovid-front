@@ -10,12 +10,6 @@ class Navbar extends Component {
           <div className="nav-container">
             <nav>
               <ul>
-                {/* <li>
-                  <Link to="/activitats">
-                    <img src={"/images/booking.svg"} alt="Activitats" />
-                    Activitats
-                  </Link>
-                </li> */}
                 <li>
                   <Link to="/cercar">
                     <img src={"/images/search-input.svg"} alt="Cercar" />
@@ -35,7 +29,7 @@ class Navbar extends Component {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/activitats">
+                  <Link to="/inscripcions">
                     <img src={"/images/booking.svg"} alt="Gestionar" />
                     Gestionar
                   </Link>
