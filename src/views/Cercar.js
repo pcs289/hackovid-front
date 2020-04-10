@@ -42,7 +42,7 @@ class Cercar extends Component {
                     <ul>
                       <li>
                         <img
-                          class="badge-img"
+                            className="badge-img"
                           src="../../images/food-delivery.svg"
                           alt="compres"
                         />
@@ -50,7 +50,7 @@ class Cercar extends Component {
                       </li>
                       <li>
                         <img
-                          class="badge-img"
+                            className="badge-img"
                           src="../../images/cross.svg"
                           alt="salut"
                         />
@@ -58,7 +58,7 @@ class Cercar extends Component {
                       </li>
                       <li>
                         <img
-                          class="badge-img"
+                            className="badge-img"
                           src="../../images/elearning.svg"
                           alt="educacio"
                         />
@@ -66,7 +66,7 @@ class Cercar extends Component {
                       </li>
                       <li>
                         <img
-                          class="badge-img"
+                            className="badge-img"
                           src="../../images/toilet-paper.svg"
                           alt="altres"
                         />
@@ -100,13 +100,13 @@ class Cercar extends Component {
                     ignore, add // eslint-disable-next-line to the line before.
                   </p>
                   <Link
-                    to="/contactar"
+                    to="/contactar/123123"
                     style={{
                       textDecoration: "none"
                     }}
                   >
                     <span
-                      class="btn"
+                        className="btn"
                       style={{
                         padding: "10px"
                       }}

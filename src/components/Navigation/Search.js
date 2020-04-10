@@ -13,7 +13,7 @@ class SearchInput extends Component {
           id="club-search-input"
           type="text"
           value={this.state.value}
-          onChange={this.changeInputValue}
+          onChange={(ev) => this.setState({value: ev.target.value})}
           placeholder="Pots provar de trobar-ho aquí"
         />
         <span id="input-search-focus-border"></span>

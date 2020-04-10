@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { withAuth } from "../Context/AuthContext";
 import Backbar from "../components/Navigation/Backbar";
 
@@ -7,6 +6,11 @@ class Profile extends Component {
   state = {
     displayBio: false
   };
+
+  componentDidMount() {
+    const { match : { params: { offerId }}} = this.props;
+    console.log('Fetching offer #' + offerId);
+  }
 
   render() {
     return (
