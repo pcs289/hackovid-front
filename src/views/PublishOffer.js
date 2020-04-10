@@ -68,6 +68,7 @@ class PublishOffer extends Component{
         console.log(data)
         await OfferService.handleCreateOffer(data);
         toast.success(`Oferta registrada amb èxit!`);
+        this.props.history.push('/publicacions');
       } catch (error) {
         console.error(error);
       }
