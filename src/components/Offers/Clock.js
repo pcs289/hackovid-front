@@ -2,18 +2,14 @@ import 'date-fns';
 import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
+import { MuiPickersUtilsProvider, KeyboardTimePicker } from '@material-ui/pickers';
 
 class Clock extends Component{
   constructor(props) {
       super(props);
       this.state = {
         'selectedDate':''
-      }
+      };
       this.handleDateChange = this.handleDateChange.bind(this);
   }
 
@@ -24,8 +20,8 @@ class Clock extends Component{
 
   handleDateChange = async event => {
     this.setState({'selectedDate':this.selectedDate});
-    console.log(event)
-    this.props.onChange(event);
+    console.log(event.toISOString());
+    // this.props.onChange(event);
   };
 
   render() {
