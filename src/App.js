@@ -12,8 +12,10 @@ import Profile from "./views/Profile";
 import Bio from "./views/Bio";
 import Cercar from "./views/Cercar";
 import EditProfile from "./views/EditProfile";
-import Preferences from "./views/Preferences";
-
+import Activities from "./views/Activities";
+import Managed from "./views/Managed";
+import Contactar from "./views/Contactar";
+import PublishOffer from "./views/PublishOffer";
 import ErrorPage from "./views/auth/ErrorPage";
 
 import { withAuth } from "./Context/AuthContext";
@@ -22,9 +24,6 @@ import PrivateRoute from "./components/Routes/PrivateRoute";
 import AnonRoute from "./components/Routes/AnonRoute";
 import Navbar from "./components/Navigation/Navbar";
 import Topbar from "./components/Navigation/Topbar";
-import Activities from "./views/Activities";
-import Managed from "./views/Managed";
-import Contactar from "./views/Contactar";
 
 class App extends Component {
   // eslint-disable-next-line class-methods-use-this
@@ -37,27 +36,24 @@ class App extends Component {
             <Topbar />
             <Switch>
               <AnonRoute exact path="/" component={Homepage} />
-              <PrivateRoute exact path="/mapa" component={Map} />
-              <PrivateRoute exact path="/activitats" component={Activities} />
-              <PrivateRoute exact path="/gestionades" component={Managed} />
-              <PrivateRoute exact path="/perfil" component={Profile} />
-              <PrivateRoute
-                exact
-                path="/perfil/editar"
-                component={EditProfile}
-              />
-
-              <PrivateRoute exact path="/bio/:userId" component={Bio} />
-              <PrivateRoute exact path="/cercar" component={Cercar} />
-              <PrivateRoute exact path="/contactar/:offerId" component={Contactar} />
-              <PrivateRoute
-                exact
-                path="/perfil/preferencies"
-                component={Preferences}
-              />
-
               <AnonRoute exact path="/entra" component={Login} />
               <AnonRoute exact path="/registre" component={Signup} />
+
+              <PrivateRoute exact path="/cercar" component={Cercar} />
+              <PrivateRoute exact path="/mapa" component={Map} />
+              <PrivateRoute exact path="/contactar/:offerId" component={Contactar} />
+
+              <PrivateRoute exact path="/publicar" component={PublishOffer} />
+
+              <PrivateRoute exact path="/inscripcions" component={Activities} />
+              <PrivateRoute exact path="/publicacions" component={Managed} />
+
+              <PrivateRoute exact path="/perfil" component={Profile} />
+              <PrivateRoute exact path="/perfil/editar" component={EditProfile} />
+
+              <PrivateRoute exact path="/bio/:userId" component={Bio} />
+
+
               <Route component={ErrorPage} path="*" />
             </Switch>
             <Navbar />

@@ -24,7 +24,7 @@ class Map extends Component {
       zoom: 13,
     },
     userLocation: {},
-    neighbors: [],
+    offers: [],
     isLoading: true,
     popupsStatus: false,
   };
