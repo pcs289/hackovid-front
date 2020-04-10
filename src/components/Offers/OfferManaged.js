@@ -1,60 +1,58 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import Moment from "react-moment";
+import "moment/locale/ca";
 
-class OfferManaged extends Component{
+import { Link } from "react-router-dom";
 
-    render() {
-        return (
-            <div className="anunci-panell" style={{
-                backgroundColor: "#EAEAEA",
-                margin: "3%",
-                padding: "5%",
-                borderRadius: "7px",
-            }}>
-                <h3 className="post-title" style={{
-                    textAlign: "start",
-                    margin: "0",
-                    fontSize: "16px",
-                }}>Classes de Català amb la Mañá</h3>
-                <p style={{
-                    textAlign: "start",
-                    fontSize: "12px",
-                    margin: "0",
-                    color: "#989898",
-                }}
-                >
-                    0.3 km | 17:30h | 22/04 | Educació
-                </p>
+class OfferManaged extends Component {
+  render() {
+    const { offer } = this.props;
+    const categoriaTipo = ["Aliments", "Tallers", "Salut", "Altres"];
 
-                <p
-                    style={{
-                        textAlign: "start",
-                        margin: "10px 0 10px 0",
-                        fontSize: "12px",
-                    }}
-                >
-                    Search for the keywords to learn more about each warning. To
-                    ignore, add // eslint-disable-next-line to the line before.
-                </p>
-                <div className="profile-stats">
-                    <p>
-                <span
-                    className="btn"
-                    style={{
-                        padding: "10px",
-                    }}
-                >
-                  Editar
-                </span>
-                    </p>
-                    <p>
-                        <span>Sol·licituds</span>
-                        <br />
-                        (0)
-                    </p>
-                </div>
-            </div>
-        );
-    }
+    return (
+      <div className="anunci-panell">
+        <h3 className="post-title">{offer.title}</h3>
+        <p
+          style={{
+            color: "#989898"
+          }}
+        >
+          {offer.proximity.toFixed(1)} km | |
+          <Moment format="LLL" locale="ca">
+            {offer.startDate}
+          </Moment>{" "}
+          fins les{" "}
+          <Moment format="LT" locale="ca">
+            {offer.endDate}
+          </Moment>{" "}
+          | {categoriaTipo[offer.type + 1]}
+        </p>
+
+        <p
+          style={{
+            margin: "10px 0 10px 0"
+          }}
+        >
+          {offer.description}
+        </p>
+        <Link
+          to="/contactar/123123"
+          style={{
+            textDecoration: "none"
+          }}
+        >
+          <span
+            className="btn"
+            style={{
+              padding: "10px"
+            }}
+          >
+            Contactar
+          </span>
+        </Link>
+      </div>
+    );
+  }
 }
 
 export default OfferManaged;
