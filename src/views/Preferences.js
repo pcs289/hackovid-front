@@ -41,6 +41,7 @@ class Preferences extends Component {
             <input type="radio" id="other" name="gender" value="other"/>
             Other</label>
           </div>
+          <input type="text"/>
           Dia de la setmana:
           <Day/>
           Hora d'Inici:
