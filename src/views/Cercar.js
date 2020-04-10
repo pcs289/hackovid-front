@@ -16,20 +16,20 @@ class Cercar extends Component {
             <h1 style={{ textTransform: "capitalize" }}>Panell D'anuncis</h1>
           </div>
           <>
-            <div class="bottom-break-nav">
+            <div className="bottom-break-nav">
               <div id="home-search">
                 <Search />
               </div>
-              <div class="profile-stats-card">
+              <div className="profile-stats-card">
                 <div>
                   <h2 style={{ textAlign: "start", margin: "0 0 10px 0" }}>
                     Filtres
                   </h2>
-                  <div class="badges">
+                  <div className="badges">
                     <ul>
                       <li>
                         <img
-                          class="badge-img"
+                            className="badge-img"
                           src="../../images/food-delivery.svg"
                           alt="badge"
                         />
@@ -37,7 +37,7 @@ class Cercar extends Component {
                       </li>
                       <li>
                         <img
-                          class="badge-img"
+                            className="badge-img"
                           src="../../images/cross.svg"
                           alt="reward"
                         />
@@ -45,7 +45,7 @@ class Cercar extends Component {
                       </li>
                       <li>
                         <img
-                          class="badge-img"
+                            className="badge-img"
                           src="../../images/elearning.svg"
                           alt="discount"
                         />
@@ -53,7 +53,7 @@ class Cercar extends Component {
                       </li>
                       <li>
                         <img
-                          class="badge-img"
+                            className="badge-img"
                           src="../../images/toilet-paper.svg"
                           alt="discount"
                         />
@@ -63,12 +63,12 @@ class Cercar extends Component {
                   </div>
                 </div>
               </div>
-              <div class="profile-stats-card">
+              <div className="profile-stats-card">
                 <h2 style={{ textAlign: "start", margin: "0 0 10px 0" }}>
                   Ofertes de Voluntariat
                 </h2>
                 <div
-                  class="anunci-panell"
+                    className="anunci-panell"
                   style={{
                     backgroundColor: "#EAEAEA",
                     margin: "3%",
@@ -77,7 +77,7 @@ class Cercar extends Component {
                   }}
                 >
                   <h3
-                    class="post-title"
+                      className="post-title"
                     style={{
                       textAlign: "start",
                       margin: "0",
@@ -108,13 +108,13 @@ class Cercar extends Component {
                     ignore, add // eslint-disable-next-line to the line before.
                   </p>
                   <Link
-                    to="/contactar"
+                    to="/contactar/123123"
                     style={{
                       textDecoration: "none",
                     }}
                   >
                     <span
-                      class="btn"
+                        className="btn"
                       style={{
                         padding: "10px",
                       }}

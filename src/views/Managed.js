@@ -9,10 +9,10 @@ class Activities extends Component {
         <div className="activities-container">
           <div id="page-name">
             <h1>Gestionar</h1>
-            <div class="sections-nav">
-              <div class="nav-row">
-                <div class="nav-column">
-                  <div class="nav-column1">
+            <div className="sections-nav">
+              <div className="nav-row">
+                <div className="nav-column">
+                  <div className="nav-column1">
                     <Link
                       to="/activitats"
                       style={{
@@ -24,10 +24,10 @@ class Activities extends Component {
                   </div>
                 </div>
                 <div
-                  class="nav-column"
+                    className="nav-column"
                   style={{ border: "1px", borderBottom: "2px solid #a4d96c" }}
                 >
-                  <div class="nav-column2">
+                  <div className="nav-column2">
                     <p style={{ color: "#a4d96c", fontWeight: 700 }}>
                       Publicacions
                     </p>
@@ -36,13 +36,13 @@ class Activities extends Component {
               </div>
             </div>
           </div>
-          <div class="bottom-break-nav">
-            <div class="profile-stats-card">
+          <div className="bottom-break-nav">
+            <div className="profile-stats-card">
               <h2 style={{ textAlign: "start", margin: "0 0 10px 0" }}>
                 Ofertes actives
               </h2>
               <div
-                class="anunci-panell"
+                  className="anunci-panell"
                 style={{
                   backgroundColor: "#EAEAEA",
                   margin: "3%",
@@ -51,7 +51,7 @@ class Activities extends Component {
                 }}
               >
                 <h3
-                  class="post-title"
+                    className="post-title"
                   style={{
                     textAlign: "start",
                     margin: "0",
@@ -81,10 +81,10 @@ class Activities extends Component {
                   Search for the keywords to learn more about each warning. To
                   ignore, add // eslint-disable-next-line to the line before.
                 </p>
-                <div class="profile-stats">
+                <div className="profile-stats">
                   <p>
                     <span
-                      class="btn"
+                        className="btn"
                       style={{
                         padding: "10px",
                       }}
@@ -100,12 +100,12 @@ class Activities extends Component {
                 </div>
               </div>
             </div>
-            <div class="profile-stats-card">
+            <div className="profile-stats-card">
               <h2 style={{ textAlign: "start", margin: "0 0 10px 0" }}>
                 Ofertes passades
               </h2>
               <div
-                class="anunci-panell"
+                  className="anunci-panell"
                 style={{
                   backgroundColor: "#EAEAEA",
                   margin: "3%",
@@ -114,7 +114,7 @@ class Activities extends Component {
                 }}
               >
                 <h3
-                  class="post-title"
+                    className="post-title"
                   style={{
                     textAlign: "start",
                     margin: "0",

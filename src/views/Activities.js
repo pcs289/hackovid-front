@@ -16,11 +16,11 @@ class Activities extends Component {
         <div className="activities-container">
           <div id="page-name">
             <h1>Gestionar</h1>
-            <div class="sections-nav">
-              <div class="nav-row">
-                <div class="nav-column">
+            <div className="sections-nav">
+              <div className="nav-row">
+                <div className="nav-column">
                   <div
-                    class="nav-column1"
+                      className="nav-column1"
                     style={{ border: "1px", borderBottom: "2px solid #a4d96c" }}
                   >
                     <p style={{ color: "#a4d96c", fontWeight: 700 }}>
@@ -42,8 +42,8 @@ class Activities extends Component {
                     </button> */}
                   </div>
                 </div>
-                <div class="nav-column">
-                  <div class="nav-column2">
+                <div className="nav-column">
+                  <div className="nav-column2">
                     <Link
                       to="/gestionades"
                       style={{
@@ -57,8 +57,8 @@ class Activities extends Component {
               </div>
             </div>
           </div>
-          <div class="bottom-break-nav">
-            <div class="profile-stats-card">
+          <div className="bottom-break-nav">
+            <div className="profile-stats-card">
               <span
                 style={{
                   backgroundColor: "rgb(90,152,78)",
@@ -73,7 +73,7 @@ class Activities extends Component {
                 Peticions acceptades
               </span>
             </div>
-            <div class="profile-stats-card">
+            <div className="profile-stats-card">
               <span
                 style={{
                   backgroundColor: "rgb(242,157,105)",
@@ -88,7 +88,7 @@ class Activities extends Component {
                 Peticions pendents
               </span>
               <div
-                class="anunci-panell"
+                  className="anunci-panell"
                 style={{
                   backgroundColor: "#EAEAEA",
                   margin: "3%",
@@ -97,7 +97,7 @@ class Activities extends Component {
                 }}
               >
                 <h3
-                  class="post-title"
+                    className="post-title"
                   style={{
                     textAlign: "start",
                     margin: "0",
@@ -129,7 +129,7 @@ class Activities extends Component {
                 </p>
               </div>
             </div>
-            <div class="profile-stats-card">
+            <div className="profile-stats-card">
               <span
                 style={{
                   backgroundColor: "rgb(184,92,89)",

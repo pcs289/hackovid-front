@@ -47,9 +47,9 @@ class App extends Component {
                 component={EditProfile}
               />
 
-              <PrivateRoute exact path="/bio" component={Bio} />
+              <PrivateRoute exact path="/bio/:userId" component={Bio} />
               <PrivateRoute exact path="/cercar" component={Cercar} />
-              <PrivateRoute exact path="/contactar" component={Contactar} />
+              <PrivateRoute exact path="/contactar/:offerId" component={Contactar} />
               <PrivateRoute
                 exact
                 path="/perfil/preferencies"
