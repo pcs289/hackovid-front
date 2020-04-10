@@ -1,90 +1,110 @@
 import React, {Component} from "react";
 import Calendar from "../components/Offers/Calendar";
 import Clock from "../components/Offers/Clock";
+import { toast } from "react-toastify";
+import OfferService from '../services/offerService'
 
 class PublishOffer extends Component{
 
     constructor(props) {
-        super(props);
-        this.state = {
-            'type':'',
-            'title':'',
-            'description':'',
-            'date':'',
-            'startTime':'',
-            'endTime':''
-        };
+      super(props);
+      this.state = {
+        'type':'',
+        'title':'',
+        'description':'',
+        'Day':'',
+        'Ini':'',
+        'End':''
+      };
     }
+
 
     handleChange = async event => {
         const { name, value } = event.target;
         await this.setState({  ...this.state, [name]: value});
-        console.log(this.state);
-    };
+      };
 
     handleDateChange = async date => {
-        await this.setState({  ...this.state, date});
-        console.log(this.state);
-    };
+        await this.setState({  ...this.state, 'Day': date});
+    }
 
-    handleIniChange = async date => {
-        const utcDate = new Date(date).getUTCDate();
-        console.log(utcDate);
-        console.log(new Date(utcDate));
-        console.log(new Date(utcDate).toISOString());
-        console.log(new Date(utcDate).toISOString().substr(11, 7));
-        /*await this.setState({  ...this.state, 'startTime': date});
-        console.log(this.state);*/
-    };
+    handleIniChange = async hour => {
+        await this.setState({  ...this.state, 'Ini': hour});
+    }
 
-    handleEndChange = async date => {
-        const utcDate = new Date(date).getUTCDate();
-        console.log(utcDate);
-        console.log(new Date(utcDate));
-        console.log(new Date(utcDate).toISOString());
-        console.log(new Date(utcDate).toISOString().substr(11, 7));
-        /*await this.setState({  ...this.state, 'endTime': date});
-        console.log(this.state);*/
-    };
+    handleEndChange = async hour => {
+        await this.setState({  ...this.state, 'End': hour});
+    }
 
     onChangeRadio = async event => {
-        const radios = document.getElementsByName('genderS');
+        var radios = document.getElementsByName('genderS');
 
         for (var i = 0, length = radios.length; i < length; i++) {
-            if (radios[i].checked) {
-                await this.setState({
-                    ...this.state,
-                    type: i
-                });
-                console.log(this.state)
-                break;
-            }
+          if (radios[i].checked) {
+            await this.setState({
+              ...this.state,
+              type: i
+            });
+            break;
+          }
         }
     };
+
+    createOffer = async event => {
+      event.preventDefault();
+      try {
+        const { type, title, description, Day, Ini, End} = this.state;
+      
+        const startDate = Day + "T" + Ini;
+        const endDate = Day + "T" + End;
+
+        var data = {
+          type, 
+          title, 
+          description, 
+          startDate, 
+          endDate
+        }
+        console.log(data)
+        await OfferService.handleCreateOffer(data);
+        toast.success(`Oferta registrada amb èxit!`);
+        this.props.history.push('/publicacions');
+      } catch (error) {
+        console.error(error);
+      }
+    };   
 
     render() {
         return (
             <div className="activities-container">
-                <form id="newpreference">
-                    Tipus:
-                    <div id="type" onChange={this.onChangeRadio}>
-                        <label><input type="radio" id="type1" name="genderS" value="1"/>Aliments</label>
-                        <label><input type="radio" id="type2" name="genderS" value="2"/>Entreteniment</label>
-                        <label><input type="radio" id="type3" name="genderS" value="3"/>Salut</label>
-                        <label><input type="radio" id="type4" name="genderS" value="4"/>Altres</label>
-                    </div>
-                    Títol:
-                    <input type="text" name="title" onChange={this.handleChange} required/>
-                    Descripció:
-                    <input type="text" name="description" onChange={this.handleChange} required/>
-                    Dia:<Calendar onChange={this.handleDateChange.bind(this)}/>
-                    Hora d'Inici:
-                    <Clock onChange={this.handleIniChange.bind(this)}/>
-                    Hora Fi:
-                    <Clock onChange={this.handleEndChange.bind(this)}/>
-                    <button value="Accepta" onClick={this.props.acceptOffer}>
-                        Accepta
-                    </button>
+                <form id="newpreference" onSubmit={this.createOffer} style={{'marginBottom':'5em'}}>
+                  <h2>Publica una oferta</h2>
+                  <div id="type" onChange={this.onChangeRadio}>
+                    <label>
+                    <input type="radio" id="type1" name="genderS" value="1"/>
+                    <img src="../../images/food-delivery.svg"/>Compres</label>
+                    <label>
+                    <input type="radio" id="type2" name="genderS" value="2"/>
+                    <img src="../../images/cross.svg"/>Salut</label>
+                    <label>
+                    <input type="radio" id="type3" name="genderS" value="3"/>
+                    <img src="../../images/elearning.svg"/>Educació</label>
+                    <label>
+                    <input type="radio" id="type4" name="genderS" value="4"/>
+                    <img src="../../images/toilet-paper.svg"/>Altres</label>
+                  </div>
+                  <input type="text" name="title" placeholder="Títol" onChange={this.handleChange} required/>
+                  <input type="text" name="description" placeholder="Descripció" onChange={this.handleChange} required/>          
+                  <div className="time-input">
+                    <span>Dia:</span><Calendar onChange={this.handleDateChange.bind(this)}/>
+                  </div>
+                  <div className="time-input">
+                    <span>Hora d'Inici:</span><Clock  onChange={this.handleIniChange.bind(this)}/>
+                  </div>
+                  <div className="time-input">
+                    <span>Hora Fi:</span><Clock  onChange={this.handleEndChange.bind(this)}/>
+                  </div>
+                  <input type="submit" value="Publica"/>
                 </form>
             </div>
         );
