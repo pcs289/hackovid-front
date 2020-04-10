@@ -49,17 +49,17 @@ class Homepage extends Component {
             </div>
           </div>
         </div>
-        <div class="mobile-wrap">
+        <div className="mobile-wrap">
           <h2>Com funciona?</h2>
-          <div class="row r1">
-            <div class="imga">
+          <div className="row r1">
+            <div className="imga">
               <img
                 src={"/images/test 1.jpg"}
                 alt="Home amb la mascara"
                 className="hp-img"
               />
             </div>
-            <div class="descripcio-hp">
+            <div className="descripcio-hp">
               <div>
                 <h3>Com puc ajudar?</h3>
                 <p>
@@ -69,15 +69,15 @@ class Homepage extends Component {
               </div>
             </div>
           </div>
-          <div class="row r2">
-            <div class="imga">
+          <div className="row r2">
+            <div className="imga">
               <img
                 src={"/images/test 1.jpg"}
                 alt="Home amb la mascara"
                 className="hp-img"
               />
             </div>
-            <div class="descripcio-hp">
+            <div className="descripcio-hp">
               <div>
                 <h3>Com puc ajudar?</h3>
                 <p>
@@ -87,15 +87,15 @@ class Homepage extends Component {
               </div>
             </div>
           </div>
-          <div class="row r1">
-            <div class="imga">
+          <div className="row r1">
+            <div className="imga">
               <img
                 src={"/images/test 1.jpg"}
                 alt="Home amb la mascara"
                 className="hp-img"
               />
             </div>
-            <div class="descripcio-hp">
+            <div className="descripcio-hp">
               <div>
                 <h3>Com puc ajudar?</h3>
                 <p>
@@ -105,15 +105,15 @@ class Homepage extends Component {
               </div>
             </div>
           </div>
-          <div class="row r2">
-            <div class="imga">
+          <div className="row r2">
+            <div className="imga">
               <img
                 src={"/images/test 1.jpg"}
                 alt="Home amb la mascara"
                 className="hp-img"
               />
             </div>
-            <div class="descripcio-hp">
+            <div className="descripcio-hp">
               <div>
                 <h3>Com puc ajudar?</h3>
                 <p>

@@ -1,8 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../Context/AuthContext";
+import Dialog from "../components/Dialog";
 
 class Activities extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      display: false,
+    };
+  }
   render() {
     return (
       <>
@@ -19,6 +26,20 @@ class Activities extends Component {
                     <p style={{ color: "#a4d96c", fontWeight: 700 }}>
                       Inscripcions
                     </p>
+                    {/* <Dialog
+                      display={this.state.display}
+                      onClose={() =>
+                        this.setState({ display: !this.state.display })
+                      }
+                    />
+                    <button
+                      id="myBtn"
+                      onClick={() =>
+                        this.setState({ display: !this.state.display })
+                      }
+                    >
+                      Open Modal
+                    </button> */}
                   </div>
                 </div>
                 <div class="nav-column">

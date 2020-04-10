@@ -39,9 +39,9 @@ class AuthService {
   }
 
   profileUpdate(user) {
-    const { username, name, surname } = user;
+    const {name, surname} = user;
     return this.auth
-      .put("/profile/edit-profile", { username, name, surname })
+      .put("/profile/edit", { name, surname })
       .then(({ data }) => {
         return data;
       });
