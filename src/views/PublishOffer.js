@@ -76,9 +76,9 @@ class PublishOffer extends Component{
 
     render() {
         return (
-            <div className="activities-container" style={{'marginBottom':'1em'}}>
-                <form id="newpreference" onSubmit={this.createOffer}>
-                  Tipus:
+            <div className="activities-container">
+                <form id="newpreference" onSubmit={this.createOffer} style={{'marginBottom':'5em'}}>
+                  <h2>Publica una oferta</h2>
                   <div id="type" onChange={this.onChangeRadio}>
                     <label>
                     <input type="radio" id="type1" name="genderS" value="1"/>
@@ -93,16 +93,18 @@ class PublishOffer extends Component{
                     <input type="radio" id="type4" name="genderS" value="4"/>
                     <img src="../../images/toilet-paper.svg"/>Altres</label>
                   </div>
-                  Títol:
-                  <input type="text" name="title" onChange={this.handleChange} required/>
-                  Descripció:
-                  <input type="text" name="description" onChange={this.handleChange} required/>          
-                  Dia:<Calendar onChange={this.handleDateChange.bind(this)}/>
-                  Hora d'Inici:
-                  <Clock  onChange={this.handleIniChange.bind(this)}/>
-                  Hora Fi:
-                  <Clock  onChange={this.handleEndChange.bind(this)}/>
-                  <input type="submit" value="Accepta"/>
+                  <input type="text" name="title" placeholder="Títol" onChange={this.handleChange} required/>
+                  <input type="text" name="description" placeholder="Descripció" onChange={this.handleChange} required/>          
+                  <div className="time-input">
+                    <span>Dia:</span><Calendar onChange={this.handleDateChange.bind(this)}/>
+                  </div>
+                  <div className="time-input">
+                    <span>Hora d'Inici:</span><Clock  onChange={this.handleIniChange.bind(this)}/>
+                  </div>
+                  <div className="time-input">
+                    <span>Hora Fi:</span><Clock  onChange={this.handleEndChange.bind(this)}/>
+                  </div>
+                  <input type="submit" value="Publica"/>
                 </form>
             </div>
         );

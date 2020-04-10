@@ -45,6 +45,10 @@ viewport-with-navbar {
 	width:80%;
 }
 
+#newpreference input{
+	margin:1em;
+}
+
 #type{
 	display:flex;
 	flex-flow: row wrap;
@@ -96,3 +100,22 @@ viewport-with-navbar {
 	margin-top: 4px !important;
 	margin-bottom: 16px !important;
 }
+
+.time-input{
+	display:flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	padding-right: 20px;
+	padding-left: 20px;
+	div{
+		flex:3;
+
+	}
+	span{
+		flex:1;
+		text-align: left;
+		padding-right: 20px;
+	}
+}
+
