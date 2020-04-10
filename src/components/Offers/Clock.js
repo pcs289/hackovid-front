@@ -5,23 +5,14 @@ import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardTimePicker } from '@material-ui/pickers';
 
 class Clock extends Component{
-  constructor(props) {
-      super(props);
-      this.state = {
-        'selectedDate':''
-      };
-      this.handleDateChange = this.handleDateChange.bind(this);
-  }
 
-  componentDidMount() {
-  // The first commit of Material-UI
-    this.setState({'selectedDate':new Date('2014-08-18T21:11:54')});
-  }
+  state = {
+      isoTime: new Date().toISOString(),
+  };
 
-  handleDateChange = async event => {
-    this.setState({'selectedDate':this.selectedDate});
-    console.log(event.toISOString());
-    // this.props.onChange(event);
+  handleTimeChange = async event => {
+    await this.setState({'isoTime': event});
+    this.props.onChange(this.state.isoTime);
   };
 
   render() {
@@ -30,10 +21,8 @@ class Clock extends Component{
       <Grid container justify="space-around">
         <KeyboardTimePicker
           margin="normal"
-          id="time-picker"
-          label=""
-          value={this.selectedDate}
-          onChange={this.handleDateChange.bind(this)}
+          value={this.state.isoTime}
+          onChange={this.handleTimeChange.bind(this)}
           KeyboardButtonProps={{
             'aria-label': 'change time',
           }}

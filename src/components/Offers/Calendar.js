@@ -11,7 +11,7 @@ class MaterialUIPickers extends Component{
     };
 
     handleDateChange = async day => {
-        await this.setState({ isoDate: new Date(day).toISOString().substr(0, 10) })
+        await this.setState({ isoDate: new Date(day).toISOString().substr(0, 10) });
         this.props.onChange(this.state.isoDate);
     };
 
