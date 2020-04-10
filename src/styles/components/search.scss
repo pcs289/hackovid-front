@@ -1,0 +1,25 @@
+#div-search-input {
+  display: flex;
+  flex-direction: row;
+}
+
+#div-search-input img {
+  margin-left: 5%;
+  width: 20px;
+  max-height: 75px;
+}
+@media (min-width: 750px) {
+  #div-search-input img {
+    margin-left: 0;
+  }
+}
+
+#club-search-input {
+  border: none;
+  border-radius: 0;
+  border-bottom: 3px solid $green;
+  width: 85vw;
+  margin: 15px 0;
+  height: 5vh;
+  max-height: 42px;
+}
