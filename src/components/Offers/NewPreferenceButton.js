@@ -11,7 +11,7 @@ class NewPreferenceButton extends Component {
         return (
             <button id="newpreference-btn" onClick={this.props.addOffer} >
               <div id="">
-                <p>Nova preferència</p>
+                <p>Nova oferta</p>
               </div>
             </button> 
         );

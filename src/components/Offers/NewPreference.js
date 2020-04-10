@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { toast } from "react-toastify";
 import { Subject } from "rxjs";
 import { debounceTime } from "rxjs/operators";
 import Clock from "./Clock";
 import Day from "./Day";
 import Calendar from "./Calendar";
+import OfferService from '../../services/offerService'
 
 class NewPreference extends Component {
     constructor(props) {
@@ -18,25 +20,22 @@ class NewPreference extends Component {
       };
     }
 
+
     handleChange = async event => {
         const { name, value } = event.target;
         await this.setState({  ...this.state, [name]: value});
-        console.log(this.state);
       };
 
     handleDateChange = async date => {
         await this.setState({  ...this.state, 'Day': date});
-        console.log(this.state);
     }
 
-    handleIniChange = async date => {
-        await this.setState({  ...this.state, 'Day': date});
-        console.log(this.state);
+    handleIniChange = async hour => {
+        await this.setState({  ...this.state, 'Ini': hour});
     }
 
-    handleEndChange = async date => {
-        await this.setState({  ...this.state, 'Day': date});
-        console.log(this.state);
+    handleEndChange = async hour => {
+        await this.setState({  ...this.state, 'End': hour});
     }
 
     onChangeRadio = async event => {
@@ -48,29 +47,52 @@ class NewPreference extends Component {
               ...this.state,
               type: i
             });
-            console.log(this.state)
             break;
           }
         }
-    };    
+    };
+
+    createOffer = async event => {
+      event.preventDefault();
+      try {
+        const { type, title, description, Day, Ini, End} = this.state;
+      
+        const startDate = Day + "T" + Ini;
+        const endDate = Day + "T" + End;
+
+        var data = {
+          type, 
+          title, 
+          description, 
+          startDate, 
+          endDate
+        }
+        console.log(data)
+        await OfferService.handleCreateOffer(data);
+        this.props.acceptOffer();
+        toast.success(`Oferta registrada amb èxit!`);
+      } catch (error) {
+        console.error(error);
+      }
+    };   
 
     render() {
         return (
-            <form id="newpreference">
+            <form id="newpreference" onSubmit={this.createOffer}>
               Tipus:
               <div id="type" onChange={this.onChangeRadio}>
                 <label>
                 <input type="radio" id="type1" name="genderS" value="1"/>
-                Male</label>
+                <img src="../../images/food-delivery.svg"/>Compres</label>
                 <label>
                 <input type="radio" id="type2" name="genderS" value="2"/>
-                Female</label>
+                <img src="../../images/cross.svg"/>Salut</label>
                 <label>
                 <input type="radio" id="type3" name="genderS" value="3"/>
-                Trans</label>
+                <img src="../../images/elearning.svg"/>Educació</label>
                 <label>
                 <input type="radio" id="type4" name="genderS" value="4"/>
-                Other</label>
+                <img src="../../images/toilet-paper.svg"/>Altres</label>
               </div>
               Títol:
               <input type="text" name="title" onChange={this.handleChange} required/>
@@ -78,12 +100,10 @@ class NewPreference extends Component {
               <input type="text" name="description" onChange={this.handleChange} required/>          
               Dia:<Calendar onChange={this.handleDateChange.bind(this)}/>
               Hora d'Inici:
-              <Clock ini={this.ini} onChange={this.handleIniChange.bind(this)}/>
+              <Clock  onChange={this.handleIniChange.bind(this)}/>
               Hora Fi:
-              <Clock end={this.end} onChange={this.handleEndChange.bind(this)}/>
-              <button value="Accepta" onClick={this.props.acceptOffer}>
-                Accepta
-              </button>
+              <Clock  onChange={this.handleEndChange.bind(this)}/>
+              <input type="submit" value="Accepta"/>
             </form>
         );
     }

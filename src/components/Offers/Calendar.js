@@ -2,6 +2,7 @@ import 'date-fns';
 import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
+import { format } from 'date-fns';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -19,12 +20,15 @@ class MaterialUIPickers extends Component{
 
   async componentDidMount() {
   // The first commit of Material-UI
-    await this.setState({'selectedDate':new Date('2014-08-18T21:11:54')});
+    var today = new Date();
+    await this.setState({'selectedDate': today});
+    await this.handleDateChange(today)
   }
 
   handleDateChange = async day => {
     await this.setState({'selectedDate':day});
-    this.props.onChange(day);
+    var formattedDay = format(day,'yyyy-MM-dd');
+    this.props.onChange(formattedDay);
   };
 
   render() {
@@ -35,8 +39,8 @@ class MaterialUIPickers extends Component{
               margin="normal"
               id="date-picker-dialog"
               label=""
-              format="MM/dd/yyyy"
-              defaultValue={this.state.selectedDate}
+              format="dd/MM/yyyy"
+              value={this.state.selectedDate}
               onChange={this.handleDateChange.bind(this)}
               KeyboardButtonProps={{
                 'aria-label': 'change date',
