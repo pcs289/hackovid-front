@@ -8,7 +8,7 @@ class Activities extends Component {
       <>
         <div className="activities-container">
           <div id="page-name">
-            <h1>Sol·licituds</h1>
+            <h1>Gestionar</h1>
             <div class="sections-nav">
               <div class="nav-row">
                 <div class="nav-column">
@@ -19,7 +19,7 @@ class Activities extends Component {
                         textDecoration: "none",
                       }}
                     >
-                      <p>Pendents</p>
+                      <p>Les meves peticions</p>
                     </Link>
                   </div>
                 </div>
@@ -29,7 +29,7 @@ class Activities extends Component {
                 >
                   <div class="nav-column2">
                     <p style={{ color: "#a4d96c", fontWeight: 700 }}>
-                      Gestionades
+                      Les meves ofertes
                     </p>
                   </div>
                 </div>
