@@ -41,6 +41,7 @@ class App extends Component {
               <PrivateRoute exact path="/activitats" component={Activities} />
               <PrivateRoute exact path="/gestionades" component={Managed} />
               <PrivateRoute exact path="/perfil" component={Profile} />
+              <PrivateRoute exact path="/perfil/ofertes" component={Preferences} />
               <PrivateRoute
                 exact
                 path="/perfil/editar"

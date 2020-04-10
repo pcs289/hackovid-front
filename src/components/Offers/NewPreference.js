@@ -26,6 +26,7 @@ class NewPreference extends Component {
 
     handleDateChange = async date => {
         await this.setState({  ...this.state, 'Day': date});
+        console.log(this.state);
     }
 
     handleIniChange = async date => {

@@ -17,14 +17,14 @@ class MaterialUIPickers extends Component{
       this.handleDateChange = this.handleDateChange.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
   // The first commit of Material-UI
-    this.setState({'selectedDate':new Date('2014-08-18T21:11:54')});
+    await this.setState({'selectedDate':new Date('2014-08-18T21:11:54')});
   }
 
-  handleDateChange = async event => {
-    this.setState({'selectedDate':this.selectedDate});
-    this.props.onChange(event);
+  handleDateChange = async day => {
+    await this.setState({'selectedDate':day});
+    this.props.onChange(day);
   };
 
   render() {
@@ -36,7 +36,7 @@ class MaterialUIPickers extends Component{
               id="date-picker-dialog"
               label=""
               format="MM/dd/yyyy"
-              value={this.selectedDate}
+              defaultValue={this.state.selectedDate}
               onChange={this.handleDateChange.bind(this)}
               KeyboardButtonProps={{
                 'aria-label': 'change date',
