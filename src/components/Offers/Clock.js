@@ -18,6 +18,7 @@ export default function MaterialUIPickers() {
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <Grid container justify="space-around">
         <KeyboardTimePicker
           margin="normal"
           id="time-picker"
@@ -28,6 +29,7 @@ export default function MaterialUIPickers() {
             'aria-label': 'change time',
           }}
         />
+      </Grid>
     </MuiPickersUtilsProvider>
   );
 }
