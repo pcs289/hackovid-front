@@ -16,6 +16,22 @@
   }
 }
 
+.marker {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  max-width: 100px;
+  max-height: 100px;
+
+  a {
+    color: black;
+    cursor: none;
+    text-decoration: none;
+  }
+}
+
 .map-filters {
   display: flex;
   flex-flow: column nowrap;
@@ -97,14 +113,5 @@
         cursor: pointer;
       }
     }
-  }
-
-  .marker {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: stretch;
-
-
   }
 }
