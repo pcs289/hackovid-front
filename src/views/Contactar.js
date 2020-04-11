@@ -53,7 +53,6 @@ class Contactar extends Component {
                 <div id="profile-btn-div">
                   <div id="submit-reservation">
                     <div id="submit-datapicker" onClick={() => this.setState({ displayBio: !this.state.displayBio })}>
-                      Veure dades de Joe Doe
                       <div id="profile-btn-div">
                         <div id="submit-reservation">
                           <div id="submit-datapicker">Enviar petició</div>

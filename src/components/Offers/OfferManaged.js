@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
 import "moment/locale/ca";
+import {Link} from "react-router-dom";
 
 class OfferManaged extends Component{
 
