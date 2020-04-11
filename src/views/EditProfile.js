@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { withAuth } from "../Context/AuthContext";
 import AvatarImage from "../components/AvatarImage"
 import ImageService from '../services/ImagesService'
+import Backbar from "../components/Navigation/Backbar";
 
 
 class Profile extends Component {
@@ -54,6 +55,10 @@ class Profile extends Component {
 
     return (
       <div className="viewport-with-navbar">
+        <div id="page-name" style={{ display: "flex" }}>
+          <Backbar history={this.props.history} />
+          <h1 style={{ textTransform: "capitalize" }}>Editar Perfil</h1>
+        </div>
         <div className="editprofile-bg">
           <div className="editprofile-labels">
             <div className="row">

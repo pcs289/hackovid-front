@@ -26,7 +26,7 @@ class Activities extends Component {
                   textAlign: "start",
                   fontSize: "16px",
                 }}>Peticions acceptades</span>
-                <OfferManaged />
+                {/*<OfferManaged offer={1}/>*/}
             </div>
             <div className="profile-stats-card">
               <span style={{

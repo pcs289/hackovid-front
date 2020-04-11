@@ -1,8 +1,11 @@
 import React, {Component} from "react";
+import {Link} from "react-router-dom";
 
 class OfferManaged extends Component{
 
     render() {
+        const { offer, requests, edit, contact} = this.props;
+        console.log(offer);
         return (
             <div className="anunci-panell" style={{
                 backgroundColor: "#EAEAEA",
@@ -14,7 +17,7 @@ class OfferManaged extends Component{
                     textAlign: "start",
                     margin: "0",
                     fontSize: "16px",
-                }}>Classes de Català amb la Mañá</h3>
+                }}>{offer.title}</h3>
                 <p style={{
                     textAlign: "start",
                     fontSize: "12px",
@@ -32,25 +35,22 @@ class OfferManaged extends Component{
                         fontSize: "12px",
                     }}
                 >
-                    Search for the keywords to learn more about each warning. To
-                    ignore, add // eslint-disable-next-line to the line before.
+                    {offer.description}
                 </p>
                 <div className="profile-stats">
-                    <p>
-                <span
-                    className="btn"
-                    style={{
-                        padding: "10px",
-                    }}
-                >
-                  Editar
-                </span>
-                    </p>
-                    <p>
-                        <span>Sol·licituds</span>
-                        <br />
-                        (0)
-                    </p>
+
+                    { contact ?
+                        <p><span className="btn" style={{padding: "10px",}}><Link to={'/contactar/' + offer._id}>Contacta</Link></span></p>
+                        : null }
+
+                    { edit ?
+                        <p><span className="btn" style={{padding: "10px",}}>Editar</span></p>
+                        : null }
+
+                    { requests ?
+                            <p><span>Sol·licituds</span><br />({requests})</p>
+                            : null
+                    }
                 </div>
             </div>
         );

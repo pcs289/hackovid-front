@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { withAuth } from "../Context/AuthContext";
 import MapFilters from "../components/Map/MapFilters";
 import mapService from "../services/mapService";
+import OfferManaged from "../components/Offers/OfferManaged";
 
 class Cercar extends Component {
   state = {
@@ -83,40 +84,9 @@ class Cercar extends Component {
                 <h2 style={{ textAlign: "start", margin: "0 0 10px 0" }}>
                   Ofertes de Voluntariat
                 </h2>
-                <div className="anunci-panell">
-                  <h3 className="post-title">Classes de Català amb la Mañá</h3>
-                  <p
-                    style={{
-                      color: "#989898"
-                    }}
-                  >
-                    0.3 km | 17:30h | 22/04 | Educació
-                  </p>
-
-                  <p
-                    style={{
-                      margin: "10px 0 10px 0"
-                    }}
-                  >
-                    Search for the keywords to learn more about each warning. To
-                    ignore, add // eslint-disable-next-line to the line before.
-                  </p>
-                  <Link
-                    to="/contactar/123123"
-                    style={{
-                      textDecoration: "none"
-                    }}
-                  >
-                    <span
-                        className="btn"
-                      style={{
-                        padding: "10px"
-                      }}
-                    >
-                      Contactar
-                    </span>
-                  </Link>
-                </div>
+                { this.state.offers.map((offer, i) => {
+                  return <OfferManaged key={i} offer={offer} contact={true} edit={false} requests={0}/>;
+                })}
               </div>
             </div>
           </>

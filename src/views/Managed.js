@@ -11,11 +11,11 @@ class Activities extends Component {
           <div className="bottom-break-nav">
               <div className="profile-stats-card">
                   <h2 style={{ textAlign: "start", margin: "0 0 10px 0" }}>Ofertes actives</h2>
-                  <OfferManaged />
+                  {/*<OfferManaged offer={1}/>*/}
               </div>
               <div className="profile-stats-card">
                   <h2 style={{ textAlign: "start", margin: "0 0 10px 0" }}>Ofertes passades</h2>
-                  <OfferManaged />
+                  {/*<OfferManaged offer={1}/>*/}
               </div>
           </div>
         </div>
