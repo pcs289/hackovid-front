@@ -6,7 +6,7 @@ class Dialog extends Component {
 
     render() {
         return (
-            <div className="modal" style={{ display: this.props.display ? 'block' : 'none' }}>
+            <div className="modal" style={{ display: this.props.display ? 'flex' : 'none' }}>
                 <div className="modal-content">
                     <div className="header">
                         <button className="close-button" onClick={() => this.props.onClose()}>

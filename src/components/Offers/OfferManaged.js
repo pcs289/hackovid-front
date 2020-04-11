@@ -6,7 +6,7 @@ class OfferManaged extends Component{
         return (
             <div className="anunci-panell" style={{
                 backgroundColor: "#EAEAEA",
-                margin: "3%",
+                margin: "2.5%",
                 padding: "5%",
                 borderRadius: "7px",
             }}>
@@ -36,17 +36,28 @@ class OfferManaged extends Component{
                     ignore, add // eslint-disable-next-line to the line before.
                 </p>
                 <div className="profile-stats">
-                    <p>
-                <span
+                <button
                     className="btn"
                     style={{
-                        padding: "10px",
+                        padding: "5px",
+                        margin: "0",
+                        height: "10%",
                     }}
                 >
                   Editar
-                </span>
-                    </p>
-                    <p>
+                </button>
+                        <button
+                            className="btn"
+                            style={{
+                                padding: "5px",
+                                margin: "0",
+                                height: "10%",
+                            }}
+                            onClick={() => this.props.onClick()}
+                        >
+                            Mes Info
+                        </button>
+                    <p className="requests-count">
                         <span>Sol·licituds</span>
                         <br />
                         (0)

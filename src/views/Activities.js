@@ -9,51 +9,81 @@ class Activities extends Component {
     super(props);
     this.state = {
       display: false,
+        acceptedExpand: true,
+        canceledExpand: false,
+        pendingExpand: false
     };
   }
   render() {
     return (
       <>
-        <div className="activities-container"> <OffersTab tab="activities"  />
-          <div className="bottom-break-nav">
+        <div className="app-container">
+            <div className="activities-container">
+            <OffersTab tab="activities"/>
             <div className="profile-stats-card">
-              <span style={{
-                  backgroundColor: "rgb(90,152,78)",
-                  margin: "15px 0",
-                  padding: "5px",
-                  color: "#fff",
-                  borderRadius: "7px",
-                  textAlign: "start",
-                  fontSize: "16px",
-                }}>Peticions acceptades</span>
-                <OfferManaged />
+                <div className="profile-stats-card-header">
+                    <div className="title-container">
+              <span className="title" style={{backgroundColor: "#a4d96c", color: "#fff"}}>Peticions acceptades</span>
+                    </div>
+                    <div className="icon-container">
+                        <button className="arrow-button" onClick={() =>
+                            this.setState({ acceptedExpand: !this.state.acceptedExpand })
+                        }>
+                    <img className="arrow-icon" style={{  transform: this.state.acceptedExpand ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                         src="../../images/chevron.svg"
+                         alt="close-cross"
+                    ></img>
+                        </button>
+                    </div>
+                </div>
+                <div style={{ display: this.state.acceptedExpand ? 'block' : 'none' }}>
+                    <OfferManaged onClick={() =>
+                        this.setState({ display: !this.state.display })
+                    }/>
+                </div>
             </div>
-            <div className="profile-stats-card">
-              <span style={{
-                  backgroundColor: "rgb(242,157,105)",
-                  margin: "15px 0",
-                  padding: "5px",
-                  color: "#fff",
-                  borderRadius: "7px",
-                  textAlign: "start",
-                  fontSize: "16px",
-                }}>Peticions pendents</span>
-            </div>
-            <div className="profile-stats-card">
-              <span
-                style={{
-                  backgroundColor: "rgb(184,92,89)",
-                  margin: "15px 0",
-                  padding: "5px",
-                  color: "#fff",
-                  borderRadius: "7px",
-                  textAlign: "start",
-                  fontSize: "16px",
-                }}
-              >
-                Peticions denegades
-              </span>
-            </div>
+                <div className="profile-stats-card">
+                    <div className="profile-stats-card-header">
+                        <div className="title-container">
+                            <span className="title" style={{backgroundColor: "#eebb2d", color: "#fff"}}>Peticions acceptades</span>
+                        </div>
+                        <div className="icon-container">
+                            <button className="arrow-button" onClick={() =>
+                                this.setState({ pendingExpand: !this.state.pendingExpand })
+                            }>
+                                <img className="arrow-icon" style={{  transform: this.state.pendingExpand ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                                     src="../../images/chevron.svg"
+                                     alt="close-cross"
+                                ></img>
+                            </button>
+                        </div>
+                    </div>
+                    <div style={{ display: this.state.pendingExpand ? 'block' : 'none' }}>
+                        <OfferManaged onClick={() =>
+                            this.setState({ display: !this.state.display })}/>
+                    </div>
+                </div>
+                <div className="profile-stats-card">
+                    <div className="profile-stats-card-header">
+                        <div className="title-container">
+                            <span className="title" style={{backgroundColor: "#f64747", color: "#fff"}}>Peticions cancelades</span>
+                        </div>
+                        <div className="icon-container">
+                            <button className="arrow-button" onClick={() =>
+                                this.setState({ canceledExpand: !this.state.canceledExpand })
+                            }>
+                                <img className="arrow-icon" style={{  transform: this.state.canceledExpand ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                                     src="../../images/chevron.svg"
+                                     alt="close-cross"
+                                ></img>
+                            </button>
+                        </div>
+                    </div>
+                    <div style={{ display: this.state.canceledExpand ? 'block' : 'none' }}>
+                        <OfferManaged onClick={() =>
+                            this.setState({ display: !this.state.display })}/>
+                    </div>
+                </div>
 
               <Dialog
                       display={this.state.display}
@@ -61,14 +91,6 @@ class Activities extends Component {
                         this.setState({ display: !this.state.display })
                       }
                     />
-                    <button
-                      id="myBtn"
-                      onClick={() =>
-                        this.setState({ display: !this.state.display })
-                      }
-                    >
-                      Open Modal
-                    </button>
 
             {/* <div class="myrequests-card">
               <img
