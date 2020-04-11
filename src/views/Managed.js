@@ -6,7 +6,7 @@ import Dialog from "../components/Dialog";
 import offerService from "../services/offerService";
 import LoadingView from "./LoadingView";
 
-class Activities extends Component {
+class Managed extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -30,13 +30,13 @@ class Activities extends Component {
         await this.setState({ ...this.state, offers });
 
         const activeOffers = offers.filter((offer) => offer.status === 1);
-        await this.setState({ ...this.state, activeOffers });
+        await this.setState({ ...this.state, activeOffers, activeExpand: activeOffers.length > 0 });
 
         const pendingOffers = offers.filter((offer) => offer.status === 2);
-        await this.setState({ ...this.state, pendingOffers });
+        await this.setState({ ...this.state, pendingOffers, pendingExpand: pendingOffers.length > 0 });
 
         const restOffers = offers.filter((offer) => offer.status === 3 || offer.status === 4);
-        await this.setState({ ...this.state, restOffers });
+        await this.setState({ ...this.state, restOffers, doneExpand: restOffers.length > 0 });
     };
 
     render() {
@@ -50,7 +50,7 @@ class Activities extends Component {
                         <>
                             <div className="profile-stats-card">
                                 <div style={{display: "flex", flexFlow: 'row nowrap', justifyContent: 'space-between'}}>
-                                        <span className="title" style={{color: "#a4d96c", fontWeight: "bold"}}>Actives ({activeOffers.length})</span>
+                                    <span className="title" style={{color: "#a4d96c", fontWeight: "bold"}}>Actives ({activeOffers.length})</span>
                                     <div className="icon-container" onClick={() => this.setState({ activeExpand: !this.state.activeExpand })}>
                                         <img className="arrow-icon" style={{ width: '25px', height: '25px', transform: !this.state.activeExpand ? 'rotate(90deg)' : 'rotate(0deg)' }} src="../../images/chevron.svg" alt="close-cross"></img>
                                     </div>
@@ -101,4 +101,4 @@ class Activities extends Component {
   }
 }
 
-export default withAuth(Activities);
+export default withAuth(Managed);
