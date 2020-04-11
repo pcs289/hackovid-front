@@ -17,7 +17,7 @@ class MapView extends Component {
         return (
           <>
             <div className="activities-container">
-                <div id="page-name"><h1>Mapa d'anuncies</h1></div>
+                <div id="page-name"><h1>Mapa d'Anuncis</h1></div>
                 <div className="profile-stats-card">
                     <div>
                         <h2 style={{ textAlign: "start", margin: "0 0 10px 0" }}>Filtres</h2>

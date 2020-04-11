@@ -90,7 +90,7 @@ class Cercar extends Component {
                   Ofertes de Voluntariat
                 </h2>
                   {isLoading ?
-                      <LoadingView /> : null
+                      <LoadingView showText={false} /> : null
                   }
                   {!isLoading && offers && offers.length === 0 ?
                       <div>
