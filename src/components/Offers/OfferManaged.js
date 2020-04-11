@@ -65,13 +65,12 @@ class OfferManaged extends Component{
                     {offer.description}
                 </p>
 
-                <p
-                    style={{
-                        margin: "10px 0 10px 0"
-                    }}
-                >
-                    De {offer.username} a {offer.proximity.toFixed(1)} km
-                </p>
+                { offer.proximity && offer.username ?
+                    <p style={{margin: "10px 0 10px 0"}}>
+                        De {offer.username} a {offer.proximity.toFixed(1)} km
+                    </p> : null
+                }
+
                 <div className="profile-stats">
 
                     { contact ?
@@ -83,8 +82,10 @@ class OfferManaged extends Component{
                         : null }
 
                     { requests ?
-                            <p><span>Sol·licituds</span><br />({requests})</p>
-                            : null
+                        <>
+                            <p><span>Sol·licituds</span><br />({offer.requests.length})</p>
+                            <p><span className="btn" style={{padding: "10px",}}>Veure-les</span></p>
+                         </>   : null
                     }
                 </div>
             </div>

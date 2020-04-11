@@ -3,18 +3,30 @@ import { withAuth } from "../Context/AuthContext";
 import Dialog from "../components/Dialog";
 import OffersTab from "../components/Navigation/OffersTab";
 import OfferManaged from "../components/Offers/OfferManaged";
+import requestService from '../services/requestService';
 
 class Activities extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      display: false,
+        display: false,
         acceptedExpand: true,
         canceledExpand: false,
-        pendingExpand: false
+        pendingExpand: false,
+        requests: []
     };
   }
-  render() {
+
+  componentDidMount() {
+    this.getRequests();
+  }
+
+  async getRequests() {
+      const requests = await requestService.getMyRequests();
+      await this.setState({ ...this.state, requests });
+  };
+
+    render() {
     return (
       <>
           <div className="activities-container">
