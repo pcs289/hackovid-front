@@ -16,10 +16,12 @@
   }
 }
 
+.mapboxgl-marker {
+    cursor:pointer !important;
+  }
+
 .marker {
   text-align: center;
-  max-width: 200px;
-  max-height: 100px;
 
   h3 {
     margin-bottom: 3px;
@@ -66,7 +68,7 @@
       list-style: none;
       padding: 5px;
       border-radius: 15px;
-
+      cursor:pointer;
       img {
         width: 40px;
       }

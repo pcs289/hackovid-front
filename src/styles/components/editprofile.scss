@@ -33,13 +33,6 @@
 	padding: 5px;
 }
 
-.editprofile-labels .row input{
-	border-radius: 5px;
-	border: 0.5px solid gray;
-	padding: 5px;
-  max-width: 100%;
-}
-
 .edit-profile-picture{
 	position:relative;	
 }
@@ -68,13 +61,16 @@
 /* The icon inside the overlay is positioned in the middle vertically and horizontally */
 .icon {
   color: white;
-  font-size: 100px;
+  font-size: 50px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   text-align: center;
+  input{
+    display: none;
+  }
 }
 
 .overlay>input {
@@ -84,5 +80,10 @@
 .overlay label{
 	margin:0 auto;
 	cursor:pointer;
+}
+
+#edit-profile-save{
+  justify-content: center;
+  cursor: pointer;
 }
 

@@ -29,7 +29,7 @@ class OfferManaged extends Component{
                 >
                     <img
                         className="badge-img"
-                        src={categoriaTipo[offer.type + 1]}
+                        src={categoriaTipo[offer.type]}
                         alt="altres"
                     />
                     <h3
@@ -70,7 +70,7 @@ class OfferManaged extends Component{
                         margin: "10px 0 10px 0"
                     }}
                 >
-                    De {offer.creator} a {offer.proximity.toFixed(1)} km
+                    De {offer.username} a {offer.proximity.toFixed(1)} km
                 </p>
                 <div className="profile-stats">
 

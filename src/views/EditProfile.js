@@ -28,11 +28,12 @@ class Profile extends Component {
     e.preventDefault();
     try {
       const { name, surname} = this.state;
-      this.props.handleProfileUpdate({
+      await this.props.handleProfileUpdate({
         name,
         surname,
       });
       toast.success(`Canvis guardats amb èxit!`);
+      this.props.history.push('/perfil');
     } catch (error) {
       console.error('Error when saving changes');
     }
@@ -75,24 +76,18 @@ class Profile extends Component {
             <div className="user-profile overlay">
               <label className="icon" title="User Profile">
                 <i className="fa fa-camera"></i>
+                <input type="file" id="avatar" name="file" accept="image/png" onChange={this.onChange}/>
               </label>
-              <input type="file" id="avatar" name="file" accept="image/png" onChange={this.onChange}/>
+              
             </div>
           </div>
         </div>
         <div>
-          <button className="profile-div" onClick={this.onClickSave} >
-            <div id="profile-btn">
-              <p>Desa els canvis</p>
-            </div>
-            <div>
-              <img
-                id="category-img"
-                src="../../images/edit-profile.svg"
-                alt="editar-perfil"
-              ></img>
-            </div>
-          </button>          
+        <form onSubmit={this.onClickSave}>
+          <input type="submit" id="edit-profile-save" className="profile-div" value="Desa els canvis">
+              
+          </input> 
+        </form>         
         </div>
       </div>
     );

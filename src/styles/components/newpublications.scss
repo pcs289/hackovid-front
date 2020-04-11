@@ -54,6 +54,9 @@ viewport-with-navbar {
 	flex-flow: row wrap;
 	width: 100%;
 	justify-content: space-between;
+	label{
+		cursor:pointer;
+	}
 }
 
 .list{
@@ -117,5 +120,9 @@ viewport-with-navbar {
 		text-align: left;
 		padding-right: 20px;
 	}
+}
+
+.MuiIconButton-label{
+	padding:0px !important;
 }
 
