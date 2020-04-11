@@ -8,7 +8,7 @@ class Topbar extends Component {
       <div className="banner_header">
         <Link to="/">
           <img
-            src={"/images/logo.png"}
+            src={"/images/apropapp.png"}
             className="logo logo-large"
             alt="Pim Pam Pum"
           />

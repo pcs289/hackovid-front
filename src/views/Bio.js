@@ -7,7 +7,7 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    const { match : { params: { userId }}} = this.props;
+    const { userId } = this.props;
     console.log('Fetching bio for user #' + userId);
   }
 

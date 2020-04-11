@@ -24,7 +24,7 @@ class Map extends Component {
       zoom: 13,
     },
     userLocation: {},
-    neighbors: [],
+    offers: [],
     isLoading: true,
     popupsStatus: false,
   };
@@ -43,13 +43,13 @@ class Map extends Component {
       }
     });
     if (this.props.user.location.coordinates) {
-      this.getNeighbors();
+      this.getOffers();
     }
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if(prevProps.filters !== this.props.filters) {
-      this.getNeighbors();
+      this.getOffers();
     }
   }
 
@@ -71,12 +71,12 @@ class Map extends Component {
 
   mapRef = React.createRef();
 
-  async getNeighbors() {
+  async getOffers() {
     await this.setState({ isLoading: true });
     const filteredRadius = this.props.filters ? this.props.filters.radius : 1000;
     const filteredDayOfWeek = this.props.filters ? this.props.filters.dayOfWeek : 1;
-    const { neighbors } = await mapService.getNeighbours(filteredRadius, filteredDayOfWeek);
-    await this.setState({ neighbors });
+    const { offers } = await mapService.getNeighbours(filteredRadius, filteredDayOfWeek);
+    await this.setState({ offers });
     await this.setState({ isLoading: false });
   }
 
@@ -99,7 +99,7 @@ class Map extends Component {
     this.setState({ userLocation: { latitude: location.coords.latitude,longitude: location.coords.longitude }});
     profileService.updateLocation(this.state.userLocation).then((response) => {
       if(response.code === "success") {
-        this.getNeighbors();
+        this.getOffers();
       } else {
         // TODO: Manage failed updated location UI Alert
         console.log("onGeolocate Error: " + response.code);
@@ -139,15 +139,15 @@ class Map extends Component {
               />
 
 
-              {this.state.neighbors.map((neighbor, i) => {
+              {this.state.offers.map((offer, i) => {
                 return <PreferenceMarker
                     key={i}
-                    neighbor={neighbor}
+                    offer={offer}
                     popupsToggle={this.popupsToggle}
                     zoom={viewport.zoom}
                     {...this.props}
-                    latitude={neighbor.location.coordinates[1]}
-                    longitude={neighbor.location.coordinates[0]} />
+                    latitude={offer.location.coordinates[1]}
+                    longitude={offer.location.coordinates[0]} />
               })
               }
 

@@ -60,7 +60,7 @@ class OfferManaged extends Component{
                     <p className="requests-count">
                         <span>Sol·licituds</span>
                         <br />
-                        (0)
+                        <span>(0)</span>
                     </p>
                 </div>
             </div>

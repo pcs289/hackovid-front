@@ -91,33 +91,7 @@ class Activities extends Component {
                         this.setState({ display: !this.state.display })
                       }
                     />
-
-            {/* <div class="myrequests-card">
-              <img
-                class="requester-profile-pic"
-                src="../../images/add-contact.svg"
-                alt="requester-avatar"
-              />
-              <div class="requester-btn-div">
-                <p style={{ fontWeight: "bold" }}>*Preference: Joe Doe</p>
-                <p class="requester-name-card">
-                  At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                  blanditiis praesentium voluptatum deleniti atque corrupti quos
-                  dolores et quas molestias excepturi sint occaecati cupiditate
-                  non provident, similique sunt in culpa qui officia deserunt
-                  mollitia animi, id est laborum et dolorum fuga.
-                </p>
-                <div class="petitions-btn">
-                  <div class="petition-span-btn">Acceptar</div>
-                  <div
-                    class="petition-span-btn"
-                    style={{ backgroundColor: "rgb(237, 92, 115)" }}
-                  >
-                    Denegar
-                  </div>
-                </div>
-              </div>
-            </div> */}
+                    }
           </div>
         </div>
       </>

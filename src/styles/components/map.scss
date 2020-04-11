@@ -16,6 +16,37 @@
   }
 }
 
+.marker {
+  text-align: center;
+  max-width: 200px;
+  max-height: 100px;
+
+  h3 {
+    margin-bottom: 3px;
+    overflow-wrap: break-word;
+  }
+
+  p {
+    margin-top: 2px;
+    overflow-wrap: break-word;
+  }
+
+  a {
+    border: 2px solid black;
+    border-radius: 16px;
+    padding: 8px;
+    color: #a4d96c;
+    cursor: auto;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #a4d96c;
+      color: black;
+      cursor: pointer;
+    }
+  }
+}
+
 .map-filters {
   display: flex;
   flex-flow: column nowrap;
@@ -97,14 +128,5 @@
         cursor: pointer;
       }
     }
-  }
-
-  .marker {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: stretch;
-
-
   }
 }

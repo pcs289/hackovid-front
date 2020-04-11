@@ -25,7 +25,7 @@
     border-radius: 10px;
     max-width: 400px;
     max-height: 400px;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     width: 90%;
     height: 90%;
@@ -103,7 +103,7 @@
 
 .text-name {
     font-size: 16px;
-    align-self: start;
+    align-self: flex-start;
     font-weight: 550;
     margin: 2.5%;
     padding-left: 2.5%;
@@ -111,7 +111,7 @@
 
 .text-description {
     font-size: 12px;
-    align-self: start;
+    align-self: flex-start;
     font-weight: 500;
     margin-top: 2.5%;
     text-align: left;
