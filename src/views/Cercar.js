@@ -14,7 +14,10 @@ class Cercar extends Component {
   };
 
   async componentDidMount() {
-    this.getNeighbours();
+    const searchParams = new URLSearchParams(this.props.location.search);
+    if (!searchParams.has('r') && !searchParams.has('dow')) {
+      this.getNeighbours();
+    }
   }
 
   async onFiltersChange(changedFilter) {
@@ -45,7 +48,7 @@ class Cercar extends Component {
               <div className="profile-stats-card">
                 <div>
                   <h2 style={{ textAlign: "start", margin: "0 0 10px 0" }}>Filtres</h2>
-                  <MapFilters onFiltersChange={this.onFiltersChange.bind(this)}/>
+                  <MapFilters {...this.props} onFiltersChange={this.onFiltersChange.bind(this)}/>
 {/*
                   <div class="badges">
                     <ul>
@@ -97,7 +100,7 @@ class Cercar extends Component {
                           No hi ha ofertes amb els filtres actuals.
                       </div> : null
                   }
-                  {offers && offers.map((offer, i) => {
+                  {!isLoading && offers && offers.map((offer, i) => {
                     return <OfferManaged key={i} offer={offer} contact={true} edit={false} requests={0} />;
                   })}
               </div>

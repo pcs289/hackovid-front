@@ -19,7 +19,7 @@ class Dialog extends Component {
                     <div className="user-info">
                         <p className="title-text">Has acceptat l'ajuda de:</p>
                         <div className="info">
-                            <AvatarImage avatarImage={this.props.user.avatarImage} />
+                            <AvatarImage avatarImg={this.props.user.avatarImg} />
                             <div className="text-info">
                                 <p className="text-name">{this.props.user.name} {this.props.user.surname}</p>
                                 <p className="text-description">This allows the default alignment (or the one specified by align-items) to be overridden for individual flex items</p>

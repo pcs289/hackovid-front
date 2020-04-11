@@ -13,6 +13,9 @@ class RequestService {
          return this.http.post('/requests/create', formData).then(response => response.data);
     };
 
+    getMyRequests() {
+        return this.http.get('/requests/list').then(res => res.data);
+    }
 }
 
 const requestService = new RequestService();

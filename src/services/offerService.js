@@ -17,6 +17,10 @@ class OfferService {
         return this.http.get('/offers/' + offerId).then(res => res.data);
     }
 
+    getMyOffers() {
+        return this.http.get('/offers/list').then(res => res.data);
+    }
+
 }
 
 const offerService = new OfferService();

@@ -3,79 +3,100 @@ import { withAuth } from "../Context/AuthContext";
 import Dialog from "../components/Dialog";
 import OffersTab from "../components/Navigation/OffersTab";
 import OfferManaged from "../components/Offers/OfferManaged";
+import requestService from '../services/requestService';
+import LoadingView from "./LoadingView";
 
 class Activities extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      display: false,
-        acceptedExpand: true,
+        display: false,
+        pendingExpand: true,
+        acceptedExpand: false,
         canceledExpand: false,
-        pendingExpand: false
+        requests: null,
+        pendingRequests: [],
+        acceptedRequests: [],
+        deniedRequests: [],
     };
   }
-  render() {
-    return (
-      <>
-          <div className="activities-container">
-            <OffersTab tab="activities"/>
-            <div className="profile-stats-card">
-                <div className="profile-stats-card-header">
-                    <div className="title-container">
-                     <span className="title" style={{backgroundColor: "#a4d96c", color: "#fff"}}>Peticions acceptades</span>
-                    </div>
-                    <div className="icon-container">
-                        <button className="arrow-button" onClick={() => this.setState({ acceptedExpand: !this.state.acceptedExpand })}>
-                            <img className="arrow-icon" style={{  transform: this.state.acceptedExpand ? 'rotate(180deg)' : 'rotate(0deg)' }} src="../../images/chevron.svg" alt="close-cross"></img>
-                        </button>
-                    </div>
+
+  componentDidMount() {
+    this.getRequests();
+  }
+
+  async getRequests() {
+      const requests = await requestService.getMyRequests();
+      await this.setState({ ...this.state, requests });
+
+      const pendingRequests = requests.filter((request) => request.status === 0);
+      await this.setState({ ...this.state, pendingRequests, pendingExpand: pendingRequests.length > 0 });
+
+      const acceptedRequests = requests.filter((request) => request.status === 1);
+      await this.setState({ ...this.state, acceptedRequests, acceptedExpand: acceptedRequests.length > 0 });
+
+      const deniedRequests = requests.filter((request) => request.status === 2 || request.status === 3); // Denied or Cancelled Requests
+      await this.setState({ ...this.state, deniedRequests, canceledExpand: deniedRequests.length > 0 });
+
+  };
+
+    render() {
+        const {pendingRequests, acceptedRequests, deniedRequests} = this.state;
+        return (
+            <>
+                <div className="activities-container">
+                    <OffersTab tab="activities"/>
+
+                    { this.state.requests ?
+                        <>
+                            <div className="profile-stats-card">
+                                <div style={{display: "flex", flexFlow: 'row nowrap', justifyContent: 'space-between'}}>
+                                    <span className="title" style={{color: "#a4d96c", fontWeight: "bold"}}>Pendents de Resposta ({pendingRequests.length})</span>
+                                    <div className="icon-container" onClick={() => this.setState({ pendingExpand: !this.state.pendingExpand })}>
+                                        <img className="arrow-icon" style={{ width: '25px', height: '25px', transform: !this.state.pendingExpand ? 'rotate(90deg)' : 'rotate(0deg)' }} src="../../images/chevron.svg" alt="close-cross"></img>
+                                    </div>
+                                </div>
+                                <div style={{ display: this.state.activeExpand ? 'block' : 'none' }}>
+                                    { pendingRequests.map((offer, i) => {
+                                        return <OfferManaged key={i} offer={offer} edit={true} />;
+                                    })}
+                                </div>
+                            </div>
+
+                            <div className="profile-stats-card">
+                                <div style={{display: "flex", flexFlow: 'row nowrap', justifyContent: 'space-between'}}>
+                                    <span className="title" style={{color: "#a4d96c", fontWeight: "bold"}}>Acceptades ({acceptedRequests.length})</span>
+                                    <div className="icon-container" onClick={() => this.setState({ acceptedExpand: !this.state.acceptedExpand })}>
+                                        <img className="arrow-icon" style={{ width: '25px', height: '25px', transform: !this.state.acceptedExpand ? 'rotate(90deg)' : 'rotate(0deg)' }} src="../../images/chevron.svg" alt="close-cross"></img>
+                                    </div>
+                                </div>
+                                <div style={{ display: this.state.acceptedExpand ? 'block' : 'none' }}>
+                                    { acceptedRequests.map((offer, i) => {
+                                        return <OfferManaged key={i} offer={offer} requests={true}/>;
+                                    })}
+                                </div>
+                            </div>
+
+                            <div className="profile-stats-card">
+                                <div style={{display: "flex", flexFlow: 'row nowrap', justifyContent: 'space-between'}}>
+                                    <span className="title" style={{color: "#a4d96c", fontWeight: "bold"}}>Denegades ({deniedRequests.length})</span>
+                                    <div className="icon-container" onClick={() => this.setState({ canceledExpand: !this.state.canceledExpand })}>
+                                        <img className="arrow-icon" style={{ width: '25px', height: '25px', transform: !this.state.canceledExpand ? 'rotate(90deg)' : 'rotate(0deg)' }} src="../../images/chevron.svg" alt="close-cross"></img>
+                                    </div>
+                                </div>
+                                <div style={{ display: this.state.canceledExpand ? 'block' : 'none' }}>
+                                    { deniedRequests.map((offer, i) => {
+                                        return <OfferManaged key={i} offer={offer} />;
+                                    })}
+                                </div>
+                            </div>
+
+                        </>
+                        : <LoadingView showText={false} /> }
+
                 </div>
-                <div style={{ display: this.state.acceptedExpand ? 'block' : 'none' }}>
-                    {/*<OfferManaged onClick={() => this.setState({ display: !this.state.display })}/>*/}
-                </div>
-            </div>
-            <div className="profile-stats-card">
-                <div className="profile-stats-card-header">
-                    <div className="title-container">
-                        <span className="title" style={{backgroundColor: "#eebb2d", color: "#fff"}}>Peticions acceptades</span>
-                    </div>
-                    <div className="icon-container">
-                        <button className="arrow-button" onClick={() =>
-                            this.setState({ pendingExpand: !this.state.pendingExpand })
-                        }>
-                            <img className="arrow-icon" style={{  transform: this.state.pendingExpand ? 'rotate(180deg)' : 'rotate(0deg)' }}
-                                 src="../../images/chevron.svg"
-                                 alt="close-cross"
-                            ></img>
-                        </button>
-                    </div>
-                </div>
-                <div style={{ display: this.state.pendingExpand ? 'block' : 'none' }}>
-                    {/*<OfferManaged onClick={() => this.setState({ display: !this.state.display })}/>*/}
-                </div>
-            </div>
-            <div className="profile-stats-card">
-                <div className="profile-stats-card-header">
-                    <div className="title-container">
-                        <span className="title" style={{backgroundColor: "#f64747", color: "#fff"}}>Peticions cancelades</span>
-                    </div>
-                    <div className="icon-container">
-                        <button className="arrow-button" onClick={() => this.setState({ canceledExpand: !this.state.canceledExpand })}>
-                            <img className="arrow-icon" style={{  transform: this.state.canceledExpand ? 'rotate(180deg)' : 'rotate(0deg)' }}
-                                 src="../../images/chevron.svg"
-                                 alt="close-cross"
-                            ></img>
-                        </button>
-                    </div>
-                </div>
-                <div style={{ display: this.state.canceledExpand ? 'block' : 'none' }}>
-                    {/*<OfferManaged onClick={() => this.setState({ display: !this.state.display })}/>*/}
-                </div>
-            </div>
-            <Dialog display={this.state.display} onClose={() => this.setState({ display: !this.state.display })}/>
-          </div>
-      </>
-    );
+            </>
+        );
   }
 }
 

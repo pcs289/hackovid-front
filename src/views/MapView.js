@@ -21,7 +21,7 @@ class MapView extends Component {
                 <div className="profile-stats-card">
                     <div>
                         <h2 style={{ textAlign: "start", margin: "0 0 10px 0" }}>Filtres</h2>
-                        <MapFilters onFiltersChange={this.onFiltersChange.bind(this)}/>
+                        <MapFilters {...this.props} onFiltersChange={this.onFiltersChange.bind(this)}/>
                     </div>
                 </div>
                 <Map { ...this.props } filters={this.state.filters}/>

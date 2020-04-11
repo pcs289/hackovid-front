@@ -2,17 +2,8 @@ import 'date-fns';
 import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
-import { DialogContentText } from '@material-ui/core';
 import { format } from 'date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-} from '@material-ui/pickers';
-import {
-  makeStyles,
-  createMuiTheme,
-  MuiThemeProvider
-} from "@material-ui/core/styles";
+import { MuiPickersUtilsProvider, KeyboardTimePicker } from '@material-ui/pickers';
 import caLocale from "date-fns/locale/ca";
 
 class Clock extends Component{
@@ -34,16 +25,6 @@ class Clock extends Component{
     var formattedHour = format(hora,'hh:mm:ss');
     this.props.onChange(formattedHour);
   };
-
-  theme = createMuiTheme({
-  props: {
-    // Name of the component ⚛️
-    MuiButtonBase: {
-      // The default props to change
-      disableRipple: true, // No more ripple, on the whole application 💣!
-    },
-  },
-});
 
   render() {
   return (
