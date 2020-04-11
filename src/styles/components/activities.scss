@@ -171,3 +171,123 @@
   margin: 0 auto 5px auto;
   display: block;
 }
+
+//Cercar
+
+.anunci-panell {
+  background-color: #eaeaea;
+  margin: 3%;
+  padding: 5%;
+  border-radius: 7px;
+}
+
+.anunci-panell p {
+  text-align: start;
+  font-size: 12px;
+  margin: 0;
+  color: #000;
+}
+.post-title {
+  text-align: start;
+  margin: 0;
+  font-size: 16px;
+}
+
+//Contactar
+#club-detail-header {
+  font-size: 1.5em;
+  margin-bottom: 2%;
+}
+#moment-booking :first-child {
+  color: $font;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+#reservation-card #moment-booking {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.2em;
+  font-weight: 700;
+  padding: 5vw 0;
+  border-bottom: 2px solid rgba(47, 51, 51, 0.08);
+}
+#padel-icon {
+  width: 8vw;
+  margin: 0 3vw;
+}
+#booking-card-details p {
+  color: #000000;
+  font-size: 1em;
+  padding-top: 3px;
+}
+#reservation-location {
+  margin: 5vw 0;
+  font-weight: lighter;
+}
+#reservation-card span {
+  font-weight: lighter;
+  color: #808080;
+}
+
+#reservation-card p {
+  font-weight: bold;
+}
+
+#reservation-location {
+  margin: 5vw 0;
+  font-weight: lighter;
+}
+
+#submit-reservation {
+  width: 100%;
+  background-color: $green;
+  border-radius: 0.2em;
+  font-weight: 700;
+  color: #ffffff;
+  border: none;
+  text-align: center;
+}
+#reservation-card {
+  margin-top: 8%;
+  border: 1.5px solid rgba(47, 51, 51, 0.08);
+  padding: 5%;
+  border-radius: 5px;
+  box-shadow: 0 30px 40px 30px rgba(152, 152, 152, 0.15);
+}
+
+#reservation-card h1 {
+  margin-top: 0;
+}
+
+#reservation-card h2 {
+  color: var(--strongGreen);
+}
+
+#reservation-card #moment-booking {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.2em;
+  font-weight: 700;
+  padding: 5vw 0;
+  border-bottom: 2px solid rgba(47, 51, 51, 0.08);
+}
+
+#reservation-hours {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  margin: 3vw 0;
+}
+#submit-datapicker {
+  // width: 40vw;
+  padding: 5px;
+  background-color: $green;
+  border-radius: 0.2em;
+  font-weight: 700;
+  color: #ffffff;
+  border: none;
+}

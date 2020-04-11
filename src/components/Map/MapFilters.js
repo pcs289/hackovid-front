@@ -22,7 +22,7 @@ class MapFilters extends Component {
 
         this.radiusSubscription = this.radiusChange$.subscribe(async (debounced) => {
             await this.setState({ radius: debounced });
-            this.props.onFiltersChange(this.state);
+            this.props.onFiltersChange({ radius: this.state.radius, dayOfWeek: this.state.dayOfWeek });
         })
     }
 
@@ -46,7 +46,7 @@ class MapFilters extends Component {
             dayOfWeek = 0;
         }
         await this.setState({ dayOfWeek: dayOfWeek + 1 });
-        this.props.onFiltersChange(this.state);
+        this.props.onFiltersChange({ radius: this.state.radius, dayOfWeek: this.state.dayOfWeek });
     }
 
 

@@ -9,7 +9,6 @@ import Login from "./views/auth/Login";
 import Signup from "./views/auth/Signup";
 import Map from "./views/MapView";
 import Profile from "./views/Profile";
-import Bio from "./views/Bio";
 import Cercar from "./views/Cercar";
 import EditProfile from "./views/EditProfile";
 import Activities from "./views/Activities";
@@ -50,8 +49,6 @@ class App extends Component {
 
               <PrivateRoute exact path="/perfil" component={Profile} />
               <PrivateRoute exact path="/perfil/editar" component={EditProfile} />
-
-              <PrivateRoute exact path="/bio/:userId" component={Bio} />
 
 
               <Route component={ErrorPage} path="*" />
