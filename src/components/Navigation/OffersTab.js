@@ -5,8 +5,11 @@ import React, {Component} from "react";
 class OffersTab extends Component {
     render() {
         return (
-            <div id="page-name">
-                <h1>Gestionar</h1>
+            <div className="tab-container" id="page-name">
+                <h1 style={{
+                    backgroundColor: "#a4d96c",
+                    color: "white",
+                }}>Gestionar</h1>
                 <div className="sections-nav">
                     <div className="nav-row">
                         <div className="nav-column" style={ this.props.tab === 'activities' ? { border: "1px", borderBottom: "2px solid #a4d96c" } : null}>

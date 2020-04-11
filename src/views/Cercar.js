@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { withAuth } from "../Context/AuthContext";
 import MapFilters from "../components/Map/MapFilters";
 import mapService from "../services/mapService";
