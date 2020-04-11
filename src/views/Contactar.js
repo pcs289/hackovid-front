@@ -8,29 +8,44 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    const { match : { params: { offerId }}} = this.props;
-    console.log('Fetching offer #' + offerId);
+    const {
+      match: {
+        params: { offerId }
+      }
+    } = this.props;
+    console.log("Fetching offer #" + offerId);
   }
 
   render() {
+    // const { offer } = this.props;
+    console.log("Props", this.props.offerId);
     return (
       <>
         <div className="activities-container">
           <div id="page-name" style={{ display: "flex" }}>
             <Backbar history={this.props.history} />
-            <h1 style={{ textTransform: "capitalize" }}>Clase de Català...</h1>
+            <h1 style={{ textTransform: "capitalize" }}>Hola</h1>
           </div>
           <>
             <div class="bottom-break-nav">
               <div className="profile-stats-card">
                 <h1 id="club-detail-header">Evento bka bla bla </h1>
 
-                <div id="moment-booking">
-                  <img
-                    id="padel-icon"
-                    src="../../images/booking.svg"
-                    alt="padel-icon"
-                  ></img>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "start"
+                  }}
+                >
+                  <div id="moment-booking">
+                    <img
+                      id="padel-icon"
+                      src="../../images/booking.svg"
+                      alt="padel-icon"
+                    ></img>
+                  </div>
+
                   <p>Hola aqui estamo bien y tu k tal?</p>
                 </div>
                 <div id="booking-card-details">
@@ -47,28 +62,24 @@ class Profile extends Component {
                       12:00
                     </p>
                     <p>
-                      <span>Duration</span>
+                      <span>Dia</span>
                       <br />
-                      60min
+                      22/03/20
                     </p>
                   </div>
-                </div>
-                <div id="profile-btn-div">
-                  <div id="submit-reservation">
-                    <div
-                      id="submit-datapicker"
-                      onClick={() =>
-                        this.setState({ displayBio: !this.state.displayBio })
-                      }
-                    >
-                      Veure dades de Joe Doe
+                  <div id="profile-btn-div">
+                    <div id="submit-reservation">
+                      <div id="submit-datapicker">Enviar petició</div>
                     </div>
                   </div>
                 </div>
               </div>
 
               {this.state.displayBio ? (
-                <div className="profile-stats-card">
+                <div
+                  className="profile-stats-card"
+                  style={{ backgroundColor: "#fff" }}
+                >
                   <h2 style={{ textAlign: "start" }}>Sobre Joe Doe</h2>
 
                   <img
@@ -160,7 +171,27 @@ class Profile extends Component {
                     </p>
                   </div>
                 </div>
-              ) : null}
+              ) : (
+                <div
+                  onClick={() =>
+                    this.setState({ displayBio: !this.state.displayBio })
+                  }
+                  className="profile-stats-card"
+                  style={{
+                    boxShadow: "none",
+                    backgroundColor: "#fff",
+                    display: "flex",
+                    justifyContent: "space-between"
+                  }}
+                >
+                  <p style={{ fontWeight: "700" }}>Veure perfil de Joe Doe</p>
+                  <img
+                    class="badge-img"
+                    src="../../images/plus.svg"
+                    alt="discount"
+                  />
+                </div>
+              )}
             </div>
           </>
         </div>

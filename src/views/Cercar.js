@@ -54,7 +54,7 @@ class Cercar extends Component {
                   <MapFilters
                     onFiltersChange={this.onFiltersChange.bind(this)}
                   />
-
+{/* 
                   <div class="badges">
                     <ul>
                       <li>
@@ -90,7 +90,7 @@ class Cercar extends Component {
                         <p>Altres</p>
                       </li>
                     </ul>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div class="profile-stats-card">
