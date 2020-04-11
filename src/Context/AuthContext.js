@@ -88,7 +88,7 @@ export default class AuthProvider extends Component {
   };
 
   handleSignup = user => {
-    authService
+    return authService
       .signup(user)
       .then(registeredUser => {
         this.setState({
@@ -96,11 +96,13 @@ export default class AuthProvider extends Component {
           user: registeredUser,
           isLoading: false,
         });
+        return registeredUser;
       })
-      .catch(() => {
+      .catch((e) => {
         this.setState({
           isLoading: false,
         });
+        return e;
       });
   };
 

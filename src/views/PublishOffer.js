@@ -58,17 +58,17 @@ class PublishOffer extends Component{
         const startDate = Day + "T" + Ini;
         const endDate = Day + "T" + End;
 
-        var data = {
+        const data = {
           type, 
           title, 
           description, 
           startDate, 
           endDate
-        }
-        console.log(data)
+        };
+        console.log(data);
+        this.props.history.push('/publicacions');
         await OfferService.handleCreateOffer(data);
         toast.success(`Oferta registrada amb èxit!`);
-        this.props.history.push('/publicacions');
       } catch (error) {
         console.error(error);
       }

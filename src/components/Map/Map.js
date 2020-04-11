@@ -18,9 +18,10 @@ const geolocateStyle = {
 
 class Map extends Component {
   state = {
+    filters: {},
     viewport: {
-      latitude: 0,
-      longitude: 0,
+      latitude: 41.3828939,
+      longitude: 2.1774322,
       zoom: 13,
     },
     userLocation: {},
@@ -31,23 +32,23 @@ class Map extends Component {
 
   // Mount map with the current user location
   async componentDidMount() {
-    await this.setState({
-      viewport: {
-        latitude: this.props.user.location.coordinates[1] || 41.3828939,
-        longitude: this.props.user.location.coordinates[0] || 2.1774322,
-        zoom: 13,
-      },
-      userLocation: {
-        longitude: this.props.user.location.coordinates[0],
-        latitude: this.props.user.location.coordinates[1]
-      }
-    });
     if (this.props.user.location.coordinates) {
       this.getOffers();
+      await this.setState({
+        viewport: {
+          latitude: this.props.user.location.coordinates[1],
+          longitude: this.props.user.location.coordinates[0],
+          zoom: 13,
+        },
+        userLocation: {
+          longitude: this.props.user.location.coordinates[0],
+          latitude: this.props.user.location.coordinates[1]
+        }
+      });
     }
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  async componentDidUpdate(prevProps, prevState, snapshot) {
     if(prevProps.filters !== this.props.filters) {
       this.getOffers();
     }
@@ -137,8 +138,12 @@ class Map extends Component {
                     <GeolocateControl
                       style={geolocateStyle}
                       positionOptions={{enableHighAccuracy: true}}
-                      trackUserLocation={true}
+                      trackUserLocation={false}
                       onGeolocate={this.onGeolocate}/>
+
+                    {
+
+                    }
 
 
                     {this.state.offers.map((offer, i) => {
