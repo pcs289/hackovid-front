@@ -4,11 +4,13 @@ import Backbar from "../components/Navigation/Backbar";
 import Bio from "./Bio";
 import offerService from "../services/offerService";
 import LoadingView from "./LoadingView";
+import OfferDialog from "../components/OfferDialog";
 
 class Contactar extends Component {
 
   state = {
     displayBio: false,
+    display: false,
     offer: null
   };
 
@@ -52,7 +54,7 @@ class Contactar extends Component {
                 </div>
                 <div id="profile-btn-div">
                   <div id="submit-reservation">
-                    <div id="submit-datapicker" onClick={() => this.setState({ displayBio: !this.state.displayBio })}>
+                    <div id="submit-datapicker" onClick={() => this.setState({ display: !this.state.display })}>
                       <div id="profile-btn-div">
                         <div id="submit-reservation">
                           <div id="submit-datapicker">Enviar petició</div>
@@ -60,11 +62,27 @@ class Contactar extends Component {
                       </div>
                     </div>
                   </div>
-
+                  <OfferDialog display={this.state.display} offer={offer} onClose={() => this.setState({ display: !this.state.display })}/>
                   {this.state.displayBio && this.state.offer.creator ?
-                      <Bio userId={this.state.offer.creator}/> :
-
-                      <div onClick={() => this.setState({displayBio: !this.state.displayBio})} className="profile-stats-card"
+                      <div>
+                      <div onClick={() => this.setState({displayBio: !this.state.displayBio})} id="expand-bio" className="profile-stats-card"
+                      style={{
+                          boxShadow: "none",
+                          backgroundColor: "#fff",
+                          display: "flex",
+                          justifyContent: "space-between"
+                      }}>
+                      <p style={{fontWeight: "700"}}>Veure perfil de Joe Doe</p>
+                      <img
+                          className="badge-img"
+                          src="../../images/minus.svg"
+                          alt="discount"
+                      />
+                      </div>
+                      <Bio userId={this.state.offer.creator}/>
+                      </div>
+                       :
+                      <div onClick={() => this.setState({displayBio: !this.state.displayBio})} id="expand-bio" className="profile-stats-card"
                       style={{
                           boxShadow: "none",
                           backgroundColor: "#fff",
