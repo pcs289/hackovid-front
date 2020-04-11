@@ -118,7 +118,9 @@ class Map extends Component {
                 onViewportChange={this.handleViewportChange}
                 mapStyle="mapbox://styles/mapbox/streets-v11"
                 width="100%"
-                height="100%">
+                height="100%"
+                style={{maxHeight: '50vh'}}
+            >
 
               {this.state.isLoading ?
                   <LoadingView showText={false}/> :
