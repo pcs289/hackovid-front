@@ -14,6 +14,7 @@ class MapFilters extends Component {
     radiusSubscription = null;
 
     componentDidMount() {
+        console.log(this.props);
         this.setState({
             radius: 1000,
             dayOfWeek: 1,

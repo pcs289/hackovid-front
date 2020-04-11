@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import { format } from 'date-fns';
+import caLocale from "date-fns/locale/ca";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
@@ -26,7 +27,7 @@ class MaterialUIPickers extends Component{
 
   render() {
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={caLocale}>
       <Grid container justify="space-around">
         <KeyboardDatePicker
               margin="normal"

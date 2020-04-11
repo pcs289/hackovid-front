@@ -7,6 +7,7 @@ import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
 } from '@material-ui/pickers';
+import caLocale from "date-fns/locale/ca";
 
 class Clock extends Component{
   
@@ -30,7 +31,7 @@ class Clock extends Component{
 
   render() {
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <MuiPickersUtilsProvider utils={DateFnsUtils}  locale={caLocale}>
       <Grid container justify="space-around">
         <KeyboardTimePicker
           margin="normal"
