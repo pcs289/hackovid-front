@@ -1,0 +1,41 @@
+.offer-dialog-info{
+	display:flex;
+	flex-flow:column nowrap;
+	justify-content:flex-start;
+
+	p{
+		text-align:left;		
+	}
+}
+
+.offer-dialog-description{
+	display:flex;
+	flex-flow:row nowrap;
+	justify-content:flex-start;
+
+	img{
+		width:50px;
+	}
+
+}
+
+.offer-dialog-form{
+	display:flex;
+	flex-flow:column;
+	justify-content:space-between;
+	width:80%;
+	height:auto;
+	padding:10px;
+
+	input{
+		margin-bottom:10px;
+	}
+}
+
+#accept-offer-request-btn{
+	cursor:pointer;
+}
+
+#offer-dialog-user-info{
+	height: auto !important;
+}

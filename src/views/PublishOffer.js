@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import Calendar from "../components/Offers/Calendar";
 import Clock from "../components/Offers/Clock";
 import { toast } from "react-toastify";
-import OfferService from '../services/offerService'
+import OfferService from '../services/offerService';
 
 class PublishOffer extends Component{
 
@@ -17,7 +17,6 @@ class PublishOffer extends Component{
         'End':''
       };
     }
-
 
     handleChange = async event => {
         const { name, value } = event.target;
