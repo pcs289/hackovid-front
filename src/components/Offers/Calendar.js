@@ -30,6 +30,8 @@ class MaterialUIPickers extends Component{
     <MuiPickersUtilsProvider utils={DateFnsUtils} locale={caLocale}>
       <Grid container justify="space-around">
         <KeyboardDatePicker
+              okLabel="Acceptar"
+              cancelLabel="Cancel·lar"
               margin="normal"
               id="date-picker-dialog"
               label=""

@@ -52,7 +52,7 @@ class Profile extends Component {
               ></img>
             </div>
           </Link>
-          <div className="profile-div">
+          <div className="profile-div session-state">
             <div id="profile-btn" onClick={this.onClickLogout}>
               <p>Tancar sessió</p>
             </div>
@@ -64,7 +64,7 @@ class Profile extends Component {
               ></img>
             </div>
           </div>
-          <div className="profile-div" style={{ borderBottom: "none" }}>
+          <div className="profile-div session-state" style={{ borderBottom: "none" }}>
             <div id="profile-btn" onClick={this.onClickDelete}>
               <p style={{ color: "#ff0000" }}>Eliminar el compte</p>
             </div>
