@@ -76,8 +76,7 @@ class Map extends Component {
     const filteredRadius = this.props.filters ? this.props.filters.radius : 1000;
     const filteredDayOfWeek = this.props.filters ? this.props.filters.dayOfWeek : 1;
     const { offers } = await mapService.getNeighbours(filteredRadius, filteredDayOfWeek);
-    await this.setState({ offers });
-    await this.setState({ isLoading: false });
+    await this.setState({ ...this.state, offers, isLoading: false });
   }
 
   // Rerenders viewport to avoid a static map
@@ -96,12 +95,13 @@ class Map extends Component {
   };
 
   onGeolocate = async location => {
-    this.setState({ userLocation: { latitude: location.coords.latitude,longitude: location.coords.longitude }});
+    this.setState({ userLocation: { latitude: location.coords.latitude, longitude: location.coords.longitude }});
     profileService.updateLocation(this.state.userLocation).then((response) => {
       if(response.code === "success") {
-        this.getOffers();
+        if (!this.state.offers) {
+          this.getOffers();
+        }
       } else {
-        // TODO: Manage failed updated location UI Alert
         console.log("onGeolocate Error: " + response.code);
       }
     });
@@ -110,8 +110,7 @@ class Map extends Component {
     const { viewport } = this.state;
     return (
       <>
-        {this.state.isLoading ?
-            <LoadingView /> :
+
             <ReactMapGL
                 ref={this.mapRef}
                 {...viewport}
@@ -121,38 +120,39 @@ class Map extends Component {
                 width="100%"
                 height="100%">
 
-              <Geocoder
-                  mapRef={this.mapRef}
-                  onViewportChange={this.handleGeocoderViewportChange}
-                  mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-                  position="top-left"
-                  proximity={{longitude: viewport.longitude, latitude: viewport.latitude}}
-                  trackProximity={true}
-                  collapsed={true}
-              />
-              <GeolocateControl
-                  style={geolocateStyle}
-                  positionOptions={{enableHighAccuracy: true}}
-                  trackUserLocation={true}
-                  onGeolocate={this.onGeolocate}
+              {this.state.isLoading ?
+                  <LoadingView showText={false}/> :
+                  <>
+                    <Geocoder
+                        mapRef={this.mapRef}
+                        onViewportChange={this.handleGeocoderViewportChange}
+                        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+                        position="top-left"
+                        proximity={{longitude: viewport.longitude, latitude: viewport.latitude}}
+                        trackProximity={true}
+                        collapsed={true}
+                    />
+                    <GeolocateControl
+                      style={geolocateStyle}
+                      positionOptions={{enableHighAccuracy: true}}
+                      trackUserLocation={true}
+                      onGeolocate={this.onGeolocate}/>
 
-              />
 
-
-              {this.state.offers.map((offer, i) => {
-                return <PreferenceMarker
-                    key={i}
-                    offer={offer}
-                    popupsToggle={this.popupsToggle}
-                    zoom={viewport.zoom}
-                    {...this.props}
-                    latitude={offer.location.coordinates[1]}
-                    longitude={offer.location.coordinates[0]} />
-              })
+                    {this.state.offers.map((offer, i) => {
+                      return <PreferenceMarker
+                      key={i}
+                      offer={offer}
+                      popupsToggle={this.popupsToggle}
+                      zoom={viewport.zoom}
+                      {...this.props}
+                      latitude={offer.location.coordinates[1]}
+                      longitude={offer.location.coordinates[0]} />
+                    })}
+                  </>
               }
 
             </ReactMapGL>
-        }
       </>
     );
   }

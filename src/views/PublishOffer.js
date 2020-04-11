@@ -76,10 +76,11 @@ class PublishOffer extends Component{
 
     render() {
         return (
-            <div className="app-container">
             <div className="activities-container">
+                <div id="page-name">
+                    <h1>Publica una oferta</h1>
+                </div>
                 <form id="newpreference" onSubmit={this.createOffer} style={{'marginBottom':'5em'}}>
-                  <h2>Publica una oferta</h2>
                   <div id="type" onChange={this.onChangeRadio}>
                     <label>
                     <input type="radio" id="type1" name="genderS" value="1"/>
@@ -107,7 +108,6 @@ class PublishOffer extends Component{
                   </div>
                   <input type="submit" value="Publica"/>
                 </form>
-            </div>
             </div>
         );
     }

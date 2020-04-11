@@ -16,8 +16,14 @@ class MapView extends Component {
     render() {
         return (
           <>
-            <div className="map-container">
-                <MapFilters onFiltersChange={this.onFiltersChange.bind(this)} />
+            <div className="activities-container">
+                <div id="page-name"><h1>Mapa d'Anuncis</h1></div>
+                <div className="profile-stats-card">
+                    <div>
+                        <h2 style={{ textAlign: "start", margin: "0 0 10px 0" }}>Filtres</h2>
+                        <MapFilters onFiltersChange={this.onFiltersChange.bind(this)}/>
+                    </div>
+                </div>
                 <Map { ...this.props } filters={this.state.filters}/>
             </div>
           </>

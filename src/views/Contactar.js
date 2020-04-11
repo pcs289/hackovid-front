@@ -53,14 +53,34 @@ class Contactar extends Component {
                 <div id="profile-btn-div">
                   <div id="submit-reservation">
                     <div id="submit-datapicker" onClick={() => this.setState({ displayBio: !this.state.displayBio })}>
-                      Veure dades de Joe Doe
+                      <div id="profile-btn-div">
+                        <div id="submit-reservation">
+                          <div id="submit-datapicker">Enviar petició</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
+
+                  {this.state.displayBio && this.state.offer.creator ?
+                      <Bio userId={this.state.offer.creator}/> :
+
+                      <div onClick={() => this.setState({displayBio: !this.state.displayBio})} className="profile-stats-card"
+                      style={{
+                          boxShadow: "none",
+                          backgroundColor: "#fff",
+                          display: "flex",
+                          justifyContent: "space-between"
+                      }}>
+                      <p style={{fontWeight: "700"}}>Veure perfil de Joe Doe</p>
+                      <img
+                          className="badge-img"
+                          src="../../images/plus.svg"
+                          alt="discount"
+                      />
+                      </div>
+                  }
                 </div>
               </div>
-
-              {this.state.displayBio && this.state.offer.creator ? <Bio userId={this.state.offer.creator}/>: null }
-
             </div>
           </div> : <LoadingView/> }
       </>

@@ -1,38 +1,21 @@
-@media (min-width: 450px) {
-  .app-container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 3.5%;
-    overflow: auto;
-    width: 100%;
-  }
-}
-
-@media (min-width: 450px) {
-  .activities-container {
-    width: 80% !important;
-    padding-bottom: 7.5% !important;
-  }
-}
-
-@media (min-width: 810px) {
-  .activities-container {
-    width: 40% !important;
-  }
-}
-
 .activities-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;
-  overflow: auto;
-  padding-bottom: 25%;
+  max-width: 100%;
+  height: 96vh;
+  padding: 10px auto;
+  text-align: center;
+  margin: 0 0 12vh 0;
+}
+
+@media (min-width: 750px) {
+  .activities-container {
+    width: 500px;
+    height: 80vh;
+    align-self: center;
+  }
+}
+
+.bottom-break-nav {
+  margin: 0 0 12vh 0;
 }
 
 .myrequests-card {
@@ -40,6 +23,7 @@
 }
 
 .requester-name-card {
+  max-height: auto;
   object-fit: cover;
   display: flex;
   text-transform: capitalize;
@@ -114,10 +98,8 @@
 .profile-stats {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   text-align: center;
-  padding: 0 5% 0 5%;
 }
 
 .profile-stats span {
@@ -125,98 +107,14 @@
   font-size: 1.2em;
 }
 
-@media (min-width: 780px) {
-  .profile-stats-card {
-    width: 90% !important;
-  }
-}
-
 .profile-stats-card {
   // height: 80vh;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-items: center;
-  margin: 5% 0 3.5% 0;
+  margin: 3%;
   border: 1.5px solid rgba(47, 51, 51, 0.08);
+  padding: 5%;
   border-radius: 5px;
-  -webkit-box-shadow: 4px 4px 8px 2px rgba(201,197,201,0.85);
-  -moz-box-shadow: 4px 4px 8px 2px rgba(201,197,201,0.85);
-  box-shadow: 4px 4px 8px 2px rgba(201,197,201,0.85);
-  width: 90%;
-}
-
-.profile-stats-card-header {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  width: 100%;
-  margin: 2.5% 0 2.5% 0;
-}
-
-@media (min-width: 780px) {
-  .title-container {
-    width: 50% !important;
-  }
-}
-
-.title-container {
-  display: flex;
-  flex-direction: row;
-  width: 75%;
-  padding: 0 2.5% 0 2.5%;
-}
-
-.title {
-  padding: 5px;
-  border-radius: 7px;
-  text-align: start;
-  font-size: 16px;
-  vertical-align: middle;
-}
-
-@media (min-width: 780px) {
-  .icon-container {
-    width: 42.5% !important;
-  }
-}
-
-.icon-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  width: 25%;
-  padding: 0 2.5% 0 2.5%;
-}
-
-@media (min-width: 450px) {
-  .arrow-button {
-    width: 20% !important;
-  }
-}
-
-@media (min-width: 780px) {
-  .arrow-button {
-    width: 7.5% !important;
-  }
-}
-
-.arrow-button {
-  padding: 0;
-  width: 40%;
-  margin-top: 2.5%;
-  background-color: Transparent;
-  background-repeat:no-repeat;
-  border: none;
-  cursor:pointer;
-  overflow: hidden;
-  outline:none;
-}
-
-.arrow-icon {
-  width: 100%;
+  box-shadow: 0 30px 40px 30px rgba(152, 152, 152, 0.15);
+  background-color: white;
 }
 
 .profile-stats-card h2 {
@@ -274,14 +172,6 @@
   margin: 0 auto 5px auto;
   display: block;
 }
-@media(max-width: 350px){
-  .requests-count {
-    display: none;
-    text-align: center;
-  }
-}
-
-
 
 //Cercar
 
@@ -293,7 +183,7 @@
 }
 
 .anunci-panell p {
-  text-align: center;
+  text-align: start;
   font-size: 12px;
   margin: 0;
   color: #000;
@@ -401,4 +291,11 @@
   font-weight: 700;
   color: #ffffff;
   border: none;
+}
+
+.arrow-button {
+  img {
+    width: 25px;
+    height: 25px;
+  }
 }

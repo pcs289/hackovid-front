@@ -1,52 +1,57 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { withAuth } from "../Context/AuthContext";
 import MapFilters from "../components/Map/MapFilters";
+import OfferManaged from "../components/Offers/OfferManaged";
+
 import mapService from "../services/mapService";
+import LoadingView from "./LoadingView";
 
 class Cercar extends Component {
   state = {
-    offers: []
+    offers: null,
+    filters: null,
+    isLoading: false,
   };
 
   async componentDidMount() {
     this.getNeighbours();
   }
 
-  async getNeighbours(radius, dayOfWeek) {
+  async onFiltersChange(changedFilter) {
+    await this.setState({ filters: changedFilter, ...this.state });
+    this.getNeighbours(changedFilter);
+  }
+
+  async getNeighbours(changedFilter) {
     try {
-      const { offers } = await mapService.getNeighbours(radius, dayOfWeek);
-      this.setState({
-        offers
-      });
+        this.setState({...this.state, isLoading: true });
+        const { offers } = changedFilter ? await mapService.getNeighbours(changedFilter.radius, changedFilter.dayOfWeek) : await mapService.getNeighbours();
+        this.setState({ filters: this.state.filters, offers, isLoading: false});
     } catch (error) {
-      console.log(error);
+        console.log(error);
     }
   }
 
   render() {
-    const { offers } = this.state;
-    console.log(offers);
+    const { offers, isLoading } = this.state;
     return (
       <>
-        <div className="app-container">
         <div className="activities-container">
           <div id="page-name">
-            <h1>Panell D'anuncis</h1>
+            <h1>Panell d'Anuncis</h1>
           </div>
           <>
             <div className="bottom-break-nav">
               <div className="profile-stats-card">
                 <div>
-                  <h2 style={{ textAlign: "start", margin: "0 0 10px 0" }}>
-                    Filtres
-                  </h2>
-                  <MapFilters onFiltersChange={(filters) => this.getNeighbours(filters.radius, filters.dayOfWeek)}/>
-                  <div className="badges">
+                  <h2 style={{ textAlign: "start", margin: "0 0 10px 0" }}>Filtres</h2>
+                  <MapFilters onFiltersChange={this.onFiltersChange.bind(this)}/>
+{/*
+                  <div class="badges">
                     <ul>
                       <li>
                         <img
-                            className="badge-img"
+                          className="badge-img"
                           src="../../images/food-delivery.svg"
                           alt="compres"
                         />
@@ -54,7 +59,7 @@ class Cercar extends Component {
                       </li>
                       <li>
                         <img
-                            className="badge-img"
+                          className="badge-img"
                           src="../../images/cross.svg"
                           alt="salut"
                         />
@@ -62,7 +67,7 @@ class Cercar extends Component {
                       </li>
                       <li>
                         <img
-                            className="badge-img"
+                          className="badge-img"
                           src="../../images/elearning.svg"
                           alt="educacio"
                         />
@@ -70,58 +75,34 @@ class Cercar extends Component {
                       </li>
                       <li>
                         <img
-                            className="badge-img"
+                          className="badge-img"
                           src="../../images/toilet-paper.svg"
                           alt="altres"
                         />
                         <p>Altres</p>
                       </li>
                     </ul>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="profile-stats-card">
                 <h2 style={{ textAlign: "start", margin: "0 0 10px 0" }}>
                   Ofertes de Voluntariat
                 </h2>
-                <div className="anunci-panell">
-                  <h3 className="post-title">Classes de Català amb la Mañá</h3>
-                  <p
-                    style={{
-                      color: "#989898"
-                    }}
-                  >
-                    0.3 km | 17:30h | 22/04 | Educació
-                  </p>
-
-                  <p
-                    style={{
-                      margin: "10px 0 10px 0"
-                    }}
-                  >
-                    Search for the keywords to learn more about each warning. To
-                    ignore, add // eslint-disable-next-line to the line before.
-                  </p>
-                  <Link
-                    to="/contactar/123123"
-                    style={{
-                      textDecoration: "none"
-                    }}
-                  >
-                    <span
-                        className="btn"
-                      style={{
-                        padding: "10px"
-                      }}
-                    >
-                      Contactar
-                    </span>
-                  </Link>
-                </div>
+                  {isLoading ?
+                      <LoadingView showText={false} /> : null
+                  }
+                  {!isLoading && offers && offers.length === 0 ?
+                      <div>
+                          No hi ha ofertes amb els filtres actuals.
+                      </div> : null
+                  }
+                  {offers && offers.map((offer, i) => {
+                    return <OfferManaged key={i} offer={offer} contact={true} edit={false} requests={0} />;
+                  })}
               </div>
             </div>
           </>
-        </div>
         </div>
       </>
     );

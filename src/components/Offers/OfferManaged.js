@@ -1,28 +1,58 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import Moment from "react-moment";
+import "moment/locale/ca";
+import {Link} from "react-router-dom";
 
 class OfferManaged extends Component{
 
     render() {
+        const { offer, requests, edit, contact} = this.props;
+        const categoriaTipo = [
+            "../../images/food-delivery.svg",
+            "../../images/elearning.svg",
+            "../../images/cross.svg",
+            "../../images/toilet-paper.svg"
+        ];
         return (
             <div className="anunci-panell" style={{
                 backgroundColor: "#EAEAEA",
-                margin: "2.5%",
+                margin: "3%",
                 padding: "5%",
                 borderRadius: "7px",
             }}>
-                <h3 className="post-title" style={{
-                    textAlign: "start",
-                    margin: "0",
-                    fontSize: "16px",
-                }}>Classes de Català amb la Mañá</h3>
-                <p style={{
-                    textAlign: "start",
-                    fontSize: "12px",
-                    margin: "0",
-                    color: "#989898",
-                }}
+                <div
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "start"
+                    }}
                 >
-                    0.3 km | 17:30h | 22/04 | Educació
+                    <img
+                        className="badge-img"
+                        src={categoriaTipo[offer.type + 1]}
+                        alt="altres"
+                    />
+                    <h3
+                        className="post-title"
+                        style={{
+                            margin: "0 5px "
+                        }}
+                    >
+                        {offer.title}
+                    </h3>
+                </div>
+                <p
+                    style={{
+                        color: "#989898"
+                    }}
+                >
+                    <Moment format="LLL" locale="ca">
+                        {offer.startDate}
+                    </Moment>{" "}
+                    fins les{" "}
+                    <Moment format="LT" locale="ca">
+                        {offer.endDate}
+                    </Moment>
                 </p>
 
                 <p
@@ -32,36 +62,30 @@ class OfferManaged extends Component{
                         fontSize: "12px",
                     }}
                 >
-                    Search for the keywords to learn more about each warning. To
-                    ignore, add // eslint-disable-next-line to the line before.
+                    {offer.description}
                 </p>
-                <div className="profile-stats">
-                <button
-                    className="btn"
+
+                <p
                     style={{
-                        padding: "5px",
-                        margin: "0",
-                        height: "10%",
+                        margin: "10px 0 10px 0"
                     }}
                 >
-                  Editar
-                </button>
-                        <button
-                            className="btn"
-                            style={{
-                                padding: "5px",
-                                margin: "0",
-                                height: "10%",
-                            }}
-                            onClick={() => this.props.onClick()}
-                        >
-                            Mes Info
-                        </button>
-                    <p className="requests-count">
-                        <span>Sol·licituds</span>
-                        <br />
-                        <span>(0)</span>
-                    </p>
+                    De {offer.creator} a {offer.proximity.toFixed(1)} km
+                </p>
+                <div className="profile-stats">
+
+                    { contact ?
+                        <p><span className="btn" style={{padding: "10px",}}><Link to={'/contactar/' + offer._id}>Contacta</Link></span></p>
+                        : null }
+
+                    { edit ?
+                        <p><span className="btn" style={{padding: "10px",}}>Editar</span></p>
+                        : null }
+
+                    { requests ?
+                            <p><span>Sol·licituds</span><br />({requests})</p>
+                            : null
+                    }
                 </div>
             </div>
         );
