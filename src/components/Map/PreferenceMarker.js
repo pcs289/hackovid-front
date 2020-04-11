@@ -35,7 +35,7 @@ class PreferenceMarker extends Component {
                             captureClick={false}>
                         <h3>{offer.title}</h3>
                         <span>A {offer.proximity}m</span>
-                        <p>{offer.description.length > 50 ? offer.description.substr(0, 49) : offer.description}</p>
+                        <p>{offer.description.length > 50 ? offer.description.substr(0, 49) + '...' : offer.description}</p>
                         <Link to={`/contactar/${offer._id}`}>Veure</Link>
                     </Popup>
                 ) : null}

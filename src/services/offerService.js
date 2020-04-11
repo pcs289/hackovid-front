@@ -13,6 +13,10 @@ class OfferService {
          return this.http.post('/offers/create', formData).then(response => response.data);
     };
 
+    getOffer(offerId) {
+        return this.http.get('/offers/' + offerId).then(res => res.data);
+    }
+
 }
 
 const offerService = new OfferService();

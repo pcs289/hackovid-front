@@ -1,125 +1,71 @@
 import React, { Component } from "react";
 import { withAuth } from "../Context/AuthContext";
 import Backbar from "../components/Navigation/Backbar";
+import Bio from "./Bio";
+import offerService from "../services/offerService";
+import LoadingView from "./LoadingView";
 
-class Profile extends Component {
+class Contactar extends Component {
+
   state = {
-    img: "",
+    displayBio: false,
+    offer: null
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const { match : { params: { offerId }}} = this.props;
-    console.log('Fetching offer #' + offerId);
+    await this.getOffer(offerId);
+  }
+
+  async getOffer(offerId) {
+    const offer = await offerService.getOffer(offerId);
+    return await this.setState({ ...this.state, offer });
   }
 
   render() {
+    const {offer} = this.state;
+    const startTime = offer ? offer.startTime : '';
+    const endTime = offer ? offer.endTime : '';
     return (
       <>
-        <div className="activities-container">
-          <div id="page-name" style={{ display: "flex" }}>
-            <Backbar history={this.props.history} />
-            <h1 style={{ textTransform: "capitalize" }}>Clase de Català...</h1>
-          </div>
-          <>
+        {offer ?
+          <div className="activities-container">
+            <div id="page-name" style={{ display: "flex" }}>
+              <Backbar history={this.props.history} />
+              <h1 style={{ textTransform: "capitalize" }}>{offer.title}</h1>
+            </div>
             <div className="bottom-break-nav">
               <div className="profile-stats-card">
-                <h2 style={{ textAlign: "start" }}>Sobre Joe Doe</h2>
+                <h1 id="club-detail-header">{offer.title}</h1>
 
-                <img
-                    className="user-profile-stats"
-                  src="../../images/add-contact.svg"
-                  alt="profile"
-                />
-                <div className="profile-stats">
-                  <p>
-                    <span>Participat</span>
-                    <br />1
-                  </p>
-                  <p>
-                    <span>Demanat</span>
-                    <br />2
-                  </p>
+                <div id="moment-booking">
+                  <img id="padel-icon" src="../../images/booking.svg" alt="padel-icon"></img>
+                  <p>{offer.description}</p>
                 </div>
-                <>
-                  <h2 style={{ textAlign: "start" }}>Descripció</h2>
-                  <p className="inserted-stat">Me gusta el pollo frito</p>
-                </>
-
-                <h2 style={{ textAlign: "start" }}>Demana</h2>
-                <div>
-                  <div className="badges">
-                    <ul>
-                      <li>
-                        <img
-                            className="badge-img"
-                          src="../../images/food-delivery.svg"
-                          alt="badge"
-                        />
-                        <p>Compres</p>
-                      </li>
-                      <li>
-                        <img
-                            className="badge-img"
-                          src="../../images/cross.svg"
-                          alt="reward"
-                        />
-                        <p>Salut</p>
-                      </li>
-                      <li>
-                        <img
-                            className="badge-img"
-                          src="../../images/elearning.svg"
-                          alt="discount"
-                        />
-                        <p>Educació</p>
-                      </li>
-                    </ul>
+                <div id="booking-card-details">
+                  <p id="reservation-location">A 0.3km de casa teva</p>
+                  <div id="reservation-hours">
+                    <p><span>Inici</span><br />{startTime}</p>
+                    <p><span>Fi</span><br />{endTime}</p>
+                    <p><span>Duration</span><br />{}</p>
                   </div>
                 </div>
-
-                <h2 style={{ textAlign: "start" }}>Participa</h2>
-                <div>
-                  <div className="badges">
-                    <ul>
-                      <li>
-                        <img
-                            className="badge-img"
-                          src="../../images/elearning.svg"
-                          alt="discount"
-                        />
-                        <p>Educació</p>
-                      </li>
-                      <li>
-                        <img
-                            className="badge-img"
-                          src="../../images/toilet-paper.svg"
-                          alt="discount"
-                        />
-                        <p>Altres</p>
-                      </li>
-
-                      <li>
-                        <img
-                            className="badge-img"
-                          src="../../images/approved.svg"
-                          alt="okey"
-                        />
-                        <p>Verificat</p>
-                      </li>
-                    </ul>
+                <div id="profile-btn-div">
+                  <div id="submit-reservation">
+                    <div id="submit-datapicker" onClick={() => this.setState({ displayBio: !this.state.displayBio })}>
+                      Veure dades de Joe Doe
+                    </div>
                   </div>
-                  <h2 style={{ textAlign: "start" }}>Contacte</h2>
-                  <p className="inserted-stat">
-                    Aqui habilitar quines opcions permet el usuari
-                  </p>
                 </div>
               </div>
+
+              {this.state.displayBio && this.state.offer.creator ? <Bio userId={this.state.offer.creator}/>: null }
+
             </div>
-          </>
-        </div>
+          </div> : <LoadingView/> }
       </>
     );
   }
 }
 
-export default withAuth(Profile);
+export default withAuth(Contactar);
