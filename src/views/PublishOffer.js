@@ -108,7 +108,7 @@ class PublishOffer extends Component{
                   <div className="time-input">
                     <span>Hora Fi:</span><Clock  onChange={this.handleEndChange.bind(this)}/>
                   </div>
-                  <input type="submit" value="Publica"/>
+                  <input type="submit" className="btn" value="Publica"/>
                 </form>
             </div>
         );

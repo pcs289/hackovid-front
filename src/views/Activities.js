@@ -50,7 +50,7 @@ class Activities extends Component {
                         <>
                             <div className="profile-stats-card">
                                 <div style={{display: "flex", flexFlow: 'row nowrap', justifyContent: 'space-between'}}>
-                                    <span className="title" style={{color: "#a4d96c", fontWeight: "bold"}}>Pendents de Resposta ({pendingRequests.length})</span>
+                                    <span className="title" style={{color: "rgb(242,157,105)", fontWeight: "bold"}}>Pendents de Resposta ({pendingRequests.length})</span>
                                     <div className="icon-container" onClick={() => this.setState({ pendingExpand: !this.state.pendingExpand })}>
                                         <img className="arrow-icon" style={{ width: '25px', height: '25px', transform: !this.state.pendingExpand ? 'rotate(90deg)' : 'rotate(0deg)' }} src="../../images/chevron.svg" alt="close-cross"></img>
                                     </div>
@@ -78,7 +78,7 @@ class Activities extends Component {
 
                             <div className="profile-stats-card">
                                 <div style={{display: "flex", flexFlow: 'row nowrap', justifyContent: 'space-between'}}>
-                                    <span className="title" style={{color: "#a4d96c", fontWeight: "bold"}}>Denegades ({deniedRequests.length})</span>
+                                    <span className="title" style={{color: "rgb(184, 92, 89)", fontWeight: "bold"}}>Denegades ({deniedRequests.length})</span>
                                     <div className="icon-container" onClick={() => this.setState({ canceledExpand: !this.state.canceledExpand })}>
                                         <img className="arrow-icon" style={{ width: '25px', height: '25px', transform: !this.state.canceledExpand ? 'rotate(90deg)' : 'rotate(0deg)' }} src="../../images/chevron.svg" alt="close-cross"></img>
                                     </div>
