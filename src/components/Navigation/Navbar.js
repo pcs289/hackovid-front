@@ -12,7 +12,7 @@ class Navbar extends Component {
               <ul>
                 <li>
                   <Link to="/cercar">
-                    <img src={"/images/search-input.svg"} alt="Cercar" />
+                    <img src={"/images/search.svg"} alt="Cercar" />
                     Cercar
                   </Link>
                 </li>
@@ -24,7 +24,7 @@ class Navbar extends Component {
                 </li>
                 <li>
                   <Link to="/publicar">
-                    <img src={"/images/plus.svg"} alt="Mapa" />
+                    <img src={"/images/add.svg"} alt="Publicar" />
                     Publicar
                   </Link>
                 </li>
