@@ -171,3 +171,13 @@
     display: none; /* This is how it looks on desktop */
   }
 }
+
+.footer-header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px 25px;
+  z-index: 100;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 20px -10px;
+  background-color: white;
+}

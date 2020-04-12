@@ -123,7 +123,7 @@ class Homepage extends Component {
             </div>
           </div>
         </div>
-        <div className="banner_header" style={{backgroundColor: '#017069', color: 'white', height: '40px', textAlign: 'center'}}>
+        <div className="footer-header" style={{backgroundColor: '#017069', color: 'white', height: '40px', textAlign: 'center'}}>
           <small><a href="/Apropapp_ProteccioDeDades_PoliticadePrivacitat.pdf" >Polítiques de Privacitat i Protecció de Dades</a></small>
           <small>Contacte a pimpamapp@gmail.com</small>
         </div>
