@@ -16,7 +16,7 @@ class Cercar extends Component {
   async componentDidMount() {
     const searchParams = new URLSearchParams(this.props.location.search);
     if (!searchParams.has('r') && !searchParams.has('dow')) {
-      this.getNeighbours();
+      this.getNeighbours({radius: 1000, dayOfWeek: 1});
     }
   }
 

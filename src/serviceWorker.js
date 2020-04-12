@@ -51,17 +51,6 @@ export function register(config) {
         registerValidSW(swUrl, config);
       }
     });
-
-    const CACHE_NAME = 'apropapp-cache';
-    const urlsToCache = [
-      '/',
-      '/images/'
-    ];
-    window.addEventListener('install', function(event) {
-      console.log('Caching files Service Worker');
-      event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache)));
-    });
-
   }
 }
 

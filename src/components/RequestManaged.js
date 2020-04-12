@@ -11,7 +11,6 @@ class RequestManaged extends Component {
             "../../images/cross.svg",
             "../../images/toilet-paper.svg"
         ];
-        console.log(request);
         return (
             <div className="anunci-panell" style={{
                 backgroundColor: "#EAEAEA",

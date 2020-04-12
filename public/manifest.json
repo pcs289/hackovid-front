@@ -1,6 +1,7 @@
 {
   "short_name": "Apropapp",
-  "name": "Apropapp - Col·labora amb els teus veins",
+  "name": "Apropapp",
+  "description": "Col·labora amb els teus veins",
   "icons": [
     {
       "src": "favicon.ico",

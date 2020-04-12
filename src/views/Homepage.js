@@ -57,7 +57,7 @@ class Homepage extends Component {
                 </Link>
               </div>
 
-              <iframe className="video" title="Video demostració d'Apropapp" width="444" height="250" src="https://www.youtube.com/embed/SSuxVwMkcpA?controls=0"
+              <iframe className="video" title="Video demostració d'Apropapp" width="444" height="250" src="https://youtube.com/embed/dvfojhbUrck?controls=0"
                       frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen>Video demostració d'Apropapp</iframe>
 
