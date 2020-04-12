@@ -141,10 +141,6 @@ class Map extends Component {
                       trackUserLocation={false}
                       onGeolocate={this.onGeolocate}/>
 
-                    {
-
-                    }
-
 
                     {this.state.offers.map((offer, i) => {
                       return <PreferenceMarker

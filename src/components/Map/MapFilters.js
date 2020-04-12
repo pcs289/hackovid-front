@@ -72,20 +72,6 @@ class MapFilters extends Component {
         this.props.onFiltersChange({ radius: this.state.radius, dayOfWeek: this.state.dayOfWeek });
     }
 
-
-    /*<label>Distància màxima: {this.state.radius} m</label>
-    <input type="range" min="1000" max="5000" value={this.state.radius} step="250" onChange={this.handleRadiusChange.bind(this)} />*/
-
-    /*
-    *   <input type="range" min="1000" max="5000" list="ranges" />
-                    <datalist id="ranges">
-                        <option label="1000" value="1000" />
-                        <option label="2000" value="2000" />
-                        <option label="3000" value="3000" />
-                        <option label="4000" value="4000" />
-                        <option label="5000" value="5000" />
-                    </datalist>*/
-
     render() {
         return (
             <div className="map-filters">
@@ -93,7 +79,7 @@ class MapFilters extends Component {
                     <input type="range" min="1000" max="5000" step="250" list="ranges" value={this.state.radius} onChange={this.handleRadiusChange.bind(this)} />
                     <datalist id="ranges">
                         <option label="1000" value="1000" />
-                        <option label={`Distància: ${this.state.radius}`} value={`Distància: ${this.state.radius}`} />
+                        <option label={`Distància: ${this.state.radius}m`} value={`Distància: ${this.state.radius}`} />
                         <option label="5000" value="5000" />
                     </datalist>
                 </div>
