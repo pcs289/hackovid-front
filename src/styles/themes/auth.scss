@@ -10,6 +10,7 @@
 .log-sign-container form {
   display: flex;
   flex-direction: column;
+  min-width: 250px;
 }
 
 .log-sign-container input {
@@ -32,4 +33,8 @@
 .log-sign-container span {
   font-weight: 700;
   color: $green;
+}
+
+.log-sign-container textarea {
+  min-height: 100px;
 }

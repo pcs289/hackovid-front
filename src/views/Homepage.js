@@ -24,7 +24,7 @@ class Homepage extends Component {
         <div className="banner_header_hp">
           <Link to="/">
             <img
-              src={"/images/logo.png"}
+              src={"/images/apropapp.png"}
               className="logo logo-large"
               alt="Pim Pam Pum"
             />

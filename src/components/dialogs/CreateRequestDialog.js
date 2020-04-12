@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { toast } from "react-toastify";
-import AvatarImage from "../components/AvatarImage";
-import { withAuth } from "../Context/AuthContext";
+import { withAuth } from "../../Context/AuthContext";
 import Moment from "react-moment";
 import "moment/locale/ca";
-import RequestService from '../services/requestService';
-import { Route , withRouter} from 'react-router-dom';
+import RequestService from '../../services/requestService';
+import { withRouter} from 'react-router-dom';
 
-class OfferDialog extends Component {
+class CreateRequestDialog extends Component {
 
     state = {
         comments : ''
@@ -24,12 +23,7 @@ class OfferDialog extends Component {
         const { comments} = this.state;
         const offerId = this.props.offer._id;
 
-        var data = {
-          offerId,
-          comments
-        }
-        console.log(data)
-        await RequestService.handleCreateRequest(data);
+        await RequestService.handleCreateRequest({comments, offerId});
         toast.success(`Sol·licitud d'oferta registrada amb èxit!`);
         this.props.history.push('/inscripcions');
         } catch (error) {
@@ -57,7 +51,7 @@ class OfferDialog extends Component {
                         </button>
                     </div>
                     <div id="offer-dialog-user-info" className="user-info">
-                        <p className="title-text">Acceptar l'oferta d'{this.props.user.name}:</p>
+                        <p className="title-text">Sol·licitar l'oferta de {offer.creator.username}:</p>
                         <div className="offer-dialog-info">
                             <div className="offer-dialog-description">
                                 <img
@@ -76,13 +70,13 @@ class OfferDialog extends Component {
                                     {offer.endDate}
                                 </Moment>
                             </p>
-                            <p>Descripció: {offer.description}</p>
+                            <p>{offer.description}</p>
                         </div>
                     </div>
-                    <div className="line"></div>
+                    {/*<div className="line"></div>*/}
                     <form className="offer-dialog-form" onSubmit={this.acceptOffer}>
-                        <input type="text" name="comments" placeholder="Envia un missatge" onChange={this.handleChange} required/>
-                        <input id="accept-offer-request-btn" className="accept-button" type="submit" value="Accepta l'oferta"/>
+                        <textarea name="comments" placeholder="Envia un missatge" onChange={this.handleChange} required/>
+                        <input id="accept-offer-request-btn" className="accept-button" type="submit" value="Sol·licita l'oferta"/>
                     </form>
                 </div>
             </div>
@@ -90,4 +84,4 @@ class OfferDialog extends Component {
     }
 }
 
-export default withRouter(withAuth(OfferDialog));
+export default withRouter(withAuth(CreateRequestDialog));

@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { withAuth } from "../Context/AuthContext";
-import Dialog from "../components/Dialog";
 import OffersTab from "../components/Navigation/OffersTab";
-import OfferManaged from "../components/Offers/OfferManaged";
 import requestService from '../services/requestService';
 import LoadingView from "./LoadingView";
+import RequestManaged from "../components/RequestManaged";
 
 class Activities extends Component {
   constructor(props) {
@@ -56,9 +55,9 @@ class Activities extends Component {
                                         <img className="arrow-icon" style={{ width: '25px', height: '25px', transform: !this.state.pendingExpand ? 'rotate(90deg)' : 'rotate(0deg)' }} src="../../images/chevron.svg" alt="close-cross"></img>
                                     </div>
                                 </div>
-                                <div style={{ display: this.state.activeExpand ? 'block' : 'none' }}>
-                                    { pendingRequests.map((offer, i) => {
-                                        return <OfferManaged key={i} offer={offer} edit={true} />;
+                                <div style={{ display: this.state.pendingExpand ? 'block' : 'none' }}>
+                                    { pendingRequests.map((request, i) => {
+                                        return <RequestManaged key={i} request={request} />
                                     })}
                                 </div>
                             </div>
@@ -71,8 +70,8 @@ class Activities extends Component {
                                     </div>
                                 </div>
                                 <div style={{ display: this.state.acceptedExpand ? 'block' : 'none' }}>
-                                    { acceptedRequests.map((offer, i) => {
-                                        return <OfferManaged key={i} offer={offer} requests={true}/>;
+                                    { acceptedRequests.map((request, i) => {
+                                        return <RequestManaged key={i} request={request} />
                                     })}
                                 </div>
                             </div>
@@ -85,8 +84,8 @@ class Activities extends Component {
                                     </div>
                                 </div>
                                 <div style={{ display: this.state.canceledExpand ? 'block' : 'none' }}>
-                                    { deniedRequests.map((offer, i) => {
-                                        return <OfferManaged key={i} offer={offer} />;
+                                    { deniedRequests.map((request, i) => {
+                                        return <RequestManaged key={i} request={request} />
                                     })}
                                 </div>
                             </div>

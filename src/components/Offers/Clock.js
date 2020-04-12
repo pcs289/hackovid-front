@@ -21,7 +21,6 @@ class Clock extends Component{
 
   handleHourChange = async hora => {
     await this.setState({'selectedHour':hora});
-
     var formattedHour = format(hora,'hh:mm:ss');
     this.props.onChange(formattedHour);
   };

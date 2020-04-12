@@ -27,6 +27,11 @@
 	height:auto;
 	padding:10px;
 
+	textarea {
+		min-height: 100px;
+		margin-bottom: 1em;
+	}
+
 	input{
 		margin-bottom:10px;
 	}
@@ -38,4 +43,5 @@
 
 #offer-dialog-user-info{
 	height: auto !important;
+	align-items: center;
 }

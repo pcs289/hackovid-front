@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { withAuth } from "../Context/AuthContext";
 import OffersTab from "../components/Navigation/OffersTab";
 import OfferManaged from "../components/Offers/OfferManaged";
-import Dialog from "../components/Dialog";
 import offerService from "../services/offerService";
 import LoadingView from "./LoadingView";
 
@@ -40,13 +39,13 @@ class Managed extends Component {
     };
 
     render() {
-        const { activeOffers, pendingOffers, restOffers } = this.state;
+        const { offers, activeOffers, pendingOffers, restOffers } = this.state;
         return (
             <>
                 <div className="activities-container">
                     <OffersTab tab="managed"/>
 
-                    { this.state.offers.length > 0 ?
+                    { offers.length > 0 ?
                         <>
                             <div className="profile-stats-card">
                                 <div style={{display: "flex", flexFlow: 'row nowrap', justifyContent: 'space-between'}}>
@@ -57,21 +56,21 @@ class Managed extends Component {
                                 </div>
                                 <div style={{ display: this.state.activeExpand ? 'block' : 'none' }}>
                                     { activeOffers.map((offer, i) => {
-                                        return <OfferManaged key={i} offer={offer} edit={true} />;
+                                        return <OfferManaged key={'active'+i} offer={offer} edit={true} />;
                                     })}
                                 </div>
                             </div>
 
                             <div className="profile-stats-card">
                                 <div style={{display: "flex", flexFlow: 'row nowrap', justifyContent: 'space-between'}}>
-                                    <span className="title" style={{color: "#a4d96c", fontWeight: "bold"}}>Pendents de Resposta ({pendingOffers.length})</span>
+                                    <span className="title" style={{color: "#a4d96c", fontWeight: "bold"}}>Pendents ({pendingOffers.length})</span>
                                     <div className="icon-container" onClick={() => this.setState({ pendingExpand: !this.state.pendingExpand })}>
                                         <img className="arrow-icon" style={{ width: '25px', height: '25px', transform: !this.state.pendingExpand ? 'rotate(90deg)' : 'rotate(0deg)' }} src="../../images/chevron.svg" alt="close-cross"></img>
                                     </div>
                                 </div>
                                 <div style={{ display: this.state.pendingExpand ? 'block' : 'none' }}>
                                     { pendingOffers.map((offer, i) => {
-                                        return <OfferManaged key={i} offer={offer} requests={true}/>;
+                                        return <OfferManaged key={'pending'+i} offer={offer} requests={true}/>;
                                     })}
                                 </div>
                             </div>
@@ -85,16 +84,13 @@ class Managed extends Component {
                                 </div>
                                 <div style={{ display: this.state.doneExpand ? 'block' : 'none' }}>
                                     { restOffers.map((offer, i) => {
-                                        return <OfferManaged key={i} offer={offer} />;
+                                        return <OfferManaged key={'rest'+i} offer={offer} />;
                                     })}
                                 </div>
                             </div>
 
                         </>
                         : <LoadingView showText={false} /> }
-
-                    <button onClickCapture={() => this.setState({...this.state, display: !this.state.display})}>Open Dialog</button>
-                    <Dialog display={this.state.display} onClose={() => this.setState({ display: !this.state.display })}/>
                 </div>
             </>
     );

@@ -39,9 +39,9 @@ class Login extends Component {
           className="logo-mobile"
         >
           <img
-            src={"/images/logo.png"}
+            src={"/images/apropapp.png"}
             className="logo logo-large"
-            alt="Booking"
+            alt="Apropapp"
           />
         </Link>
         <form onSubmit={this.handleFormSubmit}>

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { withAuth } from "../Context/AuthContext";
 import MapFilters from "../components/Map/MapFilters";
-import OfferManaged from "../components/Offers/OfferManaged";
 
 import mapService from "../services/mapService";
 import LoadingView from "./LoadingView";
+import CercaOffer from "../components/CercaOffer";
 
 class Cercar extends Component {
   state = {
@@ -49,43 +49,6 @@ class Cercar extends Component {
                 <div>
                   <h2 style={{ textAlign: "start", margin: "0 0 10px 0" }}>Filtres</h2>
                   <MapFilters {...this.props} onFiltersChange={this.onFiltersChange.bind(this)}/>
-{/*
-                  <div class="badges">
-                    <ul>
-                      <li>
-                        <img
-                          className="badge-img"
-                          src="../../images/food-delivery.svg"
-                          alt="compres"
-                        />
-                        <p>Compres</p>
-                      </li>
-                      <li>
-                        <img
-                          className="badge-img"
-                          src="../../images/cross.svg"
-                          alt="salut"
-                        />
-                        <p>Salut</p>
-                      </li>
-                      <li>
-                        <img
-                          className="badge-img"
-                          src="../../images/elearning.svg"
-                          alt="educacio"
-                        />
-                        <p>Educació</p>
-                      </li>
-                      <li>
-                        <img
-                          className="badge-img"
-                          src="../../images/toilet-paper.svg"
-                          alt="altres"
-                        />
-                        <p>Altres</p>
-                      </li>
-                    </ul>
-                  </div> */}
                 </div>
               </div>
               <div className="profile-stats-card">
@@ -101,7 +64,7 @@ class Cercar extends Component {
                       </div> : null
                   }
                   {!isLoading && offers && offers.map((offer, i) => {
-                    return <OfferManaged key={i} offer={offer} contact={true} edit={false} requests={0} />;
+                    return <CercaOffer key={i} offer={offer} />
                   })}
               </div>
             </div>

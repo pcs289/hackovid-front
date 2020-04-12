@@ -1,122 +1,118 @@
 import React, { Component } from "react";
 import { withAuth } from "../Context/AuthContext";
+import AvatarImage from "../components/AvatarImage";
 
-class Profile extends Component {
-  state = {
-    img: "",
-  };
-
-  componentDidMount() {
-    const { userId } = this.props;
-    console.log('Fetching bio for user #' + userId);
-  }
+class Bio extends Component {
 
   render() {
-
+    const { creator } = this.props;
+    if (!creator) {
+      return null;
+    }
     return (
       <>
-        <div className="activities-container">
-          <div id="page-name">
-            <h1 style={{ textTransform: "capitalize" }}>Joe Doe</h1>
-          </div>
-          <>
-            <div className="bottom-break-nav">
-              <div className="profile-stats-card">
-                <img
-                    className="user-profile-stats"
-                  src="../../images/add-contact.svg"
-                  alt="profile"
-                />
-                <div className="profile-stats">
-                  <p>
-                    <span>Participat</span>
-                    <br />1
-                  </p>
-                  <p>
-                    <span>Demanat</span>
-                    <br />2
-                  </p>
-                </div>
+        <div className="bottom-break-nav">
+          <div className="profile-stats-card">
+
+            <AvatarImage avatarImg={creator.avatarImg}/>
+
+            <h1 style={{ textTransform: "capitalize" }}>{creator.name} {creator.surname}</h1>
+
+            <div className="profile-stats">
+              <p>
+                <span>Participat</span>
+                <br />{creator.offers.length}
+              </p>
+              <p>
+                <span>Demanat</span>
+                <br />{creator.requests.length}
+              </p>
+            </div>
+
+            {creator.description ?
                 <>
                   <h2 style={{ textAlign: "start" }}>Descripció</h2>
-                  <p className="inserted-stat">Me gusta el pollo frito</p>
-                </>
+                  <p className="inserted-stat">{creator.description}</p>
+                </> : null}
 
-                <h2 style={{ textAlign: "start" }}>Demana</h2>
-                <div>
-                  <div className="badges">
-                    <ul>
-                      <li>
-                        <img
-                            className="badge-img"
-                          src="../../images/food-delivery.svg"
-                          alt="badge"
-                        />
-                        <p>Compres</p>
-                      </li>
-                      <li>
-                        <img
-                            className="badge-img"
-                          src="../../images/cross.svg"
-                          alt="reward"
-                        />
-                        <p>Salut</p>
-                      </li>
-                      <li>
-                        <img
-                            className="badge-img"
-                          src="../../images/elearning.svg"
-                          alt="discount"
-                        />
-                        <p>Educació</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <h2 style={{ textAlign: "start" }}>Participa</h2>
-                <div>
-                  <div className="badges">
-                    <ul>
-                      <li>
-                        <img
-                            className="badge-img"
-                          src="../../images/elearning.svg"
-                          alt="discount"
-                        />
-                        <p>Educació</p>
-                      </li>
-                      <li>
-                        <img
-                            className="badge-img"
-                          src="../../images/toilet-paper.svg"
-                          alt="discount"
-                        />
-                        <p>Altres</p>
-                      </li>
-
-                      <li>
-                        <img
-                            className="badge-img"
-                          src="../../images/approved.svg"
-                          alt="okey"
-                        />
-                        <p>Verificat</p>
-                      </li>
-                    </ul>
-                  </div>
-                  <h2 style={{ textAlign: "start" }}>Contacte</h2>
-                  <p className="inserted-stat">
-                    Aqui habilitar quines opcions permet el usuari
-                  </p>
-                </div>
+            <h2 style={{ textAlign: "start" }}>Demana</h2>
+            <div>
+              <div className="badges">
+                <ul>
+                  <li>
+                    <img
+                        className="badge-img"
+                      src="../../images/food-delivery.svg"
+                      alt="badge"
+                    />
+                    <p>Compres</p>
+                  </li>
+                  <li>
+                    <img
+                        className="badge-img"
+                      src="../../images/cross.svg"
+                      alt="reward"
+                    />
+                    <p>Salut</p>
+                  </li>
+                  <li>
+                    <img
+                        className="badge-img"
+                      src="../../images/elearning.svg"
+                      alt="discount"
+                    />
+                    <p>Educació</p>
+                  </li>
+                </ul>
               </div>
             </div>
-          </>
+
+            <h2 style={{ textAlign: "start" }}>Participa</h2>
+            <div>
+              <div className="badges">
+                <ul>
+                  <li>
+                    <img
+                        className="badge-img"
+                      src="../../images/elearning.svg"
+                      alt="discount"
+                    />
+                    <p>Educació</p>
+                  </li>
+                  <li>
+                    <img
+                        className="badge-img"
+                      src="../../images/toilet-paper.svg"
+                      alt="discount"
+                    />
+                    <p>Altres</p>
+                  </li>
+
+                  <li>
+                    <img
+                        className="badge-img"
+                      src="../../images/approved.svg"
+                      alt="okey"
+                    />
+                    <p>Verificat</p>
+                  </li>
+                </ul>
+              </div>
+
+              {creator.contactInfo ?
+                <>
+                  <h2 style={{ textAlign: "start" }}>Contacte</h2>
+                  <p className="inserted-stat">
+                    {creator.contactInfo}
+                  </p>
+                </> : null }
+
+            </div>
+          </div>
         </div>
       </>
     );
   }
 }
 
-export default withAuth(Profile);
+export default withAuth(Bio);

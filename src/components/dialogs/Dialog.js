@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import AvatarImage from "../components/AvatarImage"
-import { withAuth } from "../Context/AuthContext";
+import AvatarImage from "../AvatarImage"
+import { withAuth } from "../../Context/AuthContext";
 
 class Dialog extends Component {
 

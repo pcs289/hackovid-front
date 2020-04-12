@@ -10,8 +10,12 @@ class OfferService {
       }
 
     handleCreateOffer(formData) {
-         return this.http.post('/offers/create', formData).then(response => response.data);
+         return this.http.post('/offers/create', formData).then(res => res.data);
     };
+
+    updateOffer(requestId, data) {
+        return this.http.put('/offers/' + requestId, data).then(res => res.data);
+    }
 
     getOffer(offerId) {
         return this.http.get('/offers/' + offerId).then(res => res.data);

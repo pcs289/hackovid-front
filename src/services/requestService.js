@@ -13,6 +13,10 @@ class RequestService {
          return this.http.post('/requests/create', formData).then(response => response.data);
     };
 
+    updateRequestStatus(requestId, statusCode) {
+        return this.http.put('/requests/status/' + statusCode, { requestId }).then((res) => res.data);
+    }
+
     getMyRequests() {
         return this.http.get('/requests/list').then(res => res.data);
     }

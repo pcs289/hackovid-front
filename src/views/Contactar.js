@@ -4,7 +4,9 @@ import Backbar from "../components/Navigation/Backbar";
 import Bio from "./Bio";
 import offerService from "../services/offerService";
 import LoadingView from "./LoadingView";
-import OfferDialog from "../components/OfferDialog";
+import CreateRequestDialog from "../components/dialogs/CreateRequestDialog";
+import Moment from "react-moment";
+import "moment/locale/ca";
 
 class Contactar extends Component {
 
@@ -26,8 +28,13 @@ class Contactar extends Component {
 
   render() {
     const {offer} = this.state;
-    const startTime = offer ? offer.startTime : '';
-    const endTime = offer ? offer.endTime : '';
+    const categoriaTipo = [
+      "../../images/food-delivery.svg",
+      "../../images/elearning.svg",
+      "../../images/cross.svg",
+      "../../images/toilet-paper.svg"
+    ];
+    const creator = offer ? offer.creator : null;
     return (
       <>
         {offer ?
@@ -38,48 +45,52 @@ class Contactar extends Component {
             </div>
             <div className="bottom-break-nav">
               <div className="profile-stats-card">
-                <h1 id="club-detail-header">{offer.title}</h1>
-
-                <div id="moment-booking">
-                  <img id="padel-icon" src="../../images/booking.svg" alt="padel-icon"></img>
+                <img className="badge-img" src={categoriaTipo[offer.type]} alt="Categoría de la oferta"/>
+                <h1>{offer.title}</h1>
+                <p style={{color: "#989898"}}>
+                  <Moment format="LLL" locale="ca">
+                    {offer.startDate}
+                  </Moment>{" "}
+                  fins les{" "}
+                  <Moment format="LT" locale="ca">
+                    {offer.endDate}
+                  </Moment>
+                </p>
+                {/*<p id="reservation-location">A 0.3km de casa teva</p>*/}
+                <div id="booking-card-details">
                   <p>{offer.description}</p>
                 </div>
-                <div id="booking-card-details">
-                  <p id="reservation-location">A 0.3km de casa teva</p>
-                  <div id="reservation-hours">
-                    <p><span>Inici</span><br />{startTime}</p>
-                    <p><span>Fi</span><br />{endTime}</p>
-                    <p><span>Duration</span><br />{}</p>
-                  </div>
-                </div>
                 <div id="profile-btn-div">
-                  <div id="submit-reservation">
-                    <div id="submit-datapicker" onClick={() => this.setState({ display: !this.state.display })}>
-                      <div id="profile-btn-div">
-                        <div id="submit-reservation">
-                          <div id="submit-datapicker">Enviar petició</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <OfferDialog display={this.state.display} offer={offer} onClose={() => this.setState({ display: !this.state.display })}/>
-                  {this.state.displayBio && this.state.offer.creator ?
+
+                  {
+                    offer.status === 1 ?
+                        <>
+                          <div id="submit-reservation">
+                            <div id="submit-datapicker" onClick={() => this.setState({ display: !this.state.display })}>
+                              <div id="profile-btn-div">
+                                <div id="submit-reservation">
+                                  <div id="submit-datapicker">Enviar petició</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </>
+                        : null}
+
+                  <CreateRequestDialog display={this.state.display} offer={offer} onClose={() => this.setState({ display: !this.state.display })}/>
+
+                  {this.state.displayBio && creator ?
                       <div>
-                      <div onClick={() => this.setState({displayBio: !this.state.displayBio})} id="expand-bio" className="profile-stats-card"
-                      style={{
-                          boxShadow: "none",
-                          backgroundColor: "#fff",
-                          display: "flex",
-                          justifyContent: "space-between"
-                      }}>
-                      <p style={{fontWeight: "700"}}>Veure perfil de Joe Doe</p>
-                      <img
-                          className="badge-img"
-                          src="../../images/minus.svg"
-                          alt="discount"
-                      />
-                      </div>
-                      <Bio userId={this.state.offer.creator}/>
+                        <div onClick={() => this.setState({displayBio: !this.state.displayBio})} id="expand-bio" className="profile-stats-card"
+                        style={{
+                            boxShadow: "none",
+                            backgroundColor: "#fff",
+                            display: "flex",
+                            justifyContent: "space-between"}}>
+                          <p style={{fontWeight: "700"}}>Veure perfil de {this.state.offer.creator.username}</p>
+                          <img className="badge-img" src="../../images/minus.svg" alt="discount"/>
+                        </div>
+                        <Bio creator={creator}/>
                       </div>
                        :
                       <div onClick={() => this.setState({displayBio: !this.state.displayBio})} id="expand-bio" className="profile-stats-card"
@@ -89,7 +100,7 @@ class Contactar extends Component {
                           display: "flex",
                           justifyContent: "space-between"
                       }}>
-                      <p style={{fontWeight: "700"}}>Veure perfil de Joe Doe</p>
+                      <p style={{fontWeight: "700"}}>Veure perfil de {this.state.offer.creator.username}</p>
                       <img
                           className="badge-img"
                           src="../../images/plus.svg"

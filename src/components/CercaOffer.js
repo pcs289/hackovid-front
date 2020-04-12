@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import Moment from "react-moment";
 import "moment/locale/ca";
-import RequestDialog from "../dialogs/RequestDialog";
-import EditOfferDialog from "../dialogs/EditOfferDialog";
+import {Link} from "react-router-dom";
 
-class OfferManaged extends Component{
+class CercaOffer extends Component{
 
     state = {
         displayRequestsDialog: false
@@ -13,21 +12,18 @@ class OfferManaged extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            displayRequestsDialog: false,
-            displayEditDialog: false
+            displayRequestsDialog: false
         };
     }
 
     componentDidMount() {
         this.setState({
-            displayRequestsDialog: false,
-            displayEditDialog: false
+            displayRequestsDialog: false
         });
     }
 
     render() {
-        const { offer, requests, edit } = this.props;
-        const {displayRequestsDialog, displayEditDialog } = this.state;
+        const { offer } = this.props;
         const categoriaTipo = [
             "../../images/food-delivery.svg",
             "../../images/elearning.svg",
@@ -91,36 +87,14 @@ class OfferManaged extends Component{
                         De {offer.username} a {offer.proximity.toFixed(1)} km
                     </p> : null
                 }
-
                 <div className="profile-stats">
-
-                    { edit ?
-                        <>
-                            <p><button onClick={() => this.setState({displayEditDialog: !this.state.displayEditDialog })} className="btn" style={{padding: "10px",}}>Editar</button></p>
-                            <EditOfferDialog display={displayEditDialog} offer={offer} onClose={() => this.setState({ displayEditDialog: !this.state.displayEditDialog })} />
-                        </>
-                        : null }
-
-                    {requests ?
-                            typeof offer.requests === "object" &&
-                            offer.requests.length > 0 &&
-                            offer.requests.filter((req) => req.status === 1).length === 0 ?
-                                <>
-                                    <p><span>Sol·licituds</span><br />({offer.requests.length})</p>
-                                    <p><button onClick={() => this.setState({displayRequestsDialog: !this.state.displayRequestsDialog})} className="btn" style={{padding: "10px",}}>Veure-les</button></p>
-                                    <RequestDialog display={displayRequestsDialog} requests={offer.requests} onClose={() => this.setState({displayRequestsDialog: !this.state.displayRequestsDialog})}/>
-                                </> :
-                                    offer.requests.find((req) => req.status === 1) ?
-                                        <>
-                                            Adjudicat a {offer.requests.find((req) => req.status === 1).requester.username}
-                                        </> : null
-                        : null }
-
+                    <p><span className="btn" style={{padding: "10px",}}><Link to={'/contactar/' + offer._id}>Contacta</Link></span></p>
                 </div>
+
 
             </div>
         );
     }
 }
 
-export default OfferManaged;
+export default CercaOffer;
