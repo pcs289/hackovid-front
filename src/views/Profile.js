@@ -4,16 +4,23 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { withAuth } from "../Context/AuthContext";
 import AvatarImage from "../components/AvatarImage"
+import DeleteAccountDialog from "../components/dialogs/DeleteAccountDialog";
 
 class Profile extends Component {
   state = {
     img: "",
+    deleteDialog: false
   };
 
   onClickLogout = async () => {
     try {
-      toast.info("Logout succesfully");
-      this.props.handleLogout();
+      this.props.handleLogout().then((e) => {
+        if(e.name !== 'Error') {
+          toast.success(`Has tancat la sessió correctament`);
+        } else {
+          toast.warn(`Hi ha hagut un error`);
+        }
+      });
     } catch (error) {
       console.error("Error while logout ");
     }
@@ -21,9 +28,18 @@ class Profile extends Component {
 
   onClickDelete = async () => {
     try {
-      toast.warn("Account deleted");
-      this.props.handleUserDelete();
+      this.props.handleUserDelete().then((e) => {
+        if(e.name !== 'Error') {
+          toast.success("Compte eliminat correctament");
+        } else {
+          toast.warn(`Hi ha hagut un error`);
+        }
+      }).catch((e) => {
+        console.log(e);
+        toast.error("Hi ha hagut un error");
+      });
     } catch (error) {
+      console.log(error);
       console.error("Error while logout ");
     }
   };
@@ -65,7 +81,7 @@ class Profile extends Component {
             </div>
           </div>
           <div className="profile-div session-state" style={{ borderBottom: "none" }}>
-            <div id="profile-btn" onClick={this.onClickDelete}>
+            <div id="profile-btn" onClick={() => this.setState({deleteDialog: !this.state.deleteDialog})}>
               <p style={{ color: "#ff0000" }}>Eliminar el compte</p>
             </div>
             <div>
@@ -75,6 +91,10 @@ class Profile extends Component {
                 alt="delete"
               ></img>
             </div>
+            <DeleteAccountDialog display={ this.state.deleteDialog }
+                                 onDeleteConfirmed={this.onClickDelete}
+                                 onClose={() => this.setState({deleteDialog: !this.state.deleteDialog})}
+            />
           </div>
         </div>
       </div>

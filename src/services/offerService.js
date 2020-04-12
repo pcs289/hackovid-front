@@ -13,6 +13,10 @@ class OfferService {
          return this.http.post('/offers/create', formData).then(res => res.data);
     };
 
+    deleteOffer(offerId) {
+        return this.http.delete('/offers/' + offerId).then(res => res.data);
+    }
+
     updateOffer(requestId, data) {
         return this.http.put('/offers/' + requestId, data).then(res => res.data);
     }

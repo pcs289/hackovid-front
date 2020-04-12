@@ -1,7 +1,6 @@
 // eslint-disable-next-line max-classes-per-file
 import React, { Component, createContext } from 'react';
 import authService from '../services/authService';
-import profileService from '../services/profileService';
 import LoadingView from "../views/LoadingView";
 
 const AuthContext = createContext();
@@ -24,7 +23,6 @@ export const withAuth = Comp => {
             handleSignup,
             handleProfileUpdate,
             handleUserDelete,
-            handlePostPhoto,
           }) => (
             <Comp
               {...this.props}
@@ -36,7 +34,6 @@ export const withAuth = Comp => {
               handleSignup={handleSignup}
               handleProfileUpdate={handleProfileUpdate}
               handleUserDelete={handleUserDelete}
-              handlePostPhoto={handlePostPhoto}
             />
           )}
         </AuthConsumer>
@@ -71,7 +68,7 @@ export default class AuthProvider extends Component {
   }
 
   handleLogin = user => {
-    authService
+    return authService
       .login(user)
       .then(loggedUser => {
         this.setState({
@@ -79,11 +76,13 @@ export default class AuthProvider extends Component {
           user: loggedUser,
           isLoading: false,
         });
+        return loggedUser;
       })
-      .catch(() => {
+      .catch((e) => {
         this.setState({
           isLoading: false,
         });
+        return e;
       });
   };
 
@@ -107,7 +106,7 @@ export default class AuthProvider extends Component {
   };
 
   handleProfileUpdate = user => {
-    authService
+    return authService
       .profileUpdate(user)
       .then(updatedUser => {
         this.setState({
@@ -115,11 +114,13 @@ export default class AuthProvider extends Component {
           user: updatedUser,
           isLoading: false,
         });
+        return updatedUser;
       })
-      .catch(() => {
+      .catch((e) => {
         this.setState({
           isLoading: false,
         });
+        return e;
       });
   };
 
@@ -127,7 +128,7 @@ export default class AuthProvider extends Component {
     this.setState({
       isLoading: true,
     });
-    authService
+    return authService
       .logout()
       .then(() => {
         this.setState({
@@ -135,13 +136,15 @@ export default class AuthProvider extends Component {
           user: undefined,
           isLoading: false,
         });
+        return {code: 'success'};
       })
-      .catch(() => {
+      .catch((e) => {
         this.setState({
           isLoading: false,
           isLoggedin: false,
           user: undefined,
         });
+        return e;
       });
   };
 
@@ -149,7 +152,7 @@ export default class AuthProvider extends Component {
     this.setState({
       isLoading: true,
     });
-    authService
+    return authService
       .userDelete()
       .then(() => {
         this.setState({
@@ -157,18 +160,16 @@ export default class AuthProvider extends Component {
           user: undefined,
           isLoading: false,
         });
+        return {code: 'success'};
       })
-      .catch(() => {
+      .catch((e) => {
         this.setState({
           isLoading: false,
           isLoggedin: false,
           user: undefined,
         });
+        return e;
       });
-  };
-
-  handlePostPhoto = user => {
-    profileService.uploadAvatarImg(user);
   };
 
   render() {
@@ -190,7 +191,6 @@ export default class AuthProvider extends Component {
           handleSignup: this.handleSignup,
           handleProfileUpdate: this.handleProfileUpdate,
           handleUserDelete: this.handleUserDelete,
-          handlePostPhoto: this.handlePostPhoto,
         }}
       >
         {children}

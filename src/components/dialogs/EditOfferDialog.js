@@ -37,6 +37,15 @@ class EditOfferDialog extends Component {
         await this.setState({  ...this.state, 'End': hour});
     }
 
+    deleteOffer() {
+        OfferService.deleteOffer(this.props.offer._id).then(() => {
+            toast.success(`Oferta eliminada amb èxit!`);
+            window.location.reload();
+        }).catch((e) => {
+            toast.warn('Hi ha hagut un error');
+        });
+    }
+
     async updateOffer(ev) {
         ev.preventDefault();
         try {
@@ -74,7 +83,7 @@ class EditOfferDialog extends Component {
                         </button>
                     </div>
                     <div id="offer-dialog-user-info" className="user-info">
-                        <form onSubmit={this.updateOffer.bind(this)} style={{'marginBottom':'5em'}}>
+                        <form onSubmit={this.updateOffer.bind(this)} style={{'marginBottom':'2em'}}>
                             <div className="time-input">
                                 <span>Títol:</span><input type="text" name="title" placeholder="Títol" defaultValue={offer.title} onChange={this.handleChange.bind(this)} required />
                             </div>
@@ -93,6 +102,8 @@ class EditOfferDialog extends Component {
                             </div> <br />
                             <input type="submit" className="btn" value="Edita"/>
                         </form>
+
+                        <button className="cancel-button" onClick={this.deleteOffer.bind(this)}>Elimina oferta</button>
                     </div>
                 </div>
             </div>

@@ -3,15 +3,25 @@ import { Link } from "react-router-dom";
 import { withAuth } from "../Context/AuthContext";
 
 class Homepage extends Component {
-  state = {
-    isLoading: true,
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = { width: 0, height: 0, isLoading: true };
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
+  }
 
   async componentDidMount() {
     try {
-      this.setState({
-        isLoading: false,
-      });
+      this.updateWindowDimensions();
+      window.addEventListener('resize', this.updateWindowDimensions);
     } catch (error) {
       console.log(error);
     }
@@ -46,6 +56,11 @@ class Homepage extends Component {
                   Registre
                 </Link>
               </div>
+
+              <iframe className="video" title="Video demostració d'Apropapp" width="444" height="250" src="https://www.youtube.com/embed/SSuxVwMkcpA?controls=0"
+                      frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen>Video demostració d'Apropapp</iframe>
+
             </div>
           </div>
         </div>
@@ -54,14 +69,14 @@ class Homepage extends Component {
           <div className="row r1">
             <div className="imga">
               <img
-                src={"/images/test 1.jpg"}
+                src={"/images/homepage/1-localitza.jpg"}
                 alt="Home amb la mascara"
                 className="hp-img"
               />
             </div>
             <div className="descripcio-hp">
               <div>
-                <h3>Localitza les necessitats</h3>
+                <h3>Localitza les teves necessitats</h3>
                 <p>
                   Troba les ofertes de voluntariat més pròximes mitjançant els
                   filtres del mapa o el panell d'anuncis .
@@ -69,10 +84,10 @@ class Homepage extends Component {
               </div>
             </div>
           </div>
-          <div className="row r2">
+          <div className={this.state.width > 750 ? 'row r2' : 'row r1'}>
             <div className="imga">
               <img
-                src={"/images/test 1.jpg"}
+                src={"/images/homepage/2-colabora.jpg"}
                 alt="Home amb la mascara"
                 className="hp-img"
               />
@@ -90,7 +105,7 @@ class Homepage extends Component {
           <div className="row r1">
             <div className="imga">
               <img
-                src={"/images/test 1.jpg"}
+                src={"/images/homepage/3-coneixer.jpg"}
                 alt="Home amb la mascara"
                 className="hp-img"
               />
@@ -105,10 +120,10 @@ class Homepage extends Component {
               </div>
             </div>
           </div>
-          <div className="row r2">
+          <div className={this.state.width > 750 ? 'row r2' : 'row r1'}>
             <div className="imga">
               <img
-                src={"/images/test 1.jpg"}
+                src={"/images/homepage/4-gestiona.jpg"}
                 alt="Home amb la mascara"
                 className="hp-img"
               />
@@ -122,6 +137,8 @@ class Homepage extends Component {
               </div>
             </div>
           </div>
+          <br />
+          <br />
         </div>
         <div className="footer-header" style={{backgroundColor: '#017069', color: 'white', height: '40px', textAlign: 'center'}}>
           <small><a href="/Apropapp_ProteccioDeDades_PoliticadePrivacitat.pdf" >Polítiques de Privacitat i Protecció de Dades</a></small>

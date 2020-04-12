@@ -64,10 +64,12 @@ class PublishOffer extends Component{
           startDate,
           endDate
         };
-        await OfferService.handleCreateOffer(data);
-        toast.success(`Oferta registrada amb èxit!`);
-        this.history.push('/publicacions');
-        window.location.reload();
+        OfferService.handleCreateOffer(data).then(() => {
+            toast.success(`Oferta registrada amb èxit!`);
+            this.props.history.push('/publicacions');
+        }).catch((e) => {
+            toast.warn('Hi hagut un error');
+        });
       } catch (error) {
         console.error(error);
       }

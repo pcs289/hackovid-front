@@ -22,10 +22,16 @@ class Login extends Component {
       this.props.handleLogin({
         username,
         password,
+      }).then((e) => {
+        if(e.name !== 'Error') {
+          toast.success(`Benvingut, ${username}!`);
+        } else {
+          toast.warn(`Hi ha hagut un error`);
+        }
       });
-      toast.success(`Benvingut, ${username}!`);
     } catch (error) {
       console.error("Error while logging in");
+      toast.error('Hi ha hagut un error');
     }
   };
 

@@ -12,12 +12,14 @@ class Profile extends Component {
     super(props);
     this.onChange = this.onChange.bind(this);
     this.avatarImageElement = React.createRef();
-    this.state = {name: '', surname: ''};
+    this.state = {
+      name: '',
+      surname: '',
+      password: '',
+      description: '',
+      contactInfo: ''
+    };
   }
-
-  componentDidMount(){
-    this.setState({name: this.props.user.name, surname: this.props.user.surname});
-  };
 
   handleChange = async event => {
     const { name, value } = event.target;
@@ -27,15 +29,25 @@ class Profile extends Component {
   onClickSave = async e => {
     e.preventDefault();
     try {
-      const { name, surname} = this.state;
-      await this.props.handleProfileUpdate({
+      const {name, surname, password, description, contactInfo} = this.state;
+      this.props.handleProfileUpdate({
         name,
         surname,
+        password,
+        contactInfo,
+        description
+      }).then((e) => {
+        if(e.name !== 'Error') {
+          toast.success(`Canvis guardats amb èxit!`);
+          this.props.history.push('/perfil');
+        } else {
+          toast.warn(`Hi ha hagut un error`);
+        }
       });
-      toast.success(`Canvis guardats amb èxit!`);
-      this.props.history.push('/perfil');
     } catch (error) {
       console.error('Error when saving changes');
+      console.error(error);
+      toast.error('Hi ha hagut un error');
     }
   };
 
@@ -52,7 +64,7 @@ class Profile extends Component {
   };
 
   render() {
-    const { name, surname, avatarImg } = this.props.user;
+    const { name, surname, avatarImg, description, contactInfo, password } = this.props.user;
 
     return (
       <div className="viewport-with-navbar">
@@ -69,6 +81,18 @@ class Profile extends Component {
             <div className="row">
               <label>Cognom:</label>
               <input type="text" name="surname" onChange={this.handleChange} defaultValue={surname}/>
+            </div>
+            <div className="row">
+              <label>Mot de pas:</label>
+              <input type="text" name="password" onChange={this.handleChange} defaultValue={password}/>
+            </div>
+            <div className="row">
+              <label>Contacte (Telèfon o Email):</label>
+              <input type="text" name="contactInfo" onChange={this.handleChange} defaultValue={contactInfo}/>
+            </div>
+            <div className="row">
+              <label>Descripció Personal:</label>
+              <input type="text" name="description" onChange={this.handleChange} defaultValue={description}/>
             </div>
           </div>      
           <div className="edit-profile-picture">
