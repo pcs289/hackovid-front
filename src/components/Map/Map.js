@@ -33,7 +33,6 @@ class Map extends Component {
   // Mount map with the current user location
   async componentDidMount() {
     if (this.props.user.location.coordinates) {
-      this.getOffers();
       await this.setState({
         viewport: {
           latitude: this.props.user.location.coordinates[1],
@@ -45,6 +44,7 @@ class Map extends Component {
           latitude: this.props.user.location.coordinates[1]
         }
       });
+      this.getOffers();
     }
   }
 

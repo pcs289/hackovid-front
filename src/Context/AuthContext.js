@@ -22,6 +22,7 @@ export const withAuth = Comp => {
             handleLogout,
             handleSignup,
             handleProfileUpdate,
+            handleAvatarUpdate,
             handleUserDelete,
           }) => (
             <Comp
@@ -33,6 +34,7 @@ export const withAuth = Comp => {
               handleLogout={handleLogout}
               handleSignup={handleSignup}
               handleProfileUpdate={handleProfileUpdate}
+              handleAvatarUpdate={handleAvatarUpdate}
               handleUserDelete={handleUserDelete}
             />
           )}
@@ -124,6 +126,19 @@ export default class AuthProvider extends Component {
       });
   };
 
+  handleAvatarUpdate = () => {
+    return authService
+        .me()
+        .then( user => {
+          this.setState({
+            isLoggedin: true,
+            user,
+            isLoading: false,
+          });
+          return user;
+        }).catch(e => e);
+  };
+
   handleLogout = () => {
     this.setState({
       isLoading: true,
@@ -190,6 +205,7 @@ export default class AuthProvider extends Component {
           handleLogout: this.handleLogout,
           handleSignup: this.handleSignup,
           handleProfileUpdate: this.handleProfileUpdate,
+          handleAvatarUpdate: this.handleAvatarUpdate,
           handleUserDelete: this.handleUserDelete,
         }}
       >

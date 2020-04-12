@@ -7,7 +7,7 @@ import ImageService from '../services/ImagesService'
 import Backbar from "../components/Navigation/Backbar";
 
 
-class Profile extends Component {
+class EditProfile extends Component {
   constructor(props) {
     super(props);
     this.onChange = this.onChange.bind(this);
@@ -59,8 +59,18 @@ class Profile extends Component {
             'content-type': 'multipart/form-data'
         }
     };
-    await ImageService.uploadAvatarImg(formData, config);
-    this.avatarImageElement.current.componentDidMount();
+    ImageService.uploadAvatarImg(formData, config).then(async () => {
+      this.props.handleAvatarUpdate().then((e) => {
+        toast.success("S'ha actualitzat correctament l'imatge");
+        this.avatarImageElement.current.componentDidMount();
+      }).catch((e) => {
+        console.log(e);
+        toast.warn("Hi ha hagut algun error actualitzant l'imatge");
+      });
+    }).catch((e) => {
+      console.log(e);
+      toast.warn("Hi ha hagut algun error actualitzant l'imatge");
+    });
   };
 
   render() {
@@ -118,4 +128,4 @@ class Profile extends Component {
   }
 }
 
-export default withAuth(Profile);
+export default withAuth(EditProfile);

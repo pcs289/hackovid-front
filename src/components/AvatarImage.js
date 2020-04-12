@@ -19,6 +19,16 @@ class AvatarImage extends Component {
     };
 
     componentDidMount = async () => {
+        this.getAvatar();
+    };
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevState.img !== this.state.img) {
+            this.getAvatar();
+        }
+    }
+
+    getAvatar() {
         const base64Flag = 'data:image/png;base64,';
 
         if(!this.props.avatarImg){
@@ -40,7 +50,7 @@ class AvatarImage extends Component {
                 this.setState({img: base64Flag + imageStr});
             }
         }
-    };
+    }
 
     render() {
         const {img} = this.state;
