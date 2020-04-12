@@ -61,7 +61,7 @@ class Login extends Component {
           />
           <input type="submit" value="Entrar" className="btn" />
         </form>
-        <p className="alternative">
+        <p>
           No tens compte encara?
           <Link to="/registre" style={{ textDecoration: "none" }}>
             <span> Crear</span>

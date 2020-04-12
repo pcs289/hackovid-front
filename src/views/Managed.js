@@ -63,7 +63,7 @@ class Managed extends Component {
 
                             <div className="profile-stats-card">
                                 <div style={{display: "flex", flexFlow: 'row nowrap', justifyContent: 'space-between'}}>
-                                    <span className="title" style={{color: "#a4d96c", fontWeight: "bold"}}>Pendents ({pendingOffers.length})</span>
+                                    <span className="title" style={{color: "rgb(242,157,105)", fontWeight: "bold"}}>Pendents ({pendingOffers.length})</span>
                                     <div className="icon-container" onClick={() => this.setState({ pendingExpand: !this.state.pendingExpand })}>
                                         <img className="arrow-icon" style={{ width: '25px', height: '25px', transform: !this.state.pendingExpand ? 'rotate(90deg)' : 'rotate(0deg)' }} src="../../images/chevron.svg" alt="close-cross"></img>
                                     </div>
@@ -77,7 +77,7 @@ class Managed extends Component {
 
                             <div className="profile-stats-card">
                                 <div style={{display: "flex", flexFlow: 'row nowrap', justifyContent: 'space-between'}}>
-                                    <span className="title" style={{color: "#a4d96c", fontWeight: "bold"}}>Realitzades ({restOffers.length})</span>
+                                    <span className="title" style={{color: "black", fontWeight: "bold"}}>Realitzades ({restOffers.length})</span>
                                     <div className="icon-container" onClick={() => this.setState({ doneExpand: !this.state.doneExpand })}>
                                         <img className="arrow-icon" style={{ width: '25px', height: '25px', transform: !this.state.doneExpand ? 'rotate(90deg)' : 'rotate(0deg)' }} src="../../images/chevron.svg" alt="close-cross"></img>
                                     </div>
