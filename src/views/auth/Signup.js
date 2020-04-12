@@ -94,7 +94,7 @@ class Signup extends Component {
         </form>
 
         <div>
-          <p className="alternative">
+          <p>
             Ja tens un compte?
             <Link to={'/entra'} style={{ textDecoration: 'none' }}>
               <span> Entrar</span>
