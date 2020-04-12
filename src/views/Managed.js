@@ -45,7 +45,7 @@ class Managed extends Component {
                 <div className="activities-container">
                     <OffersTab tab="managed"/>
 
-                    { offers.length > 0 ?
+                    { offers ?
                         <>
                             <div className="profile-stats-card">
                                 <div style={{display: "flex", flexFlow: 'row nowrap', justifyContent: 'space-between'}}>
