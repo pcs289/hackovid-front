@@ -82,17 +82,20 @@ class PublishOffer extends Component{
                 <form id="newpreference" onSubmit={this.createOffer} style={{'marginBottom':'5em'}}>
                   <div id="type" onChange={this.onChangeRadio}>
                     <label>
-                    <input type="radio" id="type1" name="genderS" value="1"/>
-                    <img src="../../images/food-delivery.svg" alt="Oferta de Compres"/>Compres</label>
+                        <input type="radio" id="type1" name="genderS" value="0"/>
+                        <img src="../../images/food-delivery.svg" alt="Oferta de Compres"/>Compres</label>
                     <label>
-                    <input type="radio" id="type2" name="genderS" value="2"/>
-                    <img src="../../images/cross.svg" alt="Oferta de Salut"/>Salut</label>
+                        <input type="radio" id="type3" name="genderS" value="1"/>
+                        <img src="../../images/elearning.svg" alt="Oferta d'Educació"/>Educació
+                    </label>
                     <label>
-                    <input type="radio" id="type3" name="genderS" value="3"/>
-                    <img src="../../images/elearning.svg" alt="Oferta d'Educació"/>Educació</label>
+                        <input type="radio" id="type2" name="genderS" value="2"/>
+                        <img src="../../images/cross.svg" alt="Oferta de Salut"/>Salut
+                    </label>
                     <label>
-                    <input type="radio" id="type4" name="genderS" value="4"/>
-                    <img src="../../images/toilet-paper.svg" alt="Oferta d'Altres"/>Altres</label>
+                        <input type="radio" id="type4" name="genderS" value="3"/>
+                        <img src="../../images/toilet-paper.svg" alt="Oferta d'Altres"/>Altres
+                    </label>
                   </div>
                   <input type="text" name="title" placeholder="Títol" onChange={this.handleChange} required/>
                   <input type="text" name="description" placeholder="Descripció" onChange={this.handleChange} required/>          
