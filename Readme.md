@@ -1,6 +1,6 @@
-# PimPamPum Frontend
+# Apropapp Frontend
 
-In this repository you will find the source code for the PimPamPum frontend. 
+In this repository you will find the source code for the Apropapp frontend. 
 
 ## Installation
 
