@@ -66,6 +66,7 @@ class PublishOffer extends Component{
         };
         await OfferService.handleCreateOffer(data);
         toast.success(`Oferta registrada amb èxit!`);
+        this.history.push('/publicacions');
         window.location.reload();
       } catch (error) {
         console.error(error);

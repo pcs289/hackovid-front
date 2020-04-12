@@ -61,10 +61,10 @@ class Homepage extends Component {
             </div>
             <div className="descripcio-hp">
               <div>
-                <h3>Com puc ajudar?</h3>
+                <h3>Localitza les necessitats</h3>
                 <p>
-                  BHdsjhwifjefhjrehfjkhfjdh BHdsjhwifjefhjrehfjkhfjdh
-                  BHdsjhwifjefhjrehfjkhfjdh BHdsjhwifjefhjrehfjkhfjdh
+                  Troba les ofertes de voluntariat més pròximes mitjançant els
+                  filtres del mapa o el panell d'anuncis .
                 </p>
               </div>
             </div>
@@ -79,10 +79,10 @@ class Homepage extends Component {
             </div>
             <div className="descripcio-hp">
               <div>
-                <h3>Com puc ajudar?</h3>
+                <h3>Col·labora amb el teu veïnat</h3>
                 <p>
-                  BHdsjhwifjefhjrehfjkhfjdh BHdsjhwifjefhjrehfjkhfjdh
-                  BHdsjhwifjefhjrehfjkhfjdh BHdsjhwifjefhjrehfjkhfjdh
+                  Publica les teves propies ofertes tant sigui per sol·licitar
+                  ajuda o per mostrar la teva predisposició a fer voluntariat.
                 </p>
               </div>
             </div>
@@ -97,10 +97,10 @@ class Homepage extends Component {
             </div>
             <div className="descripcio-hp">
               <div>
-                <h3>Com puc ajudar?</h3>
+                <h3>Dona't a conèixer</h3>
                 <p>
-                  BHdsjhwifjefhjrehfjkhfjdh BHdsjhwifjefhjrehfjkhfjdh
-                  BHdsjhwifjefhjrehfjkhfjdh BHdsjhwifjefhjrehfjkhfjdh
+                  Completa el teu perfil i expressa el teu compromís en el teu
+                  barri o poble.
                 </p>
               </div>
             </div>
@@ -115,10 +115,9 @@ class Homepage extends Component {
             </div>
             <div className="descripcio-hp">
               <div>
-                <h3>Com puc ajudar?</h3>
+                <h3>Gestiona les sol·licituds</h3>
                 <p>
-                  BHdsjhwifjefhjrehfjkhfjdh BHdsjhwifjefhjrehfjkhfjdh
-                  BHdsjhwifjefhjrehfjkhfjdh BHdsjhwifjefhjrehfjkhfjdh
+                  Controla les peticions de forma fàcil des de la mateixa app.
                 </p>
               </div>
             </div>
