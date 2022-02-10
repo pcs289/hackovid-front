@@ -11,7 +11,7 @@
     "deck.gl": "^7.3.5",
     "mapbox-gl": "^1.4.1",
     "moment": "^2.24.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.10.2",
     "react-date-picker": "^7.8.2",
     "react-dom": "^16.10.2",
